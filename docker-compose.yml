@@ -1,0 +1,48 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: agara-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - agara-network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: agara-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/agara-sofvix
+      - JWT_SECRET=agara-sofvix-secure-secret-2026
+      - EMAIL_HOST=smtp.gmail.com
+      - EMAIL_PORT=587
+      - EMAIL_USER=agara92in@gmail.com
+      - EMAIL_PASS=ruekvtirwdzyoxmb
+    depends_on:
+      - mongodb
+    networks:
+      - agara-network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: agara-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    networks:
+      - agara-network
+
+networks:
+  agara-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
