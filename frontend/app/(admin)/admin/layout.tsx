@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { AdminTopbar } from "@/components/admin/AdminTopbar";
 
@@ -13,7 +14,9 @@ export default function AdminLayout({
       
       {/* Main Content Area */}
       <div className="flex-grow flex flex-col h-screen overflow-hidden">
-        <AdminTopbar />
+        <Suspense fallback={<div className="h-16 bg-white border-b border-black/5" />}>
+          <AdminTopbar />
+        </Suspense>
         
         {/* Scrollable Page Content */}
         <main className="flex-grow overflow-y-auto overflow-x-hidden">
