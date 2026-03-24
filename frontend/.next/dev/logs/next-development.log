@@ -63,3 +63,19 @@
 [01:40:54.662] Browser WARN    Image with src "/hero_card_banner.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
 [01:40:56.323] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
 [01:43:03.932] Server  LOG     ✓ Compiled in 2.3s
+[01:43:16.687] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:44:16.880] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:44:17.712] Browser WARN    Image with src "/images/service-mockups/crm-pipeline.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:47:59.909] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:48:00.205] Browser WARN    Image with src "/hero_card_banner.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:48:02.866] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:48:07.326] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:50:12.416] Browser ERROR   Failed to fetch categories: {}
+[01:50:12.416] Browser ERROR   Failed to fetch categories: {}
+[01:50:26.660] Server  LOG     ✓ Compiled in 1325ms
+[01:50:26.787] Browser ERROR   uncaughtError: ReferenceError: SERVICES is not defined
+[01:50:36.630] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:50:36.637] Server  LOG     ✓ Compiled in 186ms
+[01:50:37.649] Server  ERROR   ⨯ ReferenceError: SERVICES is not defined
+[01:50:38.653] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:50:39.013] Browser ERROR   uncaughtError: ReferenceError: SERVICES is not defined

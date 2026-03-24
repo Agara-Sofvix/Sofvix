@@ -18,7 +18,7 @@ import {
   X,
   CheckCircle2
 } from "lucide-react";
-import { SERVICES, CATEGORIES } from "@/app/(main)/products/data";
+import { getApiUrl } from "@/lib/api";
 
 function AdminServicesContent() {
   const router = useRouter();
@@ -26,14 +26,48 @@ function AdminServicesContent() {
   const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [servicesList, setServicesList] = useState(SERVICES);
+  const [categories, setCategories] = useState<any[]>([]);
+  const [servicesList, setServicesList] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [showAddModal, setShowAddModal] = useState(false);
   const [newService, setNewService] = useState({
     name: "",
-    category: "cx-sales",
+    category: "",
     description: "",
     features: ["", "", ""]
   });
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    const apiUrl = getApiUrl();
+    try {
+      const res = await fetch(`${apiUrl}/api/categories`);
+      if (res.ok) {
+        const data = await res.json();
+        setCategories(data);
+        // Flatten all capabilities into a single services list
+        const allServices = data.flatMap((cat: any) => 
+          cat.capabilities.map((cap: any) => ({
+            ...cap,
+            categoryId: cat.id || cat._id,
+            categoryName: cat.name
+          }))
+        );
+        setServicesList(allServices);
+        if (data.length > 0 && !newService.category) {
+          setNewService(prev => ({ ...prev, category: data[0].id || data[0]._id }));
+        }
+      }
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
     if (searchParams.get('add') === 'true') {
@@ -44,29 +78,40 @@ function AdminServicesContent() {
     }
   }, [searchParams, router, pathname]);
 
-  const handleAddService = (e: React.FormEvent) => {
+  const handleAddService = async (e: React.FormEvent) => {
     e.preventDefault();
-    const serviceToAdd = {
-      name: newService.name,
-      description: newService.description,
-      category: newService.category,
-      href: "#",
-      icon: "Zap"
-    };
-    setServicesList([serviceToAdd, ...servicesList]);
-    setShowAddModal(false);
-    setNewService({
-      name: "",
-      category: "cx-sales",
-      description: "",
-      features: ["", "", ""]
-    });
+    const apiUrl = getApiUrl();
+    try {
+      const res = await fetch(`${apiUrl}/api/categories/${newService.category}/capabilities`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: newService.name,
+          description: newService.description,
+          features: newService.features.filter(f => f.trim() !== ""),
+          icon: "Zap"
+        })
+      });
+
+      if (res.ok) {
+        await fetchData(); // Refresh list
+        setShowAddModal(false);
+        setNewService({
+          name: "",
+          category: categories[0]?.id || categories[0]?._id || "",
+          description: "",
+          features: ["", "", ""]
+        });
+      }
+    } catch (error) {
+      console.error("Failed to add service:", error);
+    }
   };
 
   const filteredServices = servicesList.filter(service => {
     const matchesSearch = service.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                          service.description.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === "all" || service.category === selectedCategory;
+    const matchesCategory = selectedCategory === "all" || service.categoryId === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -114,8 +159,8 @@ function AdminServicesContent() {
               className="w-full bg-gray-50 border border-black/5 rounded-2xl pl-12 pr-8 py-3 text-sm focus:outline-none focus:border-[#F97316] transition-colors appearance-none font-bold text-gray-700"
             >
               <option value="all">All Categories</option>
-              {CATEGORIES.map(cat => (
-                <option key={cat.id} value={cat.id}>{cat.name}</option>
+              {categories.map(cat => (
+                <option key={cat.id || cat._id} value={cat.id || cat._id}>{cat.name}</option>
               ))}
             </select>
           </div>
@@ -156,7 +201,7 @@ function AdminServicesContent() {
                     </td>
                     <td className="px-8 py-6">
                       <span className="text-xs font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-lg border border-black/5">
-                        {service.category.replace('-', ' ')}
+                        {service.categoryName}
                       </span>
                     </td>
                     <td className="px-8 py-6 max-w-xs">
@@ -165,7 +210,7 @@ function AdminServicesContent() {
                     <td className="px-8 py-6">
                       <div className="flex items-center gap-2 text-xs font-bold text-gray-400">
                         <Clock className="w-3.5 h-3.5" />
-                        Oct 24, 2023
+                        {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                       </div>
                     </td>
                     <td className="px-8 py-6 text-right">
@@ -252,8 +297,8 @@ function AdminServicesContent() {
                         onChange={(e) => setNewService({...newService, category: e.target.value})}
                         className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:outline-none focus:border-[#F97316] transition-all appearance-none"
                       >
-                        {CATEGORIES.map(cat => (
-                          <option key={cat.id} value={cat.id}>{cat.name}</option>
+                        {categories.map(cat => (
+                          <option key={cat.id || cat._id} value={cat.id || cat._id}>{cat.name}</option>
                         ))}
                       </select>
                     </div>

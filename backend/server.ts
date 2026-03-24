@@ -114,6 +114,33 @@ app.get('/api/categories/slug/:slug', async (req, res) => {
   }
 });
 
+app.post('/api/categories/:id/capabilities', async (req, res) => {
+  try {
+    const category = await Category.findOne({ 
+      $or: [
+        { _id: mongoose.isValidObjectId(req.params.id) ? req.params.id : null },
+        { id: req.params.id },
+        { slug: req.params.id }
+      ]
+    });
+    
+    if (!category) return res.status(404).json({ error: 'Category not found' });
+
+    const newCapability = {
+      ...req.body,
+      slug: req.body.name.toLowerCase().replace(/\s+/g, '-'),
+      icon: req.body.icon || 'Zap'
+    };
+
+    category.capabilities.push(newCapability);
+    await category.save();
+    
+    res.status(201).json(newCapability);
+  } catch (error) {
+    res.status(400).json({ error: 'Failed to add capability' });
+  }
+});
+
 app.post('/api/categories', async (req, res) => {
   try {
     const data = {
