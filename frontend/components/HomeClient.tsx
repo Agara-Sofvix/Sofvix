@@ -156,6 +156,7 @@ export function HomeClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
+                onClick={() => router.push('/get-started')}
                 className="group bg-white rounded-xl p-6 border border-black/5 hover:border-[#F97316]/50 transition-all duration-300 hover:transform hover:-translate-y-2 cursor-pointer shadow-sm hover:shadow-md"
               >
                 <div className="w-16 h-16 bg-[#F97316]/10 rounded-lg flex items-center justify-center text-[#F97316] mb-4 group-hover:bg-[#F97316] group-hover:text-white transition-all duration-300">
@@ -166,13 +167,6 @@ export function HomeClient() {
               </motion.div>
             ))}
           </div>
-
-          <div className="text-center mt-12">
-            <Button href="/services" variant="outline">
-              View All Services
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
-          </div>
         </div>
       </section>
 
@@ -180,7 +174,7 @@ export function HomeClient() {
       <section className="py-24 bg-black/20">
         <div className="max-w-[1280px] mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Featured Products</h2>
+            <h2 className="text-3xl md:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">Our Products</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Innovative SaaS products designed for modern enterprises
             </p>

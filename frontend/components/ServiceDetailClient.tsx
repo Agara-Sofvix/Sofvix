@@ -84,7 +84,7 @@ const STEPS = [
 ];
 
 export function ServiceDetailClient({ category, service, categorySlug, serviceSlug }: { category: Category, service: Capability, categorySlug: string, serviceSlug: string }) {
-  const MockupImage = SERVICE_MOCKUPS[service.slug] || CATEGORY_MOCKUPS[category.id] || CATEGORY_MOCKUPS['finance-ops'];
+  const MockupImage = service.heroImage || SERVICE_MOCKUPS[service.slug] || CATEGORY_MOCKUPS[category.id] || CATEGORY_MOCKUPS['finance-ops'];
 
   return (
     <div className="relative w-full text-slate-900 selection:bg-orange-500/10 bg-white min-h-screen overflow-x-hidden">
@@ -216,7 +216,7 @@ export function ServiceDetailClient({ category, service, categorySlug, serviceSl
                  <Button href={`/get-started?service=${encodeURIComponent(service.name)}&category=${categorySlug}&slug=${serviceSlug}`} size="lg" variant="outline" className="rounded-2xl px-10 bg-white border-white !text-slate-900 hover:!bg-slate-100 transition-all shadow-lg border-2">Request Feature Demo</Button>
               </div>
               <div className="lg:col-span-8">
-                 <div className="grid sm:grid-cols-2 gap-4">
+                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {(service.features || []).map((feature, i) => (
                       <motion.div key={i} whileHover={{ x: 10 }} className="p-6 rounded-3xl bg-white/5 border border-white/10 flex items-start gap-4 transition-all hover:bg-white/10">
                          <CheckCircle2 className="w-4 h-4 text-orange-500 mt-1 flex-shrink-0" />

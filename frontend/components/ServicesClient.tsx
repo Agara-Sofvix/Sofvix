@@ -154,7 +154,7 @@ export function ServicesClient() {
             </p>
             
             <div className="flex flex-col sm:flex-row sm:items-center justify-center gap-6">
-              <Button href="/contact" size="lg" className="w-full sm:w-auto">
+              <Button href="/get-started" size="lg" className="w-full sm:w-auto">
                 Get Free System Consultation
               </Button>
               <Button 
@@ -304,7 +304,7 @@ export function ServicesClient() {
             <p className="text-lg lg:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
               Get a clear, expert-driven roadmap before you invest in technology.
             </p>
-            <Button href="/contact" size="lg" className="w-full md:w-auto">
+            <Button href="/get-started" size="lg" className="w-full md:w-auto">
               Book Your Free System Architecture Consultation
             </Button>
           </motion.div>

@@ -18,6 +18,7 @@ export interface Capability {
   useCases?: string[];
   outcomes?: string;
   faqs?: { q: string; a: string }[];
+  heroImage?: string;
 }
 
 export interface Category {
