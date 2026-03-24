@@ -7,5 +7,6 @@
   "/(admin)/admin/products/page": "app/(admin)/admin/products/page.js",
   "/(admin)/admin/seo/page": "app/(admin)/admin/seo/page.js",
   "/(admin)/admin/services/page": "app/(admin)/admin/services/page.js",
-  "/(main)/page": "app/(main)/page.js"
+  "/(main)/page": "app/(main)/page.js",
+  "/(main)/products/page": "app/(main)/products/page.js"
 }

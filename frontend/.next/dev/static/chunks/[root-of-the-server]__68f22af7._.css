@@ -1212,6 +1212,10 @@
     max-height: calc(var(--spacing) * 40);
   }
 
+  .max-h-60 {
+    max-height: calc(var(--spacing) * 60);
+  }
+
   .max-h-80 {
     max-height: calc(var(--spacing) * 80);
   }
@@ -2638,6 +2642,10 @@
     padding-block: calc(var(--spacing) * 6);
   }
 
+  .py-8 {
+    padding-block: calc(var(--spacing) * 8);
+  }
+
   .py-10 {
     padding-block: calc(var(--spacing) * 10);
   }
@@ -2692,6 +2700,10 @@
 
   .pt-24 {
     padding-top: calc(var(--spacing) * 24);
+  }
+
+  .pr-2 {
+    padding-right: calc(var(--spacing) * 2);
   }
 
   .pr-4 {
@@ -3650,6 +3662,18 @@
     @supports (color: color-mix(in lab, red, red)) {
       .hover\:border-black\/5:hover {
         border-color: color-mix(in oklab, var(--color-black) 5%, transparent);
+      }
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:border-black\/10:hover {
+      border-color: #0000001a;
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:border-black\/10:hover {
+        border-color: color-mix(in oklab, var(--color-black) 10%, transparent);
       }
     }
   }

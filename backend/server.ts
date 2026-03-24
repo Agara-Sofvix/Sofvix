@@ -49,10 +49,10 @@ const startServer = async () => {
       console.log('Admin password updated');
     }
 
-    // Seed Categories if empty or incomplete
+    // Seed Categories if empty
     const categoryCount = await Category.countDocuments();
-    if (categoryCount < 8) {
-      console.log('Restoring full product catalog (8 categories)...');
+    if (categoryCount === 0) {
+      console.log('Seeding initial categories...');
       const initialCategories = [
         { 
           id: "cx-sales", 
@@ -61,9 +61,9 @@ const startServer = async () => {
           icon: "Users",
           overview: "We unify your entire customer lifecycle — from lead generation to post-sales support — into a single intelligent system.",
           capabilities: [
-            { name: "Centralized CRM & pipeline management", slug: "crm-pipeline", icon: "Users", description: "A unified platform to manage every stage of your sales funnel." },
-            { name: "Omnichannel communication", slug: "omnichannel-communication", icon: "MessageSquare", description: "Engage customers across email, chat, social messaging, and phone." }
-          ]
+            { name: "Centralized CRM & pipeline management", slug: "crm-pipeline", icon: "Users", description: "A unified platform to manage every stage of your sales funnel." }
+          ],
+          outcomes: ["Faster lead conversion cycles"]
         },
         { 
           id: "marketing", 
@@ -72,76 +72,13 @@ const startServer = async () => {
           icon: "Megaphone",
           overview: "We build performance-driven marketing systems that automate engagement and maximize conversion.",
           capabilities: [
-            { name: "Email & campaign automation", slug: "email-automation", icon: "Mail", description: "Scale your reach with personalized sequences." }
-          ]
-        },
-        { 
-          id: "commerce", 
-          name: "Commerce & Revenue Systems", 
-          slug: "commerce-revenue",
-          icon: "ShoppingCart",
-          overview: "We enable seamless selling experiences across both digital and physical channels.",
-          capabilities: [
-            { name: "Retail POS systems", slug: "retail-pos", icon: "ShoppingCart", description: "Modern point-of-sale systems." }
-          ]
-        },
-        { 
-          id: "finance-ops", 
-          name: "Finance & Business Operations", 
-          slug: "finance-operations",
-          icon: "BarChart3",
-          overview: "We provide complete financial visibility and operational control through integrated systems.",
-          capabilities: [
-            { name: "Accounting & financial reporting", slug: "accounting-reporting", icon: "BarChart3", description: "Automated bookkeeping and generation." }
-          ]
-        },
-        { 
-          id: "productivity", 
-          name: "Workplace Productivity & Collaboration", 
-          slug: "productivity-collaboration",
-          icon: "Mail",
-          overview: "We create a unified digital workplace where teams collaborate efficiently and execute faster.",
-          capabilities: [
-            { name: "Document collaboration tools", slug: "document-collaboration", icon: "Files", description: "Real-time editing and sharing." }
-          ]
-        },
-        { 
-          id: "hr", 
-          name: "Human Resources & Workforce Management", 
-          slug: "hr-workforce",
-          icon: "Users",
-          overview: "We streamline the entire employee lifecycle from hiring to performance management.",
-          capabilities: [
-            { name: "Recruitment & applicant tracking", slug: "recruitment-ats", icon: "Briefcase", description: "Automated job postings and parsing." }
-          ]
-        },
-        { 
-          id: "it-security", 
-          name: "IT, Security & Developer Ecosystem", 
-          slug: "it-security-development",
-          icon: "Lock",
-          overview: "We build secure, scalable, and high-performance digital infrastructure tailored for modern businesses.",
-          capabilities: [
-            { name: "Custom application development", slug: "custom-app-dev", icon: "Code2", description: "Bespoke web and mobile applications." }
-          ]
-        },
-        { 
-          id: "data-ai", 
-          name: "Data, Analytics & IoT Intelligence", 
-          slug: "data-analytics-ai",
-          icon: "PieChart",
-          overview: "We transform raw data into actionable insights and intelligent decision-making systems.",
-          capabilities: [
-            { name: "BI dashboards", slug: "bi-dashboards", icon: "BarChart3", description: "Visualize core business metrics." }
-          ]
+            { name: "Email & campaign automation", slug: "email-automation", icon: "Mail", description: "Scale your reach with personalized, behavior-driven email sequences." }
+          ],
+          outcomes: ["Increased lead generation"]
         }
       ];
-
-      // Upsert to ensure all 8 are present without deleting user's custom additions if any
-      for (const cat of initialCategories) {
-        await Category.findOneAndUpdate({ id: cat.id }, cat, { upsert: true });
-      }
-      console.log('Full catalog restored');
+      await Category.create(initialCategories);
+      console.log('Categories seeded');
     }
 
     app.listen(PORT, () => {

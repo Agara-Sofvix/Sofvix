@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 
 interface Capability {
+  _id?: string;
   name: string;
   icon: string;
   slug: string;
@@ -50,6 +51,7 @@ function AdminProductsContent() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showUsageModal, setShowUsageModal] = useState(false);
+  const [showServicesModal, setShowServicesModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   
   const [newCategory, setNewCategory] = useState({
@@ -58,7 +60,7 @@ function AdminProductsContent() {
     icon: "LayoutGrid"
   });
 
-  const [newCapability, setNewCapability] = useState({
+  const [newService, setNewService] = useState({
     name: "",
     description: "",
     icon: "Zap"
@@ -99,7 +101,7 @@ function AdminProductsContent() {
       const response = await fetch(`${apiUrl}/api/categories`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...newCategory, capabilities: [] }),
+        body: JSON.stringify(newCategory),
       });
       if (response.ok) {
         fetchCategories();
@@ -111,19 +113,21 @@ function AdminProductsContent() {
     }
   };
 
-  const handleUpdateCategory = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selectedCategory || !selectedCategory._id) return;
+  const handleUpdateCategory = async (e?: React.FormEvent, updatedCat?: Category) => {
+    if (e) e.preventDefault();
+    const categoryToUpdate = updatedCat || selectedCategory;
+    if (!categoryToUpdate || !categoryToUpdate._id) return;
+    
     try {
       const apiUrl = getApiUrl();
-      const response = await fetch(`${apiUrl}/api/categories/${selectedCategory._id}`, {
+      const response = await fetch(`${apiUrl}/api/categories/${categoryToUpdate._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(selectedCategory),
+        body: JSON.stringify(categoryToUpdate),
       });
       if (response.ok) {
         fetchCategories();
-        setShowEditModal(false);
+        if (!updatedCat) setShowEditModal(false);
       }
     } catch (error) {
       console.error('Failed to update category:', error);
@@ -145,24 +149,37 @@ function AdminProductsContent() {
     }
   };
 
-  const addCapabilityToSelected = () => {
-    if (!selectedCategory || !newCapability.name) return;
+  const handleAddService = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedCategory || !selectedCategory._id) return;
+
     const capability: Capability = {
-      ...newCapability,
-      slug: newCapability.name.toLowerCase().replace(/\s+/g, '-')
+      name: newService.name,
+      description: newService.description,
+      icon: newService.icon,
+      slug: newService.name.toLowerCase().replace(/\s+/g, '-')
     };
-    setSelectedCategory({
+
+    const updatedCategory = {
       ...selectedCategory,
       capabilities: [...(selectedCategory.capabilities || []), capability]
-    });
-    setNewCapability({ name: "", description: "", icon: "Zap" });
+    };
+
+    setSelectedCategory(updatedCategory);
+    setNewService({ name: "", description: "", icon: "Zap" });
+    await handleUpdateCategory(undefined, updatedCategory);
   };
 
-  const removeCapabilityFromSelected = (index: number) => {
-    if (!selectedCategory) return;
-    const updated = [...selectedCategory.capabilities];
-    updated.splice(index, 1);
-    setSelectedCategory({ ...selectedCategory, capabilities: updated });
+  const handleDeleteService = async (serviceName: string) => {
+    if (!selectedCategory || !selectedCategory._id) return;
+    
+    const updatedCategory = {
+      ...selectedCategory,
+      capabilities: selectedCategory.capabilities.filter(s => s.name !== serviceName)
+    };
+
+    setSelectedCategory(updatedCategory);
+    await handleUpdateCategory(undefined, updatedCategory);
   };
 
   if (loading) return <div className="p-8">Loading Platform Systems...</div>;
@@ -188,7 +205,7 @@ function AdminProductsContent() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
           { label: "Total Systems", value: categoriesList.length, icon: Layers, color: "text-[#F97316]", bg: "bg-[#F97316]/5" },
-          { label: "Total Capabilities", value: categoriesList.reduce((acc, cat) => acc + (cat.capabilities?.length || 0), 0), icon: Box, color: "text-blue-600", bg: "bg-blue-50" },
+          { label: "Total Services", value: categoriesList.reduce((acc, cat) => acc + (cat.capabilities?.length || 0), 0), icon: Zap, color: "text-blue-600", bg: "bg-blue-50" },
           { label: "Platform Health", value: "99.9%", icon: Activity, color: "text-emerald-600", bg: "bg-emerald-50" },
         ].map((stat, i) => (
           <div key={i} className="bg-white p-8 rounded-[32px] border border-black/5 shadow-sm flex items-center gap-6">
@@ -238,20 +255,29 @@ function AdminProductsContent() {
               </div>
 
               <div className="grid grid-cols-2 gap-3 mb-8">
-                <div className="bg-white/50 rounded-xl p-3 border border-black/5">
+                <button 
+                  onClick={() => {
+                    setSelectedCategory(category);
+                    setShowServicesModal(true);
+                  }}
+                  className="bg-white/50 rounded-xl p-3 border border-black/5 hover:border-[#F97316] transition-colors text-left"
+                >
                    <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Services</p>
-                   <p className="text-sm font-bold text-gray-900">{category.capabilities?.length || 0}</p>
-                </div>
+                   <div className="flex items-center justify-between">
+                     <p className="text-sm font-bold text-gray-900">{category.capabilities?.length || 0}</p>
+                     <Plus className="w-3 h-3 text-[#F97316]" />
+                   </div>
+                </button>
                 <div className="bg-white/50 rounded-xl p-3 border border-black/5">
-                   <p className="text-[10px] font-black uppercase text-gray-400 mb-1 text-left">Engagement</p>
-                   <p className="text-sm font-bold text-gray-900 text-left">High</p>
+                   <p className="text-[10px] font-black uppercase text-gray-400 mb-1 text-left">Outcomes</p>
+                   <p className="text-sm font-bold text-gray-900 text-left">{category.outcomes?.length || 0}</p>
                 </div>
               </div>
 
               <div className="mt-auto flex items-center justify-between pt-6 border-t border-black/5">
                  <button 
                    onClick={() => {
-                     setSelectedCategory({ ...category, capabilities: category.capabilities || [] });
+                     setSelectedCategory(category);
                      setShowEditModal(true);
                    }}
                    className="text-sm font-bold text-gray-400 hover:text-gray-900 transition-colors flex items-center gap-2"
@@ -307,95 +333,102 @@ function AdminProductsContent() {
         )}
       </AnimatePresence>
 
+      {/* Manage Services Modal */}
+      <AnimatePresence>
+        {showServicesModal && selectedCategory && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowServicesModal(false)} className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-2xl bg-white rounded-[40px] shadow-2xl overflow-hidden">
+              <div className="p-10">
+                <div className="flex items-center justify-between mb-8">
+                  <div>
+                    <h2 className="text-2xl font-black text-gray-900">Manage Services</h2>
+                    <p className="text-sm font-bold text-gray-400">{selectedCategory.name}</p>
+                  </div>
+                  <button onClick={() => setShowServicesModal(false)} className="p-2 text-gray-400 hover:text-gray-900 transition-colors"><X className="w-6 h-6" /></button>
+                </div>
+
+                {/* Add New Service Form */}
+                <form onSubmit={handleAddService} className="bg-gray-50 p-6 rounded-3xl border border-black/5 mb-8 space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Service Name</label>
+                      <input required type="text" value={newService.name} onChange={(e) => setNewService({...newService, name: e.target.value})} placeholder="e.g., Inventory Tracking" className="w-full bg-white border border-black/5 rounded-xl px-4 py-3 text-sm font-bold text-gray-900 focus:outline-none focus:border-[#F97316]" />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Description Hint</label>
+                      <input required type="text" value={newService.description} onChange={(e) => setNewService({...newService, description: e.target.value})} placeholder="Brief value proposition..." className="w-full bg-white border border-black/5 rounded-xl px-4 py-3 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#F97316]" />
+                    </div>
+                  </div>
+                  <button type="submit" className="w-full py-3 bg-[#F97316] text-white rounded-xl text-sm font-black hover:bg-[#EA580C] transition-all flex items-center justify-center gap-2">
+                    <Plus className="w-4 h-4" />
+                    Add Service to Category
+                  </button>
+                </form>
+
+                {/* Services List */}
+                <div className="space-y-3 max-h-60 overflow-y-auto pr-2">
+                  <h3 className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1 mb-2">Current Services</h3>
+                  {selectedCategory.capabilities?.length > 0 ? (
+                    selectedCategory.capabilities.map((service, idx) => (
+                      <div key={idx} className="flex items-center justify-between bg-white p-4 rounded-2xl border border-black/5 hover:border-black/10 transition-all">
+                        <div className="flex items-center gap-4">
+                          <div className="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-[#F97316]">
+                            <Zap className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-bold text-gray-900">{service.name}</p>
+                            <p className="text-[10px] font-medium text-gray-400 line-clamp-1">{service.description}</p>
+                          </div>
+                        </div>
+                        <button 
+                          onClick={() => handleDeleteService(service.name)}
+                          className="p-2 text-gray-400 hover:text-rose-600 transition-colors"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="text-center py-8 bg-gray-50 rounded-3xl border border-dashed border-gray-200">
+                      <p className="text-sm font-medium text-gray-400">No services added to this category yet.</p>
+                    </div>
+                  )}
+                </div>
+
+                <button onClick={() => setShowServicesModal(false)} className="w-full py-5 mt-8 bg-gray-900 text-white rounded-2xl text-sm font-black hover:bg-black transition-all">
+                  Done Managing Services
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* Edit Category Modal */}
       <AnimatePresence>
         {showEditModal && selectedCategory && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowEditModal(false)} className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-3xl bg-white rounded-[40px] shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-lg bg-white rounded-[40px] shadow-2xl overflow-hidden">
               <div className="p-10">
                 <div className="flex items-center justify-between mb-8">
-                  <h2 className="text-2xl font-black text-gray-900">Edit System Category</h2>
+                  <h2 className="text-2xl font-black text-gray-900">Edit Category</h2>
                   <button onClick={() => setShowEditModal(false)} className="p-2 text-gray-400 hover:text-gray-900 transition-colors"><X className="w-6 h-6" /></button>
                 </div>
 
-                <form onSubmit={handleUpdateCategory} className="space-y-8">
-                  {/* Basic Info */}
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2 text-left">
-                      <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Category Name</label>
-                      <input required type="text" value={selectedCategory.name} onChange={(e) => setSelectedCategory({...selectedCategory, name: e.target.value})} className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:outline-none focus:border-[#F97316] transition-all" />
-                    </div>
-                    <div className="space-y-2 text-left">
-                       <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Overview</label>
-                       <textarea required rows={2} value={selectedCategory.overview} onChange={(e) => setSelectedCategory({...selectedCategory, overview: e.target.value})} className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#F97316] transition-all resize-none" />
-                    </div>
+                <form onSubmit={(e) => handleUpdateCategory(e)} className="space-y-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Category Name</label>
+                    <input required type="text" value={selectedCategory.name} onChange={(e) => setSelectedCategory({...selectedCategory, name: e.target.value})} className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:outline-none focus:border-[#F97316] transition-all" />
                   </div>
-
-                  {/* Capabilities Management */}
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between border-b border-black/5 pb-4">
-                       <h3 className="text-sm font-black uppercase text-gray-900 tracking-widest">Service Offerings (Capabilities)</h3>
-                       <span className="text-[10px] font-black text-[#F97316] bg-[#F97316]/10 px-3 py-1 rounded-full uppercase">{selectedCategory.capabilities?.length || 0} Listed</span>
-                    </div>
-                    
-                    <div className="space-y-3">
-                      {selectedCategory.capabilities?.map((cap, idx) => (
-                        <div key={idx} className="flex items-center gap-4 bg-gray-50 p-4 rounded-2xl border border-black/5 group">
-                           <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-[#F97316] border border-black/5">
-                              <Zap className="w-5 h-5" />
-                           </div>
-                           <div className="flex-grow text-left">
-                              <p className="text-sm font-bold text-gray-900">{cap.name}</p>
-                              <p className="text-[10px] text-gray-400 line-clamp-1">{cap.description}</p>
-                           </div>
-                           <button 
-                             type="button"
-                             onClick={() => removeCapabilityFromSelected(idx)}
-                             className="p-2 text-gray-300 hover:text-rose-600 opacity-0 group-hover:opacity-100 transition-all focus:opacity-100"
-                           >
-                              <Trash2 className="w-4 h-4" />
-                           </button>
-                        </div>
-                      ))}
-
-                      {/* Add New Capability Form */}
-                      <div className="bg-[#F97316]/5 p-6 rounded-3xl border border-[#F97316]/10 space-y-4">
-                         <p className="text-[10px] font-black uppercase text-[#F97316] tracking-widest mb-2 flex items-center gap-2">
-                           <Plus className="w-3 h-3" />
-                           Add New Service Integration
-                         </p>
-                         <div className="grid md:grid-cols-2 gap-4">
-                            <input 
-                              type="text" 
-                              placeholder="Service Name (e.g., AI Chatbot)" 
-                              value={newCapability.name}
-                              onChange={(e) => setNewCapability({...newCapability, name: e.target.value})}
-                              className="bg-white border border-[#F97316]/10 rounded-xl px-4 py-3 text-xs font-bold text-gray-900 outline-none focus:border-[#F97316] transition-all"
-                            />
-                            <input 
-                              type="text" 
-                              placeholder="Brief Description..." 
-                              value={newCapability.description}
-                              onChange={(e) => setNewCapability({...newCapability, description: e.target.value})}
-                              className="bg-white border border-[#F97316]/10 rounded-xl px-4 py-3 text-xs font-bold text-gray-900 outline-none focus:border-[#F97316] transition-all"
-                            />
-                         </div>
-                         <button 
-                           type="button"
-                           disabled={!newCapability.name}
-                           onClick={addCapabilityToSelected}
-                           className="w-full py-3 bg-white border border-[#F97316]/20 text-[#F97316] rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#F97316] hover:text-white transition-all disabled:opacity-50"
-                         >
-                            Confirm Service Entry
-                         </button>
-                      </div>
-                    </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Overview</label>
+                    <textarea required rows={4} value={selectedCategory.overview} onChange={(e) => setSelectedCategory({...selectedCategory, overview: e.target.value})} className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#F97316] transition-all resize-none" />
                   </div>
-
                   <button type="submit" className="w-full py-5 bg-[#F97316] text-white rounded-2xl text-sm font-black hover:bg-[#EA580C] transition-all shadow-xl flex items-center justify-center gap-2">
                     <CheckCircle2 className="w-5 h-5" />
-                    Save System Configuration
+                    Save Changes
                   </button>
                 </form>
               </div>
