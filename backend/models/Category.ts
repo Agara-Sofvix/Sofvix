@@ -22,6 +22,7 @@ const CategorySchema = new mongoose.Schema({
   overview: String,
   approach: String,
   outcomes: [String],
+  sortOrder: { type: Number, default: 0 },
   capabilities: [CapabilitySchema]
 }, { timestamps: true });
 

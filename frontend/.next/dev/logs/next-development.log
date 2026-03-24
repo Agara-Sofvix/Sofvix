@@ -58,3 +58,4 @@
 [01:24:14.916] Browser WARN    Image with src "/images/service-mockups/crm-pipeline.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
 [01:24:45.194] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
 [01:25:10.918] Server  LOG     ✓ Compiled in 247ms
+[01:31:36.134] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

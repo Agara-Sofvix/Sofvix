@@ -97,7 +97,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'agara-sofvix-secure-secret-2026';
 // Category API
 app.get('/api/categories', async (req, res) => {
   try {
-    const categories = await Category.find({}).sort({ createdAt: -1 });
+    const categories = await Category.find({}).sort({ sortOrder: 1 });
     res.json(categories);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch categories' });

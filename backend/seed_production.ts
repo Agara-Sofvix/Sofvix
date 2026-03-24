@@ -10,6 +10,7 @@ const mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/agara-n
 const CATEGORIES = [
   { 
     id: "cx-sales", 
+    sortOrder: 1,
     name: "Customer Experience & Sales Systems", 
     slug: "customer-experience-sales",
     icon: "Users",
@@ -101,6 +102,7 @@ const CATEGORIES = [
   },
   { 
     id: "marketing", 
+    sortOrder: 2,
     name: "Marketing & Growth Automation", 
     slug: "marketing-growth",
     icon: "Megaphone",
@@ -192,6 +194,7 @@ const CATEGORIES = [
   },
   { 
     id: "commerce", 
+    sortOrder: 3,
     name: "Commerce & Revenue Systems", 
     slug: "commerce-revenue",
     icon: "ShoppingCart",
@@ -235,6 +238,7 @@ const CATEGORIES = [
   },
   { 
     id: "finance-ops", 
+    sortOrder: 4,
     name: "Finance & Business Operations", 
     slug: "finance-operations",
     icon: "BarChart3",
@@ -286,6 +290,7 @@ const CATEGORIES = [
   },
   { 
     id: "productivity", 
+    sortOrder: 5,
     name: "Workplace Productivity & Collaboration", 
     slug: "productivity-collaboration",
     icon: "Mail",
@@ -337,6 +342,7 @@ const CATEGORIES = [
   },
   { 
     id: "hr", 
+    sortOrder: 6,
     name: "Human Resources & Workforce Management", 
     slug: "hr-workforce",
     icon: "Users",
@@ -388,6 +394,7 @@ const CATEGORIES = [
   },
   { 
     id: "it-security", 
+    sortOrder: 7,
     name: "IT, Security & Developer Ecosystem", 
     slug: "it-security-development",
     icon: "Lock",
@@ -439,6 +446,7 @@ const CATEGORIES = [
   },
   { 
     id: "data-ai", 
+    sortOrder: 8,
     name: "Data, Analytics & IoT Intelligence", 
     slug: "data-analytics-ai",
     icon: "PieChart",
@@ -499,9 +507,9 @@ async function seed() {
     await Category.deleteMany({});
     console.log('Cleared existing categories');
 
-    // Insert original data
+    // Insert original data with specific sort order
     await Category.insertMany(CATEGORIES);
-    console.log('Successfully seeded 8 original categories and all capabilities');
+    console.log('Successfully seeded 8 categories in the exact requested order.');
 
     await mongoose.connection.close();
   } catch (error) {
