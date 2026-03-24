@@ -7,15 +7,20 @@ export const metadata = PAGE_SEO.careers;
 
 async function getJobs() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
-  const res = await fetch(`${apiUrl}/api/jobs`, {
-    next: { revalidate: 60 }
-  });
-  
-  if (!res.ok) {
-    return []; // Return empty array on error instead of throwing to keep UI responsive
+  try {
+    const res = await fetch(`${apiUrl}/api/jobs`, {
+      next: { revalidate: 60 }
+    });
+    
+    if (!res.ok) {
+      return [];
+    }
+    
+    return res.json();
+  } catch (error) {
+    console.error('Failed to fetch jobs during build:', error);
+    return [];
   }
-  
-  return res.json();
 }
 
 async function CareersList() {
