@@ -220,6 +220,14 @@ export default function AdminInquiriesPage() {
                 </button>
                 <div className="flex items-center gap-2">
                   <button 
+                    onClick={() => updateStatus(inquiry._id.toString(), 'In Progress')}
+                    disabled={updatingId === inquiry._id.toString()}
+                    className="w-12 h-12 flex items-center justify-center text-blue-500 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-xl transition-all border border-blue-100 disabled:opacity-50"
+                    title="Mark as In Progress"
+                  >
+                    <Clock className="w-5 h-5" />
+                  </button>
+                  <button 
                     onClick={() => updateStatus(inquiry._id.toString(), 'Resolved')}
                     disabled={updatingId === inquiry._id.toString()}
                     className="w-12 h-12 flex items-center justify-center text-emerald-500 hover:text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-xl transition-all border border-emerald-100 disabled:opacity-50"
