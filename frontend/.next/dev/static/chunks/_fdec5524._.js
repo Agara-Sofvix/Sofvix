@@ -88,9 +88,10 @@ __turbopack_context__.s([
     "default",
     ()=>AdminJobsPage
 ]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/api.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$plus$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Plus$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/plus.js [app-client] (ecmascript) <export default as Plus>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/trash-2.js [app-client] (ecmascript) <export default as Trash2>");
@@ -101,6 +102,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Button$2e$tsx_
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
+;
+;
 ;
 ;
 ;
@@ -124,7 +127,8 @@ function AdminJobsPage() {
     });
     const fetchJobs = async ()=>{
         try {
-            const res = await fetch(`${("TURBOPACK compile-time value", "http://localhost:5000")}/api/jobs`);
+            const apiUrl = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getApiUrl"])();
+            const res = await fetch(`${apiUrl}/api/jobs`);
             if (res.ok) {
                 const data = await res.json();
                 setJobs(data);
@@ -135,15 +139,27 @@ function AdminJobsPage() {
             setLoading(false);
         }
     };
+    const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"])();
+    const urlSearch = searchParams.get('search') || '';
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "AdminJobsPage.useEffect": ()=>{
             fetchJobs();
         }
     }["AdminJobsPage.useEffect"], []);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "AdminJobsPage.useEffect": ()=>{
+            if (urlSearch) {
+                setSearch(urlSearch);
+            }
+        }
+    }["AdminJobsPage.useEffect"], [
+        urlSearch
+    ]);
     const handleDelete = async (id)=>{
         if (!confirm('Are you sure you want to delete this job posting?')) return;
         try {
-            const res = await fetch(`${("TURBOPACK compile-time value", "http://localhost:5000")}/api/jobs/${id}`, {
+            const apiUrl = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getApiUrl"])();
+            const res = await fetch(`${apiUrl}/api/jobs/${id}`, {
                 method: 'DELETE'
             });
             if (res.ok) {
@@ -162,7 +178,8 @@ function AdminJobsPage() {
             responsibilities: formData.responsibilities.split('\n').filter((r)=>r.trim())
         };
         try {
-            const res = await fetch(`${("TURBOPACK compile-time value", "http://localhost:5000")}/api/jobs`, {
+            const apiUrl = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getApiUrl"])();
+            const res = await fetch(`${apiUrl}/api/jobs`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -207,7 +224,7 @@ function AdminJobsPage() {
                                 children: "Job Postings"
                             }, void 0, false, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 106,
+                                lineNumber: 121,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -215,13 +232,13 @@ function AdminJobsPage() {
                                 children: "Manage open positions on the careers portal."
                             }, void 0, false, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 107,
+                                lineNumber: 122,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                        lineNumber: 105,
+                        lineNumber: 120,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -232,20 +249,20 @@ function AdminJobsPage() {
                                 className: "w-4 h-4"
                             }, void 0, false, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 110,
+                                lineNumber: 125,
                                 columnNumber: 11
                             }, this),
                             " Post New Job"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                        lineNumber: 109,
+                        lineNumber: 124,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                lineNumber: 104,
+                lineNumber: 119,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -260,12 +277,12 @@ function AdminJobsPage() {
                                     className: "w-6 h-6"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                    lineNumber: 118,
+                                    lineNumber: 133,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 117,
+                                lineNumber: 132,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -275,7 +292,7 @@ function AdminJobsPage() {
                                         children: jobs.length
                                     }, void 0, false, {
                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                        lineNumber: 121,
+                                        lineNumber: 136,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -283,19 +300,19 @@ function AdminJobsPage() {
                                         children: "Total Active Jobs"
                                     }, void 0, false, {
                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                        lineNumber: 122,
+                                        lineNumber: 137,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 120,
+                                lineNumber: 135,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                        lineNumber: 116,
+                        lineNumber: 131,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -305,7 +322,7 @@ function AdminJobsPage() {
                                 className: "w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
                             }, void 0, false, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 127,
+                                lineNumber: 142,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -316,19 +333,19 @@ function AdminJobsPage() {
                                 className: "w-full bg-gray-50 border border-transparent focus:border-orange-500 focus:bg-white rounded-xl pl-12 pr-4 py-3 text-sm font-medium transition-all outline-none"
                             }, void 0, false, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 128,
+                                lineNumber: 143,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                        lineNumber: 126,
+                        lineNumber: 141,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                lineNumber: 115,
+                lineNumber: 130,
                 columnNumber: 7
             }, this),
             loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -337,12 +354,12 @@ function AdminJobsPage() {
                     className: "w-8 h-8 rounded-full border-4 border-orange-500 border-t-transparent animate-spin"
                 }, void 0, false, {
                     fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                    lineNumber: 140,
+                    lineNumber: 155,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                lineNumber: 139,
+                lineNumber: 154,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "grid md:grid-cols-2 lg:grid-cols-3 gap-6",
@@ -365,7 +382,7 @@ function AdminJobsPage() {
                                         children: job.department
                                     }, void 0, false, {
                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                        lineNumber: 152,
+                                        lineNumber: 167,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -375,18 +392,18 @@ function AdminJobsPage() {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                            lineNumber: 159,
+                                            lineNumber: 174,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                        lineNumber: 155,
+                                        lineNumber: 170,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 151,
+                                lineNumber: 166,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -394,7 +411,7 @@ function AdminJobsPage() {
                                 children: job.title
                             }, void 0, false, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 162,
+                                lineNumber: 177,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -402,7 +419,7 @@ function AdminJobsPage() {
                                 children: job.description
                             }, void 0, false, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 163,
+                                lineNumber: 178,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -415,7 +432,7 @@ function AdminJobsPage() {
                                                 className: "w-3.5 h-3.5 text-gray-400"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                lineNumber: 167,
+                                                lineNumber: 182,
                                                 columnNumber: 19
                                             }, this),
                                             " ",
@@ -423,7 +440,7 @@ function AdminJobsPage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                        lineNumber: 166,
+                                        lineNumber: 181,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -433,7 +450,7 @@ function AdminJobsPage() {
                                                 className: "w-3.5 h-3.5 text-gray-400"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                lineNumber: 170,
+                                                lineNumber: 185,
                                                 columnNumber: 19
                                             }, this),
                                             " ",
@@ -443,24 +460,24 @@ function AdminJobsPage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                        lineNumber: 169,
+                                        lineNumber: 184,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 165,
+                                lineNumber: 180,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, job._id, true, {
                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                        lineNumber: 145,
+                        lineNumber: 160,
                         columnNumber: 13
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                lineNumber: 143,
+                lineNumber: 158,
                 columnNumber: 9
             }, this),
             isModalOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -471,7 +488,7 @@ function AdminJobsPage() {
                         onClick: ()=>setIsModalOpen(false)
                     }, void 0, false, {
                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                        lineNumber: 181,
+                        lineNumber: 196,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -490,7 +507,7 @@ function AdminJobsPage() {
                                 children: "Post New Job"
                             }, void 0, false, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 187,
+                                lineNumber: 202,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -507,7 +524,7 @@ function AdminJobsPage() {
                                                         children: "Job Title"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                        lineNumber: 191,
+                                                        lineNumber: 206,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -521,13 +538,13 @@ function AdminJobsPage() {
                                                         placeholder: "e.g. Senior Frontend Engineer"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                        lineNumber: 192,
+                                                        lineNumber: 207,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                lineNumber: 190,
+                                                lineNumber: 205,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -537,7 +554,7 @@ function AdminJobsPage() {
                                                         children: "Department"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                        lineNumber: 195,
+                                                        lineNumber: 210,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -551,13 +568,13 @@ function AdminJobsPage() {
                                                         placeholder: "e.g. Engineering"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                        lineNumber: 196,
+                                                        lineNumber: 211,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                lineNumber: 194,
+                                                lineNumber: 209,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -567,7 +584,7 @@ function AdminJobsPage() {
                                                         children: "Location"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                        lineNumber: 199,
+                                                        lineNumber: 214,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -581,13 +598,13 @@ function AdminJobsPage() {
                                                         placeholder: "e.g. Remote / San Francisco, CA"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                        lineNumber: 200,
+                                                        lineNumber: 215,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                lineNumber: 198,
+                                                lineNumber: 213,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -597,7 +614,7 @@ function AdminJobsPage() {
                                                         children: "Experience Required"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                        lineNumber: 203,
+                                                        lineNumber: 218,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -611,19 +628,19 @@ function AdminJobsPage() {
                                                         placeholder: "e.g. 5+ years"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                        lineNumber: 204,
+                                                        lineNumber: 219,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                lineNumber: 202,
+                                                lineNumber: 217,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                        lineNumber: 189,
+                                        lineNumber: 204,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -633,7 +650,7 @@ function AdminJobsPage() {
                                                 children: "Short Description"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                lineNumber: 209,
+                                                lineNumber: 224,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -648,13 +665,13 @@ function AdminJobsPage() {
                                                 placeholder: "Summary of the role..."
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                lineNumber: 210,
+                                                lineNumber: 225,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                        lineNumber: 208,
+                                        lineNumber: 223,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -667,7 +684,7 @@ function AdminJobsPage() {
                                                         children: "Requirements (One per line)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                        lineNumber: 215,
+                                                        lineNumber: 230,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -682,13 +699,13 @@ function AdminJobsPage() {
                                                         placeholder: "Requirement 1 Requirement 2 Requirement 3..."
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                        lineNumber: 216,
+                                                        lineNumber: 231,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                lineNumber: 214,
+                                                lineNumber: 229,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -698,7 +715,7 @@ function AdminJobsPage() {
                                                         children: "Responsibilities (One per line)"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                        lineNumber: 219,
+                                                        lineNumber: 234,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -713,19 +730,19 @@ function AdminJobsPage() {
                                                         placeholder: "Responsibility 1 Responsibility 2 Responsibility 3..."
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                        lineNumber: 220,
+                                                        lineNumber: 235,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                lineNumber: 218,
+                                                lineNumber: 233,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                        lineNumber: 213,
+                                        lineNumber: 228,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -739,7 +756,7 @@ function AdminJobsPage() {
                                                 children: "Cancel"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                lineNumber: 225,
+                                                lineNumber: 240,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -749,41 +766,45 @@ function AdminJobsPage() {
                                                 children: isSubmitting ? 'Posting...' : 'Publish Job'
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                                lineNumber: 226,
+                                                lineNumber: 241,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                        lineNumber: 224,
+                                        lineNumber: 239,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                                lineNumber: 188,
+                                lineNumber: 203,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                        lineNumber: 182,
+                        lineNumber: 197,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-                lineNumber: 180,
+                lineNumber: 195,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
-        lineNumber: 103,
+        lineNumber: 118,
         columnNumber: 5
     }, this);
 }
-_s(AdminJobsPage, "dOorQKaUhrwC8SP0up2NOFv+fFg=");
+_s(AdminJobsPage, "VzCO53+ji1rleJ5BMmG8/Lh4RKo=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"]
+    ];
+});
 _c = AdminJobsPage;
 var _c;
 __turbopack_context__.k.register(_c, "AdminJobsPage");

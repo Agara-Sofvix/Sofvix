@@ -20,6 +20,7 @@ export function AdminTopbar() {
   const [search, setSearch] = useState("");
   const [showNotifications, setShowNotifications] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [helpContent, setHelpContent] = useState<{title: string, content: React.ReactNode} | null>(null);
   const [notifications, setNotifications] = useState<any[]>([]);
   const [hasNew, setHasNew] = useState(false);
   
@@ -130,7 +131,21 @@ export function AdminTopbar() {
               <div className="space-y-1">
                 <button 
                   onClick={() => {
-                    router.push('/admin/jobs');
+                    setHelpContent({
+                      title: "How to Manage Jobs",
+                      content: (
+                        <div className="space-y-4 text-gray-600">
+                          <p>To post or manage job openings:</p>
+                          <ol className="list-decimal pl-5 space-y-2">
+                            <li>Navigate to the <b>Jobs</b> section from the sidebar.</li>
+                            <li>Click the <b>Post New Job</b> button in the top right.</li>
+                            <li>Fill in the job details, requirements, and responsibilities.</li>
+                            <li>Click <b>Publish Job</b> to make it live on the careers portal.</li>
+                            <li>You can delete or edit existing jobs using the actions in each card.</li>
+                          </ol>
+                        </div>
+                      )
+                    });
                     setShowHelp(false);
                   }}
                   className="w-full text-left p-2.5 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 flex items-center justify-between group"
@@ -140,7 +155,21 @@ export function AdminTopbar() {
                 </button>
                 <button 
                   onClick={() => {
-                    router.push('/admin/seo');
+                    setHelpContent({
+                      title: "SEO Optimization Guide",
+                      content: (
+                        <div className="space-y-4 text-gray-600">
+                          <p>To optimize your site for search engines:</p>
+                          <ul className="list-disc pl-5 space-y-2">
+                            <li>Go to the <b>SEO</b> module.</li>
+                            <li>Select the page you want to optimize from the list.</li>
+                            <li>Update the <b>Meta Title</b> and <b>Description</b>. These are what users see in search results.</li>
+                            <li>Add relevant <b>Keywords</b> separated by commas.</li>
+                            <li>Click <b>Save Changes</b> to apply. Changes may take a few hours to be indexed by Google.</li>
+                          </ul>
+                        </div>
+                      )
+                    });
                     setShowHelp(false);
                   }}
                   className="w-full text-left p-2.5 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 flex items-center justify-between group"
@@ -230,6 +259,34 @@ export function AdminTopbar() {
           <span className="text-xs font-bold hidden lg:block">Logout</span>
         </button>
       </div>
+
+      {/* Help Modal */}
+      {helpContent && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+          <div className="bg-white rounded-[40px] w-full max-w-lg shadow-2xl border border-white/20 overflow-hidden">
+            <div className="p-8 border-b border-black/5 flex items-center justify-between bg-gray-50/50">
+              <h3 className="text-2xl font-black text-gray-900 tracking-tight">{helpContent.title}</h3>
+              <button 
+                onClick={() => setHelpContent(null)}
+                className="w-10 h-10 rounded-full hover:bg-gray-200 flex items-center justify-center text-gray-500 transition-colors"
+              >
+                <span className="text-2xl font-bold">&times;</span>
+              </button>
+            </div>
+            <div className="p-10 text-sm">
+              {helpContent.content}
+            </div>
+            <div className="p-8 bg-gray-50 border-t border-black/5 flex justify-end">
+              <button 
+                onClick={() => setHelpContent(null)}
+                className="px-8 py-3 bg-[#F97316] text-white rounded-2xl text-sm font-black hover:bg-[#EA580C] transition-all shadow-lg shadow-orange-500/20"
+              >
+                Understood
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
