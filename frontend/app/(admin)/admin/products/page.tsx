@@ -18,8 +18,17 @@ import {
   BarChart3,
   Activity,
   Trash2,
-  Edit3
+  Edit3,
+  Zap,
+  Briefcase
 } from "lucide-react";
+
+interface Capability {
+  name: string;
+  icon: string;
+  slug: string;
+  description: string;
+}
 
 interface Category {
   _id?: string;
@@ -28,7 +37,7 @@ interface Category {
   slug: string;
   icon: string;
   overview: string;
-  capabilities?: any[];
+  capabilities: Capability[];
   outcomes?: string[];
 }
 
@@ -42,10 +51,17 @@ function AdminProductsContent() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showUsageModal, setShowUsageModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
+  
   const [newCategory, setNewCategory] = useState({
     name: "",
     overview: "",
     icon: "LayoutGrid"
+  });
+
+  const [newCapability, setNewCapability] = useState({
+    name: "",
+    description: "",
+    icon: "Zap"
   });
 
   const fetchCategories = async () => {
@@ -83,7 +99,7 @@ function AdminProductsContent() {
       const response = await fetch(`${apiUrl}/api/categories`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newCategory),
+        body: JSON.stringify({ ...newCategory, capabilities: [] }),
       });
       if (response.ok) {
         fetchCategories();
@@ -127,6 +143,26 @@ function AdminProductsContent() {
     } catch (error) {
       console.error('Failed to delete category:', error);
     }
+  };
+
+  const addCapabilityToSelected = () => {
+    if (!selectedCategory || !newCapability.name) return;
+    const capability: Capability = {
+      ...newCapability,
+      slug: newCapability.name.toLowerCase().replace(/\s+/g, '-')
+    };
+    setSelectedCategory({
+      ...selectedCategory,
+      capabilities: [...(selectedCategory.capabilities || []), capability]
+    });
+    setNewCapability({ name: "", description: "", icon: "Zap" });
+  };
+
+  const removeCapabilityFromSelected = (index: number) => {
+    if (!selectedCategory) return;
+    const updated = [...selectedCategory.capabilities];
+    updated.splice(index, 1);
+    setSelectedCategory({ ...selectedCategory, capabilities: updated });
   };
 
   if (loading) return <div className="p-8">Loading Platform Systems...</div>;
@@ -203,19 +239,19 @@ function AdminProductsContent() {
 
               <div className="grid grid-cols-2 gap-3 mb-8">
                 <div className="bg-white/50 rounded-xl p-3 border border-black/5">
-                   <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Capabilities</p>
+                   <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Services</p>
                    <p className="text-sm font-bold text-gray-900">{category.capabilities?.length || 0}</p>
                 </div>
                 <div className="bg-white/50 rounded-xl p-3 border border-black/5">
-                   <p className="text-[10px] font-black uppercase text-gray-400 mb-1 text-left">Outcomes</p>
-                   <p className="text-sm font-bold text-gray-900 text-left">{category.outcomes?.length || 0}</p>
+                   <p className="text-[10px] font-black uppercase text-gray-400 mb-1 text-left">Engagement</p>
+                   <p className="text-sm font-bold text-gray-900 text-left">High</p>
                 </div>
               </div>
 
               <div className="mt-auto flex items-center justify-between pt-6 border-t border-black/5">
                  <button 
                    onClick={() => {
-                     setSelectedCategory(category);
+                     setSelectedCategory({ ...category, capabilities: category.capabilities || [] });
                      setShowEditModal(true);
                    }}
                    className="text-sm font-bold text-gray-400 hover:text-gray-900 transition-colors flex items-center gap-2"
@@ -276,25 +312,90 @@ function AdminProductsContent() {
         {showEditModal && selectedCategory && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowEditModal(false)} className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-lg bg-white rounded-[40px] shadow-2xl overflow-hidden">
+            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-3xl bg-white rounded-[40px] shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
               <div className="p-10">
                 <div className="flex items-center justify-between mb-8">
-                  <h2 className="text-2xl font-black text-gray-900">Edit Category</h2>
+                  <h2 className="text-2xl font-black text-gray-900">Edit System Category</h2>
                   <button onClick={() => setShowEditModal(false)} className="p-2 text-gray-400 hover:text-gray-900 transition-colors"><X className="w-6 h-6" /></button>
                 </div>
 
-                <form onSubmit={handleUpdateCategory} className="space-y-6">
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Category Name</label>
-                    <input required type="text" value={selectedCategory.name} onChange={(e) => setSelectedCategory({...selectedCategory, name: e.target.value})} className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:outline-none focus:border-[#F97316] transition-all" />
+                <form onSubmit={handleUpdateCategory} className="space-y-8">
+                  {/* Basic Info */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2 text-left">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Category Name</label>
+                      <input required type="text" value={selectedCategory.name} onChange={(e) => setSelectedCategory({...selectedCategory, name: e.target.value})} className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:outline-none focus:border-[#F97316] transition-all" />
+                    </div>
+                    <div className="space-y-2 text-left">
+                       <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Overview</label>
+                       <textarea required rows={2} value={selectedCategory.overview} onChange={(e) => setSelectedCategory({...selectedCategory, overview: e.target.value})} className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#F97316] transition-all resize-none" />
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Overview</label>
-                    <textarea required rows={4} value={selectedCategory.overview} onChange={(e) => setSelectedCategory({...selectedCategory, overview: e.target.value})} className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#F97316] transition-all resize-none" />
+
+                  {/* Capabilities Management */}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between border-b border-black/5 pb-4">
+                       <h3 className="text-sm font-black uppercase text-gray-900 tracking-widest">Service Offerings (Capabilities)</h3>
+                       <span className="text-[10px] font-black text-[#F97316] bg-[#F97316]/10 px-3 py-1 rounded-full uppercase">{selectedCategory.capabilities?.length || 0} Listed</span>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      {selectedCategory.capabilities?.map((cap, idx) => (
+                        <div key={idx} className="flex items-center gap-4 bg-gray-50 p-4 rounded-2xl border border-black/5 group">
+                           <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-[#F97316] border border-black/5">
+                              <Zap className="w-5 h-5" />
+                           </div>
+                           <div className="flex-grow text-left">
+                              <p className="text-sm font-bold text-gray-900">{cap.name}</p>
+                              <p className="text-[10px] text-gray-400 line-clamp-1">{cap.description}</p>
+                           </div>
+                           <button 
+                             type="button"
+                             onClick={() => removeCapabilityFromSelected(idx)}
+                             className="p-2 text-gray-300 hover:text-rose-600 opacity-0 group-hover:opacity-100 transition-all focus:opacity-100"
+                           >
+                              <Trash2 className="w-4 h-4" />
+                           </button>
+                        </div>
+                      ))}
+
+                      {/* Add New Capability Form */}
+                      <div className="bg-[#F97316]/5 p-6 rounded-3xl border border-[#F97316]/10 space-y-4">
+                         <p className="text-[10px] font-black uppercase text-[#F97316] tracking-widest mb-2 flex items-center gap-2">
+                           <Plus className="w-3 h-3" />
+                           Add New Service Integration
+                         </p>
+                         <div className="grid md:grid-cols-2 gap-4">
+                            <input 
+                              type="text" 
+                              placeholder="Service Name (e.g., AI Chatbot)" 
+                              value={newCapability.name}
+                              onChange={(e) => setNewCapability({...newCapability, name: e.target.value})}
+                              className="bg-white border border-[#F97316]/10 rounded-xl px-4 py-3 text-xs font-bold text-gray-900 outline-none focus:border-[#F97316] transition-all"
+                            />
+                            <input 
+                              type="text" 
+                              placeholder="Brief Description..." 
+                              value={newCapability.description}
+                              onChange={(e) => setNewCapability({...newCapability, description: e.target.value})}
+                              className="bg-white border border-[#F97316]/10 rounded-xl px-4 py-3 text-xs font-bold text-gray-900 outline-none focus:border-[#F97316] transition-all"
+                            />
+                         </div>
+                         <button 
+                           type="button"
+                           disabled={!newCapability.name}
+                           onClick={addCapabilityToSelected}
+                           className="w-full py-3 bg-white border border-[#F97316]/20 text-[#F97316] rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#F97316] hover:text-white transition-all disabled:opacity-50"
+                         >
+                            Confirm Service Entry
+                         </button>
+                      </div>
+                    </div>
                   </div>
+
                   <button type="submit" className="w-full py-5 bg-[#F97316] text-white rounded-2xl text-sm font-black hover:bg-[#EA580C] transition-all shadow-xl flex items-center justify-center gap-2">
                     <CheckCircle2 className="w-5 h-5" />
-                    Save Changes
+                    Save System Configuration
                   </button>
                 </form>
               </div>
