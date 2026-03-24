@@ -26,6 +26,8 @@ export default function AdminInquiriesPage() {
   const [loading, setLoading] = useState(true);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState('All Statuses');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   useEffect(() => {
     const fetchInquiries = async () => {
@@ -117,23 +119,52 @@ export default function AdminInquiriesPage() {
             className="w-full bg-gray-50 border border-black/5 rounded-2xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-[#F97316] transition-colors"
           />
         </div>
-        <div className="flex items-center gap-3 w-full md:w-auto">
-           <button className="flex items-center gap-2 px-6 py-3 bg-gray-50 border border-black/5 rounded-2xl text-sm font-bold text-gray-700 hover:bg-gray-100 transition-all">
+        <div className="flex items-center gap-3 w-full md:w-auto relative">
+           <button 
+             onClick={() => setIsFilterOpen(!isFilterOpen)}
+             className={`flex items-center gap-2 px-6 py-4 bg-gray-50 border border-black/5 rounded-2xl text-sm font-bold text-gray-700 hover:bg-gray-100 transition-all ${isFilterOpen ? 'border-[#F97316] text-[#F97316] bg-white' : ''}`}
+           >
               <Filter className="w-4 h-4" />
-              All Statuses
+              {statusFilter}
            </button>
+           
+           {isFilterOpen && (
+             <>
+               <div className="fixed inset-0 z-40" onClick={() => setIsFilterOpen(false)} />
+               <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-2xl shadow-2xl border border-black/5 p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                 {['All Statuses', 'New', 'In Progress', 'Resolved', 'High Priority'].map((status) => (
+                   <button
+                     key={status}
+                     onClick={() => {
+                       setStatusFilter(status);
+                       setIsFilterOpen(false);
+                     }}
+                     className={`w-full text-left px-4 py-3 rounded-xl text-xs font-bold transition-colors ${
+                       statusFilter === status 
+                         ? 'bg-[#F97316]/10 text-[#F97316]' 
+                         : 'text-gray-600 hover:bg-gray-50'
+                     }`}
+                   >
+                     {status}
+                   </button>
+                 ))}
+               </div>
+             </>
+           )}
         </div>
       </div>
 
       {/* Inquiries List */}
       <div className="grid gap-6">
         {inquiries
-          .filter(inq => 
-            inq.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-            inq.email.toLowerCase().includes(searchQuery.toLowerCase()) || 
-            inq.message.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            inq.service.toLowerCase().includes(searchQuery.toLowerCase())
-          )
+          .filter(inq => {
+            const matchesSearch = inq.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                 inq.email.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                 inq.message.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                 inq.service.toLowerCase().includes(searchQuery.toLowerCase());
+            const matchesStatus = statusFilter === 'All Statuses' || inq.status === statusFilter;
+            return matchesSearch && matchesStatus;
+          })
           .map((inquiry, i) => (
           <div key={inquiry._id.toString()} className="bg-white rounded-[32px] border border-black/5 shadow-sm hover:shadow-md transition-all overflow-hidden group">
             <div className="p-8 flex flex-col lg:flex-row lg:items-start justify-between gap-8">

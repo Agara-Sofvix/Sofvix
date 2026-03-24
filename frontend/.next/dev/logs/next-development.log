@@ -102,3 +102,5 @@ Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
 [02:52:04.748] Server  LOG     ✓ Finished filesystem cache database compaction in 14.3s
 [02:52:35.739] Server  LOG     ✓ Compiled in 14ms
 [02:53:51.048] Server  LOG     ✓ Compiled in 581ms
+[02:54:42.602] Server  LOG     ✓ Compiled in 20ms
+[02:56:19.477] Server  LOG     ✓ Compiled in 1184ms

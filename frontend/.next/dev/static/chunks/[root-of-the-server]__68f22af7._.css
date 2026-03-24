@@ -764,6 +764,10 @@
     top: -20%;
   }
 
+  .top-full {
+    top: 100%;
+  }
+
   .-right-4 {
     right: calc(var(--spacing) * -4);
   }
