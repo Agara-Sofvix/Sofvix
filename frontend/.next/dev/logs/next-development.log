@@ -41,3 +41,62 @@
 [00:23:01.939] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
 [00:23:14.807] Server  LOG     ✓ Finished filesystem cache database compaction in 18.1s
 [00:23:14.903] Server  LOG     ✓ Finished writing to filesystem cache in 10.9s
+[00:49:53.954] Server  LOG     ✓ Compiled in 859ms
+[00:59:18.655] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:59:18.655] Browser WARN    Image with src "/hero_card_banner.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:03:41.543] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:41.880] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:42.389] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:42.755] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:42.757] Server  LOG     ✓ Compiled in 1360ms
+[01:03:44.889] Server  LOG     ○ Compiling /_error ...
+[01:03:46.547] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:46.875] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:47.222] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:47.542] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:47.935] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:48.273] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:48.690] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:49.023] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:49.414] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:49.747] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:50.164] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:50.500] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:50.502] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/get-started. Falling back to browser navigation. {}
+[01:03:50.502] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/get-started. Falling back to browser navigation. {}
+[01:03:50.502] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/get-started. Falling back to browser navigation. {}
+[01:03:50.502] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/get-started. Falling back to browser navigation. {}
+[01:03:50.502] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/get-started. Falling back to browser navigation. {}
+[01:03:51.017] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:51.413] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:51.794] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:52.134] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:52.820] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:53.147] Server  ERROR   ⨯ ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:53.750] Browser ERROR   uncaughtError: ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:53.835] Browser ERROR   uncaughtError: ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:03:55.614] Browser ERROR   uncaughtError: ReferenceError: HIGH_INTENT_KEYWORDS is not defined
+[01:14:21.831] Server  LOG     ✓ Compiled in 133ms
+[01:14:22.171] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:14:22.679] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:14:24.365] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:24.565] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:24.857] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:25.465] Browser WARN    Image with src "/hero_card_banner.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:14:25.468] Browser WARN    Image with src "/hero_card_banner.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:15:37.476] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:15:38.385] Browser WARN    Image with src "/hero_card_banner.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:27.717] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:28.574] Browser WARN    Image with src "/hero_card_banner.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:17:33.762] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:17:35.488] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:18:36.330] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:18:37.574] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:19:13.541] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:19:15.301] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:19:15.638] Browser WARN    Image with src "/logo.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[01:20:05.448] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:20:06.789] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:20:08.948] Browser WARN    Image with src "/images/service-mockups/crm-pipeline.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:20:38.069] Server  LOG     ✓ Finished filesystem cache database compaction in 25.8s

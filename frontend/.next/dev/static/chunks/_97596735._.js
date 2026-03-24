@@ -1618,20 +1618,12 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                             duration: 0.8
                                         },
                                         children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 text-orange-600 font-black text-[10px] uppercase tracking-tighter mb-8 border border-orange-100",
-                                                children: "Enterprise Solution Layer"
-                                            }, void 0, false, {
-                                                fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                lineNumber: 102,
-                                                columnNumber: 15
-                                            }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                                 className: "text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-[1.1] text-slate-900 tracking-tight",
                                                 children: service.name
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                lineNumber: 105,
+                                                lineNumber: 102,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1639,7 +1631,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                 children: service.description
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                lineNumber: 106,
+                                                lineNumber: 103,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1652,7 +1644,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                         children: "Get Started"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                        lineNumber: 108,
+                                                        lineNumber: 105,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1663,13 +1655,13 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                         children: "View Documentation"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                        lineNumber: 109,
+                                                        lineNumber: 106,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                lineNumber: 107,
+                                                lineNumber: 104,
                                                 columnNumber: 15
                                             }, this)
                                         ]
@@ -1699,7 +1691,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                 className: "absolute inset-0 bg-blue-500/5 blur-[120px] rounded-full"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                lineNumber: 113,
+                                                lineNumber: 110,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1709,7 +1701,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                         className: "absolute -inset-4 bg-gradient-to-tr from-orange-500 to-blue-500 rounded-[32px] opacity-10 blur-2xl group-hover:opacity-15 transition-opacity"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                        lineNumber: 115,
+                                                        lineNumber: 112,
                                                         columnNumber: 18
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1722,24 +1714,24 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                             priority: true
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                            lineNumber: 117,
+                                                            lineNumber: 114,
                                                             columnNumber: 22
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                        lineNumber: 116,
+                                                        lineNumber: 113,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                lineNumber: 114,
+                                                lineNumber: 111,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                        lineNumber: 112,
+                                        lineNumber: 109,
                                         columnNumber: 13
                                     }, this)
                                 ]
@@ -1774,7 +1766,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                         children: "Who Needs This Solution"
                                     }, void 0, false, {
                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                        lineNumber: 130,
+                                        lineNumber: 127,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1782,7 +1774,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                         children: service.whoNeeds || "Scale-up enterprises and digital-first organizations looking to automate complex business workflows and eliminate operational silos."
                                     }, void 0, false, {
                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                        lineNumber: 131,
+                                        lineNumber: 128,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1795,14 +1787,14 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                         className: "w-6 h-6 text-orange-600"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                        lineNumber: 137,
+                                                        lineNumber: 134,
                                                         columnNumber: 19
                                                     }, this),
                                                     " Problems This Solves"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                lineNumber: 136,
+                                                lineNumber: 133,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1819,7 +1811,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                                 children: "•"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                                lineNumber: 142,
+                                                                lineNumber: 139,
                                                                 columnNumber: 23
                                                             }, this),
                                                             " ",
@@ -1827,24 +1819,24 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                         ]
                                                     }, i, true, {
                                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                        lineNumber: 141,
+                                                        lineNumber: 138,
                                                         columnNumber: 21
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                lineNumber: 139,
+                                                lineNumber: 136,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                        lineNumber: 135,
+                                        lineNumber: 132,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                lineNumber: 129,
+                                lineNumber: 126,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1859,7 +1851,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                     children: "Strategic Use Cases"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                    lineNumber: 152,
+                                                    lineNumber: 149,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1875,7 +1867,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                                     className: "w-2 h-2 rounded-full bg-orange-500"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                                    lineNumber: 156,
+                                                                    lineNumber: 153,
                                                                     columnNumber: 26
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1883,24 +1875,24 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                                     children: useCase
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                                    lineNumber: 157,
+                                                                    lineNumber: 154,
                                                                     columnNumber: 26
                                                                 }, this)
                                                             ]
                                                         }, i, true, {
                                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                            lineNumber: 155,
+                                                            lineNumber: 152,
                                                             columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                    lineNumber: 153,
+                                                    lineNumber: 150,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                            lineNumber: 151,
+                                            lineNumber: 148,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1911,7 +1903,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                     children: "Expected Outcomes"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                    lineNumber: 164,
+                                                    lineNumber: 161,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1919,40 +1911,40 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                     children: service.outcomes || "Measurable increase in operational velocity, significant reduction in overhead, and a resilient foundation for global system growth."
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                    lineNumber: 165,
+                                                    lineNumber: 162,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                            lineNumber: 163,
+                                            lineNumber: 160,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                    lineNumber: 150,
+                                    lineNumber: 147,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                lineNumber: 149,
+                                lineNumber: 146,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                        lineNumber: 128,
+                        lineNumber: 125,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                    lineNumber: 127,
+                    lineNumber: 124,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                lineNumber: 126,
+                lineNumber: 123,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1965,7 +1957,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                             children: "Designed to eliminate operational friction and accelerate measurable outcomes."
                         }, void 0, false, {
                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                            lineNumber: 177,
+                            lineNumber: 174,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1993,12 +1985,12 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                 className: "w-7 h-7"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                lineNumber: 181,
+                                                lineNumber: 178,
                                                 columnNumber: 203
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                            lineNumber: 181,
+                                            lineNumber: 178,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -2006,7 +1998,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                             children: "Core Strategic Advantage"
                                         }, void 0, false, {
                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                            lineNumber: 182,
+                                            lineNumber: 179,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2014,29 +2006,29 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                             children: benefit
                                         }, void 0, false, {
                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                            lineNumber: 183,
+                                            lineNumber: 180,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, i, true, {
                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                    lineNumber: 180,
+                                    lineNumber: 177,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                            lineNumber: 178,
+                            lineNumber: 175,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                    lineNumber: 176,
+                    lineNumber: 173,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                lineNumber: 175,
+                lineNumber: 172,
                 columnNumber: 7
             }, this),
             service.faqs && service.faqs.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -2049,7 +2041,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                             children: "Frequently Asked Questions"
                         }, void 0, false, {
                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                            lineNumber: 194,
+                            lineNumber: 191,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2065,7 +2057,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                     children: faq.q
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                    lineNumber: 199,
+                                                    lineNumber: 196,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2074,18 +2066,18 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                         className: "w-4 h-4 text-slate-600"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                        lineNumber: 201,
+                                                        lineNumber: 198,
                                                         columnNumber: 24
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                    lineNumber: 200,
+                                                    lineNumber: 197,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                            lineNumber: 198,
+                                            lineNumber: 195,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2093,29 +2085,29 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                             children: faq.a
                                         }, void 0, false, {
                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                            lineNumber: 204,
+                                            lineNumber: 201,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, i, true, {
                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                    lineNumber: 197,
+                                    lineNumber: 194,
                                     columnNumber: 17
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                            lineNumber: 195,
+                            lineNumber: 192,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                    lineNumber: 193,
+                    lineNumber: 190,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                lineNumber: 192,
+                lineNumber: 189,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -2134,7 +2126,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                         children: "Modular capabilities built for scale and flexibility."
                                     }, void 0, false, {
                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                        lineNumber: 218,
+                                        lineNumber: 215,
                                         columnNumber: 18
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2145,13 +2137,13 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                         children: "Request Feature Demo"
                                     }, void 0, false, {
                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                        lineNumber: 219,
+                                        lineNumber: 216,
                                         columnNumber: 18
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                lineNumber: 217,
+                                lineNumber: 214,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2168,7 +2160,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                     className: "w-4 h-4 text-orange-500 mt-1 flex-shrink-0"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                    lineNumber: 225,
+                                                    lineNumber: 222,
                                                     columnNumber: 26
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2178,7 +2170,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                             children: feature
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                            lineNumber: 227,
+                                                            lineNumber: 224,
                                                             columnNumber: 29
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2186,45 +2178,45 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                             children: "Standard Integrated Capability"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                            lineNumber: 228,
+                                                            lineNumber: 225,
                                                             columnNumber: 29
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                    lineNumber: 226,
+                                                    lineNumber: 223,
                                                     columnNumber: 26
                                                 }, this)
                                             ]
                                         }, i, true, {
                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                            lineNumber: 224,
+                                            lineNumber: 221,
                                             columnNumber: 23
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                    lineNumber: 222,
+                                    lineNumber: 219,
                                     columnNumber: 18
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                lineNumber: 221,
+                                lineNumber: 218,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                        lineNumber: 216,
+                        lineNumber: 213,
                         columnNumber: 12
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                    lineNumber: 215,
+                    lineNumber: 212,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                lineNumber: 214,
+                lineNumber: 211,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -2241,7 +2233,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                         children: "Related Solutions"
                                     }, void 0, false, {
                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                        lineNumber: 242,
+                                        lineNumber: 239,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2258,25 +2250,25 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                                 children: cap.name
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                                lineNumber: 248,
+                                                                lineNumber: 245,
                                                                 columnNumber: 31
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                            lineNumber: 247,
+                                                            lineNumber: 244,
                                                             columnNumber: 28
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                                             className: "w-5 h-5 text-slate-300 group-hover:text-orange-600 transition-all"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                            lineNumber: 250,
+                                                            lineNumber: 247,
                                                             columnNumber: 28
                                                         }, this)
                                                     ]
                                                 }, i, true, {
                                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                    lineNumber: 246,
+                                                    lineNumber: 243,
                                                     columnNumber: 25
                                                 }, this)),
                                             __TURBOPACK__imported__module__$5b$project$5d2f$app$2f28$main$292f$products$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CATEGORIES"].filter((c)=>c.id !== category.id).slice(0, 1).map((crossCat)=>crossCat.capabilities?.slice(0, 1).map((cap, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -2291,7 +2283,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                                         children: cap.name
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                                        lineNumber: 258,
+                                                                        lineNumber: 255,
                                                                         columnNumber: 33
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2299,26 +2291,26 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                                         children: "Collaborative Layer"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                                        lineNumber: 259,
+                                                                        lineNumber: 256,
                                                                         columnNumber: 33
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                                lineNumber: 257,
+                                                                lineNumber: 254,
                                                                 columnNumber: 29
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                                                 className: "w-5 h-5 text-slate-300 group-hover:text-blue-600 transition-all"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                                lineNumber: 261,
+                                                                lineNumber: 258,
                                                                 columnNumber: 29
                                                             }, this)
                                                         ]
                                                     }, i, true, {
                                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                        lineNumber: 256,
+                                                        lineNumber: 253,
                                                         columnNumber: 27
                                                     }, this))),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -2330,32 +2322,32 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                                         children: "Request Custom Architecture"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                        lineNumber: 266,
+                                                        lineNumber: 263,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
                                                         className: "w-5 h-5 text-slate-400"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                        lineNumber: 267,
+                                                        lineNumber: 264,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                                lineNumber: 265,
+                                                lineNumber: 262,
                                                 columnNumber: 22
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                                        lineNumber: 243,
+                                        lineNumber: 240,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                lineNumber: 241,
+                                lineNumber: 238,
                                 columnNumber: 16
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2368,7 +2360,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                             children: "Ready to integrate?"
                                         }, void 0, false, {
                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                            lineNumber: 273,
+                                            lineNumber: 270,
                                             columnNumber: 22
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2378,34 +2370,34 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                                             children: "Get Started Now"
                                         }, void 0, false, {
                                             fileName: "[project]/components/ServiceDetailClient.tsx",
-                                            lineNumber: 274,
+                                            lineNumber: 271,
                                             columnNumber: 22
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                                    lineNumber: 272,
+                                    lineNumber: 269,
                                     columnNumber: 19
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                                lineNumber: 271,
+                                lineNumber: 268,
                                 columnNumber: 16
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/ServiceDetailClient.tsx",
-                        lineNumber: 240,
+                        lineNumber: 237,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/ServiceDetailClient.tsx",
-                    lineNumber: 239,
+                    lineNumber: 236,
                     columnNumber: 10
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/ServiceDetailClient.tsx",
-                lineNumber: 238,
+                lineNumber: 235,
                 columnNumber: 7
             }, this)
         ]
