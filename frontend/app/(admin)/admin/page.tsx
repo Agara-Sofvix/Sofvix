@@ -18,12 +18,12 @@ import {
   Database,
   Search
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { IInquiry } from "@/models/Inquiry";
 import { IApplication } from "@/models/Application";
-export default function AdminDashboardPage() {
+function AdminDashboardContent() {
   const [inquiries, setInquiries] = useState<IInquiry[]>([]);
   const [applications, setApplications] = useState<IApplication[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
@@ -288,5 +288,13 @@ export default function AdminDashboardPage() {
         </motion.div>
       </div>
     </div>
+  );
+}
+
+export default function AdminDashboardPage() {
+  return (
+    <Suspense fallback={<div className="p-8">Loading Dashboard...</div>}>
+      <AdminDashboardContent />
+    </Suspense>
   );
 }

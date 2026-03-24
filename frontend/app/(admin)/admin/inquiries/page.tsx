@@ -17,11 +17,11 @@ import {
   Trash2
 } from "lucide-react";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { IInquiry } from "@/models/Inquiry";
 
-export default function AdminInquiriesPage() {
+function AdminInquiriesContent() {
   const [inquiries, setInquiries] = useState<IInquiry[]>([]);
   const [loading, setLoading] = useState(true);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
@@ -258,5 +258,13 @@ export default function AdminInquiriesPage() {
         ))}
       </div>
     </div>
+  );
+}
+
+export default function AdminInquiriesPage() {
+  return (
+    <Suspense fallback={<div className="p-8">Loading Inquiries...</div>}>
+      <AdminInquiriesContent />
+    </Suspense>
   );
 }

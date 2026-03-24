@@ -16,11 +16,11 @@ import {
   Users
 } from "lucide-react";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { IApplication } from "@/models/Application";
 
-export default function AdminCareersPage() {
+function AdminCareersContent() {
   const [applications, setApplications] = useState<IApplication[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedApp, setSelectedApp] = useState<IApplication | null>(null);
@@ -509,5 +509,13 @@ export default function AdminCareersPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function AdminCareersPage() {
+  return (
+    <Suspense fallback={<div className="p-8">Loading Applications...</div>}>
+      <AdminCareersContent />
+    </Suspense>
   );
 }

@@ -2,14 +2,14 @@
 
 import { getApiUrl } from '@/lib/api';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'motion/react';
 import { Plus, Trash2, Briefcase, MapPin, Search } from 'lucide-react';
 import { IJob } from '@/models/Job';
 import { Button } from '@/components/Button';
 
-export default function AdminJobsPage() {
+function AdminJobsContent() {
   const [jobs, setJobs] = useState<IJob[]>([]);
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -247,5 +247,13 @@ export default function AdminJobsPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function AdminJobsPage() {
+  return (
+    <Suspense fallback={<div className="p-8">Loading Jobs...</div>}>
+      <AdminJobsContent />
+    </Suspense>
   );
 }
