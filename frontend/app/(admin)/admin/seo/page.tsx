@@ -34,6 +34,7 @@ export default function AdminSEOPage() {
   );
 
   const [editingPage, setEditingPage] = useState<any>(null);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   const getPageIcon = (id: string) => {
     switch (id) {
@@ -123,9 +124,50 @@ export default function AdminSEOPage() {
                      <Edit2 className="w-4 h-4" />
                      Manage Meta
                    </button>
-                   <button className="p-4 bg-white border border-black/5 rounded-2xl text-gray-400 hover:text-gray-900 transition-all hover:bg-gray-50">
-                     <MoreVertical className="w-5 h-5" />
-                   </button>
+                    <div className="relative">
+                      <button 
+                        onClick={() => setActiveDropdown(activeDropdown === page.id ? null : page.id)}
+                        className={`p-4 bg-white border border-black/5 rounded-2xl text-gray-400 hover:text-gray-900 transition-all hover:bg-gray-50 ${activeDropdown === page.id ? 'border-[#F97316] text-[#F97316]' : ''}`}
+                      >
+                        <MoreVertical className="w-5 h-5" />
+                      </button>
+                      
+                      {activeDropdown === page.id && (
+                        <>
+                          <div className="fixed inset-0 z-40" onClick={() => setActiveDropdown(null)} />
+                          <div className="absolute right-0 bottom-full mb-2 w-48 bg-white rounded-2xl shadow-2xl border border-black/5 p-2 z-50 overflow-hidden">
+                             <button 
+                               onClick={() => {
+                                 window.open(page.path, '_blank');
+                                 setActiveDropdown(null);
+                               }}
+                               className="w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 flex items-center gap-2 group transition-colors"
+                             >
+                               <ExternalLink className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900" />
+                               View Live Page
+                             </button>
+                             <button 
+                               onClick={() => {
+                                 navigator.clipboard.writeText(page.title);
+                                 setActiveDropdown(null);
+                               }}
+                               className="w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 flex items-center gap-2 group transition-colors"
+                             >
+                               <CheckCircle2 className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900" />
+                               Copy Meta Title
+                             </button>
+                             <div className="my-1 border-t border-black/5" />
+                             <button 
+                               onClick={() => setActiveDropdown(null)}
+                               className="w-full text-left px-4 py-2.5 hover:bg-rose-50 rounded-xl text-xs font-bold text-rose-500 flex items-center gap-2 group transition-colors"
+                             >
+                               <AlertCircle className="w-3.5 h-3.5 opacity-50" />
+                               SEO Audit
+                             </button>
+                          </div>
+                        </>
+                      )}
+                    </div>
                 </div>
               </div>
             </div>

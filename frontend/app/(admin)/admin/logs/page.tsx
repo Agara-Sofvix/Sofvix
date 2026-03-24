@@ -26,6 +26,7 @@ export default function AdminLogsPage() {
     { id: 7, type: 'application', message: 'New job application: AI Researcher', time: '12 hours ago', status: 'success' },
     { id: 8, type: 'security', message: 'Unauthorized API attempt blocked', time: '1 day ago', status: 'error' },
   ]);
+  const [selectedLog, setSelectedLog] = useState<any>(null);
 
   const getIcon = (type: string) => {
     switch (type) {
@@ -121,7 +122,10 @@ export default function AdminLogsPage() {
                 </div>
               </div>
               <div className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-[#F97316]">
+                <button 
+                  onClick={() => setSelectedLog(log)}
+                  className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-[#F97316]"
+                >
                   Details
                   <ArrowUpRight className="w-3 h-3" />
                 </button>
@@ -130,10 +134,74 @@ export default function AdminLogsPage() {
           ))}
         </div>
         
-        <div className="p-8 border-t border-black/5 text-center">
-           <button className="text-sm font-bold text-gray-400 hover:text-gray-900 transition-colors uppercase tracking-widest text-[10px]">Load Older Events</button>
-        </div>
       </div>
+
+      {/* Log Detail Modal */}
+      {selectedLog && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+          <div className="bg-white rounded-[40px] w-full max-w-lg shadow-2xl border border-white/20 overflow-hidden">
+            <div className="p-8 border-b border-black/5 flex items-center justify-between bg-gray-50/50">
+              <div className="flex items-center gap-4">
+                <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center shrink-0 ${getStatusColor(selectedLog.status)} shadow-sm`}>
+                  {getIcon(selectedLog.type)}
+                </div>
+                <div>
+                  <h3 className="text-xl font-black text-gray-900 tracking-tight">Log Details</h3>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-gray-400">ID: LOG-{selectedLog.id}882</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => setSelectedLog(null)}
+                className="w-10 h-10 rounded-full hover:bg-gray-200 flex items-center justify-center text-gray-500 transition-colors"
+              >
+                <span className="text-2xl font-bold">&times;</span>
+              </button>
+            </div>
+            
+            <div className="p-10 space-y-8">
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Event Message</label>
+                <p className="text-base font-bold text-gray-900 leading-relaxed">{selectedLog.message}</p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-1">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Timestamp</label>
+                  <p className="text-xs font-bold text-gray-700">{selectedLog.time}</p>
+                </div>
+                <div className="space-y-1">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Event Type</label>
+                  <p className="text-xs font-bold text-[#F97316] uppercase">{selectedLog.type}</p>
+                </div>
+                <div className="space-y-1">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Origin</label>
+                  <p className="text-xs font-bold text-gray-700 underline decoration-dotted capitalize">Production Cluster</p>
+                </div>
+                <div className="space-y-1">
+                  <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Environment</label>
+                  <p className="text-xs font-bold text-gray-700">AWS EC2 (Agara-Next)</p>
+                </div>
+              </div>
+
+              <div className="p-4 bg-gray-50 rounded-2xl border border-black/5">
+                <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2">Technical Context</p>
+                <code className="text-[10px] text-gray-500 font-mono block overflow-x-auto whitespace-pre">
+                  {`{\n  "service": "backend-api",\n  "method": "POST",\n  "status": 201,\n  "responseTime": "142ms",\n  "traceId": "ag-${Math.random().toString(36).substr(2, 9)}"\n}`}
+                </code>
+              </div>
+            </div>
+
+            <div className="p-8 bg-gray-50 border-t border-black/5 flex justify-end">
+              <button 
+                onClick={() => setSelectedLog(null)}
+                className="px-8 py-3 bg-slate-900 text-white rounded-2xl text-sm font-black hover:bg-black transition-all shadow-xl"
+              >
+                Close Trace
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
