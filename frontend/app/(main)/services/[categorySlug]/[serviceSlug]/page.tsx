@@ -1,17 +1,31 @@
 import { ServiceDetailClient } from "@/components/ServiceDetailClient";
-import { CATEGORIES } from "@/app/(main)/products/data";
 import { seo } from "@/lib/seo/metadata";
 import { JsonLd } from "@/components/JsonLd";
 import { Metadata } from "next";
+import { getApiUrl } from "@/lib/api";
 
 type Props = {
   params: Promise<{ categorySlug: string; serviceSlug: string }>;
 };
 
+async function getCategoryBySlug(slug: string) {
+  const apiUrl = getApiUrl();
+  try {
+    const res = await fetch(`${apiUrl}/api/categories/slug/${slug}`, {
+      cache: 'no-store'
+    });
+    if (!res.ok) return null;
+    return res.json();
+  } catch (error) {
+    console.error("Failed to fetch category by slug:", error);
+    return null;
+  }
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { categorySlug, serviceSlug } = await params;
-  const category = CATEGORIES.find(c => c.slug === categorySlug);
-  const service = category?.capabilities?.find(s => s.slug === serviceSlug);
+  const category = await getCategoryBySlug(categorySlug);
+  const service = category?.capabilities?.find((s: any) => s.slug === serviceSlug);
 
   if (!service) return {};
 
@@ -27,13 +41,14 @@ export default async function ServiceDetailPage({ params }: Props) {
   const resolvedParams = await params;
   const { categorySlug, serviceSlug } = resolvedParams;
 
-  const category = CATEGORIES.find(c => c.slug === categorySlug);
-  const service = category?.capabilities?.find(s => s.slug === serviceSlug);
+  const category = await getCategoryBySlug(categorySlug);
+  const service = category?.capabilities?.find((s: any) => s.slug === serviceSlug);
 
   if (!category || !service) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6">
         <h1 className="text-4xl font-bold mb-4">Service Not Found</h1>
+        <p className="text-gray-500">The system or capability you are looking for does not exist.</p>
       </div>
     );
   }
@@ -49,7 +64,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       "name": service.name,
-      "itemListElement": service.features.map(f => ({
+      "itemListElement": (service.features || []).map((f: string) => ({
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",

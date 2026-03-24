@@ -104,6 +104,16 @@ app.get('/api/categories', async (req, res) => {
   }
 });
 
+app.get('/api/categories/slug/:slug', async (req, res) => {
+  try {
+    const category = await Category.findOne({ slug: req.params.slug });
+    if (!category) return res.status(404).json({ error: 'Category not found' });
+    res.json(category);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch category' });
+  }
+});
+
 app.post('/api/categories', async (req, res) => {
   try {
     const data = {

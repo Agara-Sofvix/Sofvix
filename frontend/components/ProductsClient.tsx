@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect, Suspense, useRef } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from "motion/react";
 import { 
   ArrowRight, 
@@ -42,8 +42,6 @@ import {
   FileText
 } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/Button";
-import { CATEGORIES, SERVICES, Service, Category } from "@/app/(main)/products/data";
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 
 const ICON_MAP: Record<string, any> = {
@@ -84,11 +82,33 @@ const ICON_MAP: Record<string, any> = {
   FileText
 };
 
-export function ProductsClient() {
+interface Capability {
+  name: string;
+  icon: string;
+  slug: string;
+  description: string;
+}
+
+interface Category {
+  id: string;
+  slug: string;
+  name: string;
+  overview: string;
+  outcomes: string[];
+  capabilities: Capability[];
+}
+
+interface ProductsClientProps {
+  initialCategories: Category[];
+}
+
+export function ProductsClient({ initialCategories }: ProductsClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const initialCategory = searchParams.get('category') || 'cx-sales';
+  
+  const [categories] = useState<Category[]>(initialCategories || []);
+  const initialCategory = searchParams.get('category') || categories[0]?.slug || '';
   const [activeCategoryId, setActiveCategoryId] = useState<string>(initialCategory);
 
   useEffect(() => {
@@ -105,10 +125,6 @@ export function ProductsClient() {
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const filteredServices = useMemo(() => {
-    return SERVICES.filter(s => s.category === activeCategoryId);
-  }, [activeCategoryId]);
-
   const itemsRef = useRef<Record<string, HTMLButtonElement | null>>({});
 
   useEffect(() => {
@@ -122,8 +138,10 @@ export function ProductsClient() {
   }, [activeCategoryId]);
 
   const activeCategory = useMemo(() => 
-    CATEGORIES.find(c => c.id === activeCategoryId)
-  , [activeCategoryId]);
+    categories.find(c => c.slug === activeCategoryId || c.id === activeCategoryId)
+  , [activeCategoryId, categories]);
+
+  if (categories.length === 0) return <div className="p-8">No products found.</div>;
 
   return (
     <div className="relative w-full text-gray-900 selection:bg-[#F97316]/20 bg-gemini-light min-h-screen">
@@ -131,16 +149,16 @@ export function ProductsClient() {
         <header className="pt-12 pb-6 max-w-7xl mx-auto text-center w-full overflow-hidden">
           <div className="flex justify-center mb-8 w-full">
             <nav className="bg-white/60 backdrop-blur-2xl border border-black/5 p-1.5 rounded-full shadow-xl flex items-center gap-1 overflow-x-auto no-scrollbar max-w-full touch-pan-x">
-              {CATEGORIES.map((cat) => (
+              {categories.map((cat) => (
                 <button
                   key={cat.id}
-                  ref={(el) => { itemsRef.current[cat.id] = el; }}
-                  onClick={() => handleCategoryClick(cat.id)}
+                  ref={(el) => { itemsRef.current[cat.slug || cat.id] = el; }}
+                  onClick={() => handleCategoryClick(cat.slug || cat.id)}
                   className={`relative px-6 py-3 rounded-full text-xs font-black transition-all duration-500 whitespace-nowrap uppercase tracking-wider ${
-                    activeCategoryId === cat.id ? 'text-gray-900' : 'text-gray-400 hover:text-gray-900'
+                    (activeCategoryId === cat.slug || activeCategoryId === cat.id) ? 'text-gray-900' : 'text-gray-400 hover:text-gray-900'
                   }`}
                 >
-                  {activeCategoryId === cat.id && (
+                  {(activeCategoryId === cat.slug || activeCategoryId === cat.id) && (
                     <motion.div
                       layoutId="active-nav"
                       className="absolute inset-0 bg-[#F97316]/10 border border-[#F97316]/20 rounded-full"

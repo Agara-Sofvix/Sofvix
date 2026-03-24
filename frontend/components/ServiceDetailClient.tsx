@@ -173,7 +173,7 @@ export function ServiceDetailClient({ category, service, categorySlug, serviceSl
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-2xl md:text-3xl lg:text-5xl font-black text-slate-900 max-w-3xl leading-tight mb-20">Designed to eliminate operational friction and accelerate measurable outcomes.</p>
           <div className="grid md:grid-cols-3 gap-8">
-            {service.benefits.map((benefit, i) => (
+            {(service.benefits || []).map((benefit, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white border border-slate-100 p-10 rounded-[32px] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group">
                 <div className="w-14 h-14 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center mb-8 group-hover:bg-orange-600 group-hover:text-white transition-colors duration-500"><Zap className="w-7 h-7" /></div>
                 <h3 className="text-xl font-bold mb-4 text-slate-900 tracking-tight">Core Strategic Advantage</h3>
@@ -217,7 +217,7 @@ export function ServiceDetailClient({ category, service, categorySlug, serviceSl
               </div>
               <div className="lg:col-span-8">
                  <div className="grid sm:grid-cols-2 gap-4">
-                    {service.features.map((feature, i) => (
+                    {(service.features || []).map((feature, i) => (
                       <motion.div key={i} whileHover={{ x: 10 }} className="p-6 rounded-3xl bg-white/5 border border-white/10 flex items-start gap-4 transition-all hover:bg-white/10">
                          <CheckCircle2 className="w-4 h-4 text-orange-500 mt-1 flex-shrink-0" />
                          <div>
