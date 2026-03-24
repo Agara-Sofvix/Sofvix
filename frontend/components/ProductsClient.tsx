@@ -39,7 +39,8 @@ import {
   Clock,
   LineChart,
   Activity,
-  FileText
+  FileText,
+  ChevronDown
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
@@ -147,7 +148,28 @@ export function ProductsClient({ initialCategories }: ProductsClientProps) {
     <div className="relative w-full text-gray-900 selection:bg-[#F97316]/20 bg-gemini-light min-h-screen">
       <div className="relative z-10 flex flex-col w-full px-6">
         <header className="pt-12 pb-6 max-w-7xl mx-auto text-center w-full overflow-hidden">
-          <div className="flex justify-center mb-8 w-full">
+          {/* Mobile Dropdown */}
+          <div className="md:hidden flex justify-center mb-8 px-4 w-full">
+            <div className="relative w-full max-w-xs">
+              <select
+                value={activeCategoryId}
+                onChange={(e) => handleCategoryClick(e.target.value)}
+                className="w-full bg-white/60 backdrop-blur-2xl border border-black/5 p-4 rounded-3xl shadow-xl appearance-none text-sm font-black uppercase tracking-wider text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#F97316]/20"
+              >
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.slug || cat.id}>
+                    {cat.name}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                <ChevronDown className="w-5 h-5 text-gray-400" />
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Pills */}
+          <div className="hidden md:flex justify-center mb-8 w-full">
             <nav className="bg-white/60 backdrop-blur-2xl border border-black/5 p-1.5 rounded-full shadow-xl flex items-center gap-1 overflow-x-auto no-scrollbar max-w-full touch-pan-x">
               {categories.map((cat) => (
                 <button

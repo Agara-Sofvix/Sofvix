@@ -3998,6 +3998,16 @@
     --tw-ring-color: #f97316;
   }
 
+  .focus\:ring-\[\#F97316\]\/20:focus {
+    --tw-ring-color: #f9731633;
+  }
+
+  @supports (color: lab(0% 0 0)) {
+    .focus\:ring-\[\#F97316\]\/20:focus {
+      --tw-ring-color: lab(64.4963% 49.3667 68.6636 / .2);
+    }
+  }
+
   .focus\:ring-gray-900:focus {
     --tw-ring-color: var(--color-gray-900);
   }
