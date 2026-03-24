@@ -1,14 +1,7 @@
 {
   "/(admin)/admin/careers/page": "app/(admin)/admin/careers/page.js",
-  "/(admin)/admin/jobs/page": "app/(admin)/admin/jobs/page.js",
+  "/(admin)/admin/inquiries/page": "app/(admin)/admin/inquiries/page.js",
   "/(admin)/admin/page": "app/(admin)/admin/page.js",
-  "/(admin)/login/page": "app/(admin)/login/page.js",
-  "/(main)/about/page": "app/(main)/about/page.js",
-  "/(main)/careers/page": "app/(main)/careers/page.js",
-  "/(main)/get-started/page": "app/(main)/get-started/page.js",
-  "/(main)/page": "app/(main)/page.js",
-  "/(main)/products/page": "app/(main)/products/page.js",
-  "/(main)/services/[categorySlug]/[serviceSlug]/page": "app/(main)/services/[categorySlug]/[serviceSlug]/page.js",
-  "/(main)/services/page": "app/(main)/services/page.js",
-  "/sitemap.xml/route": "app/sitemap.xml/route.js"
+  "/(admin)/admin/seo/page": "app/(admin)/admin/seo/page.js",
+  "/(main)/page": "app/(main)/page.js"
 }

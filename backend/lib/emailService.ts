@@ -57,7 +57,8 @@ export const sendInterviewScheduledEmail = async (to: string, candidateName: str
         month: 'long', 
         day: 'numeric', 
         hour: '2-digit', 
-        minute: '2-digit' 
+        minute: '2-digit',
+        timeZone: process.env.APP_TIMEZONE || 'UTC'
       })
     : 'to be determined';
 

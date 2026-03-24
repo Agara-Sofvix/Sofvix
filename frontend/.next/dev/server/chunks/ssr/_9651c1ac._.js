@@ -181,6 +181,10 @@ __turbopack_context__.s([
     ()=>VELACHERY_BUSINESS,
     "VELACHERY_CLOUD",
     ()=>VELACHERY_CLOUD,
+    "VELACHERY_CORE",
+    ()=>VELACHERY_CORE,
+    "VELACHERY_HIGH_INTENT",
+    ()=>VELACHERY_HIGH_INTENT,
     "VELACHERY_WEB",
     ()=>VELACHERY_WEB,
     "expandKeywords",
@@ -194,7 +198,15 @@ const LOCATION_SUFFIXES = [
     "Chennai",
     "Tamil Nadu",
     "Chennai IT services",
-    "Tamil Nadu software company"
+    "Tamil Nadu software company",
+    "near me",
+    "in Velachery",
+    "Velachery area",
+    "Chennai south",
+    "Tamil Nadu India",
+    "service center Velachery",
+    "agency in Velachery",
+    "company near Velachery"
 ];
 function expandKeywords(baseKeywords) {
     return baseKeywords.flatMap((b)=>LOCATION_SUFFIXES.map((s)=>`${b} ${s}`));
@@ -207,18 +219,30 @@ const VELACHERY_BASE_SET = [
     "IT services Velachery Chennai",
     "custom software Velachery",
     "enterprise software Velachery",
-    "best software company Velachery"
+    "best software company Velachery",
+    "top IT firms in Velachery",
+    "software development Velachery Chennai",
+    "Velachery tech companies",
+    "IT outsourcing Velachery",
+    "software solutions Velachery",
+    "web development Velachery",
+    "mobile app development Velachery",
+    "AI services Velachery Chennai"
 ];
-const VELACHERY_AI = expandKeywords(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$seo$2f$keywords$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AI_KEYWORDS"].slice(0, 10));
-const VELACHERY_WEB = expandKeywords(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$seo$2f$keywords$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["WEB_APP_KEYWORDS"].slice(0, 10));
-const VELACHERY_CLOUD = expandKeywords(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$seo$2f$keywords$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CLOUD_KEYWORDS"].slice(0, 10));
-const VELACHERY_BUSINESS = expandKeywords(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$seo$2f$keywords$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BUSINESS_KEYWORDS"].slice(0, 10));
+const VELACHERY_CORE = expandKeywords(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$seo$2f$keywords$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CORE_KEYWORDS"]);
+const VELACHERY_AI = expandKeywords(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$seo$2f$keywords$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AI_KEYWORDS"]);
+const VELACHERY_WEB = expandKeywords(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$seo$2f$keywords$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["WEB_APP_KEYWORDS"]);
+const VELACHERY_CLOUD = expandKeywords(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$seo$2f$keywords$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["CLOUD_KEYWORDS"]);
+const VELACHERY_BUSINESS = expandKeywords(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$seo$2f$keywords$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["BUSINESS_KEYWORDS"]);
+const VELACHERY_HIGH_INTENT = expandKeywords(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$seo$2f$keywords$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["HIGH_INTENT_KEYWORDS"]);
 const ALL_LOCATION_KEYWORDS = [
     ...VELACHERY_BASE_SET,
+    ...VELACHERY_CORE,
     ...VELACHERY_AI,
     ...VELACHERY_WEB,
     ...VELACHERY_CLOUD,
-    ...VELACHERY_BUSINESS
+    ...VELACHERY_BUSINESS,
+    ...VELACHERY_HIGH_INTENT
 ];
 }),
 "[project]/lib/seo/pageMapping.ts [app-ssr] (ecmascript)", ((__turbopack_context__) => {
