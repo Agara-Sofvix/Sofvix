@@ -106,3 +106,127 @@ Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
 [02:56:19.477] Server  LOG     ✓ Compiled in 1184ms
 [02:57:04.396] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
 [03:00:03.618] Server  LOG     ✓ Compiled in 578ms
+[03:01:08.617] Server  LOG     ✓ Compiled in 6ms
+[03:03:07.356] Server  LOG     ✓ Compiled in 906ms
+[03:03:07.812] Browser ERROR   ./app/(admin)/admin/careers/page.tsx:184:7
+Parsing ecmascript source code failed
+  182 |       </div>
+  183 |
+> 184 |       {/* Filters Bar */}
+      |       ^
+  185 |       <div className="bg-white p-6 rounded-[32px] border border-black/5 shadow-sm flex flex-col md:flex-row items-center gap-4">
+  186 |         <div className="relative flex-grow w-full">
+  187 |           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+
+Expected ',', got '{'
+
+Import traces:
+  Client Component Browser:
+    ./app/(admin)/admin/careers/page.tsx [Client Component Browser]
+    ./app/(admin)/admin/careers/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(admin)/admin/careers/page.tsx [Client Component SSR]
+    ./app/(admin)/admin/careers/page.tsx [Server Component]
+[03:03:07.912] Browser ERROR   ./app/(admin)/admin/careers/page.tsx:184:7
+Parsing ecmascript source code failed
+  182 |       </div>
+  183 |
+> 184 |       {/* Filters Bar */}
+      |       ^
+  185 |       <div className="bg-white p-6 rounded-[32px] border border-black/5 shadow-sm flex flex-col md:flex-row items-center gap-4">
+  186 |         <div className="relative flex-grow w-full">
+  187 |           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+
+Expected ',', got '{'
+
+Import traces:
+  Client Component Browser:
+    ./app/(admin)/admin/careers/page.tsx [Client Component Browser]
+    ./app/(admin)/admin/careers/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(admin)/admin/careers/page.tsx [Client Component SSR]
+    ./app/(admin)/admin/careers/page.tsx [Server Component]
+[03:03:08.100] Browser ERROR   ./app/(admin)/admin/careers/page.tsx:184:7
+Parsing ecmascript source code failed
+  182 |       </div>
+  183 |
+> 184 |       {/* Filters Bar */}
+      |       ^
+  185 |       <div className="bg-white p-6 rounded-[32px] border border-black/5 shadow-sm flex flex-col md:flex-row items-center gap-4">
+  186 |         <div className="relative flex-grow w-full">
+  187 |           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+
+Expected ',', got '{'
+
+Import traces:
+  Client Component Browser:
+    ./app/(admin)/admin/careers/page.tsx [Client Component Browser]
+    ./app/(admin)/admin/careers/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(admin)/admin/careers/page.tsx [Client Component SSR]
+    ./app/(admin)/admin/careers/page.tsx [Server Component]
+[03:03:08.221] Browser ERROR   ./app/(admin)/admin/careers/page.tsx:184:7
+Parsing ecmascript source code failed
+  182 |       </div>
+  183 |
+> 184 |       {/* Filters Bar */}
+      |       ^
+  185 |       <div className="bg-white p-6 rounded-[32px] border border-black/5 shadow-sm flex flex-col md:flex-row items-center gap-4">
+  186 |         <div className="relative flex-grow w-full">
+  187 |           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+
+Expected ',', got '{'
+
+Import traces:
+  Client Component Browser:
+    ./app/(admin)/admin/careers/page.tsx [Client Component Browser]
+    ./app/(admin)/admin/careers/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(admin)/admin/careers/page.tsx [Client Component SSR]
+    ./app/(admin)/admin/careers/page.tsx [Server Component]
+[03:03:08.254] Browser ERROR   ./app/(admin)/admin/careers/page.tsx:184:7
+Parsing ecmascript source code failed
+  182 |       </div>
+  183 |
+> 184 |       {/* Filters Bar */}
+      |       ^
+  185 |       <div className="bg-white p-6 rounded-[32px] border border-black/5 shadow-sm flex flex-col md:flex-row items-center gap-4">
+  186 |         <div className="relative flex-grow w-full">
+  187 |           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+
+Expected ',', got '{'
+
+Import traces:
+  Client Component Browser:
+    ./app/(admin)/admin/careers/page.tsx [Client Component Browser]
+    ./app/(admin)/admin/careers/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(admin)/admin/careers/page.tsx [Client Component SSR]
+    ./app/(admin)/admin/careers/page.tsx [Server Component]
+[03:03:08.306] Browser ERROR   ./app/(admin)/admin/careers/page.tsx:184:7
+Parsing ecmascript source code failed
+  182 |       </div>
+  183 |
+> 184 |       {/* Filters Bar */}
+      |       ^
+  185 |       <div className="bg-white p-6 rounded-[32px] border border-black/5 shadow-sm flex flex-col md:flex-row items-center gap-4">
+  186 |         <div className="relative flex-grow w-full">
+  187 |           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+
+Expected ',', got '{'
+
+Import traces:
+  Client Component Browser:
+    ./app/(admin)/admin/careers/page.tsx [Client Component Browser]
+    ./app/(admin)/admin/careers/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(admin)/admin/careers/page.tsx [Client Component SSR]
+    ./app/(admin)/admin/careers/page.tsx [Server Component]
+[03:03:22.807] Server  LOG     ✓ Compiled in 282ms
+[03:04:27.483] Server  LOG     ✓ Compiled in 211ms

@@ -5,8 +5,6 @@ import { getApiUrl } from '@/lib/api';
 import { 
   Search, 
   Filter, 
-  MoreVertical, 
-  User, 
   Briefcase, 
   Calendar, 
   FileText,
@@ -15,7 +13,6 @@ import {
   CheckCircle2,
   XCircle,
   Clock,
-  ExternalLink,
   Users
 } from "lucide-react";
 
@@ -31,7 +28,10 @@ export default function AdminCareersPage() {
   const [scheduleSuccess, setScheduleSuccess] = useState(false);
   const [showScheduleModal, setShowScheduleModal] = useState(false);
   const [scheduleDate, setScheduleDate] = useState('');
+  const [scheduleTime, setScheduleTime] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [roleFilter, setRoleFilter] = useState('All Roles');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const fetchApplications = async () => {
     try {
@@ -61,7 +61,6 @@ export default function AdminCareersPage() {
   }, [urlSearch]);
 
   const calculateMatchScore = (experience: string) => {
-    // Simple heuristic: convert "5+ years" to a score
     const years = parseInt(experience) || 0;
     if (years >= 5) return 95;
     if (years >= 3) return 85;
@@ -75,7 +74,6 @@ export default function AdminCareersPage() {
         setSchedulingId(id);
         setScheduleSuccess(false);
       }
-      console.log(`Updating application ${id} to ${newStatus}`);
       const apiUrl = getApiUrl();
       const response = await fetch(`${apiUrl}/api/applications/${id}`, {
         method: 'PUT',
@@ -86,13 +84,10 @@ export default function AdminCareersPage() {
           ...(interviewDate && { interviewDate: interviewDate.toISOString() })
         }),
       });
-      console.log('Update response status:', response.status);
       if (response.ok) {
         const updated = await response.json();
         const newStatusLiteral = updated.status as IApplication['status'];
-        // Update the list in-place
         setApplications(prev => prev.map(a => a._id.toString() === id ? { ...a, status: newStatusLiteral, ...(interviewDate && { interviewDate }) } as IApplication : a));
-        // If the detail drawer is open for this app, update it too
         if (selectedApp?._id.toString() === id) {
           setSelectedApp(prev => prev ? { ...prev, status: newStatusLiteral, ...(interviewDate && { interviewDate }) } as IApplication : prev);
         }
@@ -102,12 +97,11 @@ export default function AdminCareersPage() {
         }
       } else {
         const errorData = await response.json();
-        console.error('Update failed:', errorData);
         alert(`Failed to update status: ${errorData.error || 'Unknown error'}`);
       }
     } catch (error) {
       console.error('Failed to update status:', error);
-      alert('Failed to connect to server. Please check if the backend is running.');
+      alert('Failed to connect to server.');
     } finally {
       setSchedulingId(null);
     }
@@ -121,7 +115,7 @@ export default function AdminCareersPage() {
         method: 'DELETE',
       });
       if (response.ok) {
-        fetchApplications(); // Refresh list
+        fetchApplications();
       }
     } catch (error) {
       console.error('Failed to delete application:', error);
@@ -156,6 +150,7 @@ export default function AdminCareersPage() {
   };
  
   if (loading) return <div className="p-8">Loading applications...</div>;
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -174,9 +169,6 @@ export default function AdminCareersPage() {
                  <p className="text-xl font-black text-gray-900">{applications.length}</p>
               </div>
            </div>
-           <button className="h-full px-8 bg-[#F97316] text-white rounded-2xl text-sm font-black hover:bg-[#EA580C] transition-all shadow-xl shadow-[#F97316]/20">
-              Post New Job
-           </button>
         </div>
       </div>
 
@@ -192,11 +184,38 @@ export default function AdminCareersPage() {
             className="w-full bg-gray-50 border border-black/5 rounded-2xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-[#F97316] transition-colors"
           />
         </div>
-        <div className="flex items-center gap-2 w-full md:w-auto">
-           <button className="flex items-center gap-2 px-6 py-3 bg-gray-50 border border-black/5 rounded-2xl text-sm font-bold text-gray-700 hover:bg-gray-100 transition-all">
+        <div className="flex items-center gap-2 w-full md:w-auto relative">
+           <button 
+             onClick={() => setIsFilterOpen(!isFilterOpen)}
+             className={`flex items-center gap-2 px-6 py-4 bg-gray-50 border border-black/5 rounded-2xl text-sm font-bold text-gray-700 hover:bg-gray-100 transition-all ${isFilterOpen ? 'border-[#F97316] text-[#F97316] bg-white' : ''}`}
+           >
               <Filter className="w-4 h-4" />
-              All Roles
+              {roleFilter}
            </button>
+           
+           {isFilterOpen && (
+             <>
+               <div className="fixed inset-0 z-40" onClick={() => setIsFilterOpen(false)} />
+               <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-2xl shadow-2xl border border-black/5 p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                 {['All Roles', ...Array.from(new Set(applications.map(app => app.roleTitle)))].map((role) => (
+                   <button
+                     key={role}
+                     onClick={() => {
+                       setRoleFilter(role);
+                       setIsFilterOpen(false);
+                     }}
+                     className={`w-full text-left px-4 py-3 rounded-xl text-xs font-bold transition-colors ${
+                       roleFilter === role 
+                         ? 'bg-[#F97316]/10 text-[#F97316]' 
+                         : 'text-gray-600 hover:bg-gray-50'
+                     }`}
+                   >
+                     {role}
+                   </button>
+                 ))}
+               </div>
+             </>
+           )}
         </div>
       </div>
 
@@ -215,12 +234,14 @@ export default function AdminCareersPage() {
                 </tr>
              </thead>
              <tbody className="divide-y divide-black/5">
-                 {applications
-                    .filter(app => 
-                      app.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                      app.roleTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                      app.email.toLowerCase().includes(searchQuery.toLowerCase())
-                    )
+                  {applications
+                    .filter(app => {
+                      const matchesSearch = app.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                           app.roleTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                           app.email.toLowerCase().includes(searchQuery.toLowerCase());
+                      const matchesRole = roleFilter === 'All Roles' || app.roleTitle === roleFilter;
+                      return matchesSearch && matchesRole;
+                    })
                     .map((app) => (
                    <tr 
                      key={app._id.toString()} 
@@ -334,16 +355,16 @@ export default function AdminCareersPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-bold text-xl uppercase">
-                     {selectedApp?.name?.split(' ').map(n => n[0]).join('')}
+                     {selectedApp.name?.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div>
-                    <h2 className="text-2xl font-black text-gray-900">{selectedApp?.name}</h2>
-                    <p className="text-gray-500 font-bold">{selectedApp?.roleTitle}</p>
+                    <h2 className="text-2xl font-black text-gray-900">{selectedApp.name}</h2>
+                    <p className="text-gray-500 font-bold">{selectedApp.roleTitle}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <button 
-                    disabled={schedulingId === selectedApp!._id.toString() || scheduleSuccess}
+                    disabled={schedulingId === selectedApp._id.toString() || scheduleSuccess}
                     className={`px-6 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2 ${
                       scheduleSuccess
                         ? 'bg-emerald-500 text-white' 
@@ -357,7 +378,7 @@ export default function AdminCareersPage() {
                   >
                      {scheduleSuccess ? (
                        <><CheckCircle2 className="w-4 h-4" /> Scheduled</>
-                     ) : schedulingId === selectedApp!._id.toString() ? (
+                     ) : schedulingId === selectedApp._id.toString() ? (
                        'Scheduling...'
                      ) : (
                        'Schedule Interview'
@@ -376,24 +397,24 @@ export default function AdminCareersPage() {
                 <div className="bg-gray-50 p-6 rounded-3xl border border-black/5">
                    <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Email Address</p>
                    <p className="text-sm font-bold text-gray-900 truncate">
-                      {selectedApp?.email}
+                      {selectedApp.email}
                    </p>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-3xl border border-black/5">
                    <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Mobile Number</p>
                    <p className="text-sm font-bold text-gray-900 truncate">
-                      {selectedApp?.phone || 'Not provided'}
+                      {selectedApp.phone || 'Not provided'}
                    </p>
                 </div>
                 <div className="bg-gray-50 p-6 rounded-3xl border border-black/5">
                    <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Experience</p>
                    <p className="text-sm font-bold text-gray-900 italic">
-                      {selectedApp?.experience}
+                      {selectedApp.experience}
                    </p>
                 </div>
               </div>
 
-              {selectedApp?.status === 'Interviewing' && selectedApp.interviewDate && (
+              {selectedApp.status === 'Interviewing' && selectedApp.interviewDate && (
                 <div className="bg-emerald-50 p-6 rounded-3xl border border-emerald-100 flex items-center gap-4">
                    <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center">
                      <Calendar className="w-6 h-6 text-emerald-600" />
@@ -410,13 +431,13 @@ export default function AdminCareersPage() {
               <div className="space-y-4">
                 <h3 className="text-sm font-black uppercase text-gray-900 tracking-widest">Cover Letter</h3>
                 <div className="bg-gray-50 p-8 rounded-[32px] border border-black/5 italic text-gray-600 leading-relaxed text-sm max-h-40 overflow-y-auto">
-                   "{selectedApp?.coverLetter || 'No cover letter provided.'}"
+                   "{selectedApp.coverLetter || 'No cover letter provided.'}"
                 </div>
               </div>
 
               <div className="space-y-4">
                 <h3 className="text-sm font-black uppercase text-gray-900 tracking-widest">Resume Preview</h3>
-                {selectedApp?.resume ? (
+                {selectedApp.resume ? (
                   <div className="w-full h-[600px] bg-gray-100 rounded-[32px] border-2 border-dashed border-gray-200 overflow-hidden relative">
                     <iframe 
                       src={selectedApp.resume} 
