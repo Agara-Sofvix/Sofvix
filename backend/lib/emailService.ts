@@ -50,6 +50,12 @@ const getTransporter = async () => {
 };
 
 export const sendInterviewScheduledEmail = async (to: string, candidateName: string, roleTitle: string, interviewDate?: Date | string) => {
+  // Ensure env is loaded before formatting the date
+  dotenv.config({ path: path.join(process.cwd(), '.env'), override: true });
+  const timeZone = process.env.APP_TIMEZONE || 'Asia/Kolkata'; // Fallback to IST if missing
+  
+  console.log(`[EmailService] Formatting date ${interviewDate} using timeZone: ${timeZone}`);
+
   const formattedDate = interviewDate 
     ? new Date(interviewDate).toLocaleString('en-US', { 
         weekday: 'long', 
@@ -58,9 +64,11 @@ export const sendInterviewScheduledEmail = async (to: string, candidateName: str
         day: 'numeric', 
         hour: '2-digit', 
         minute: '2-digit',
-        timeZone: process.env.APP_TIMEZONE || 'UTC'
+        timeZone: timeZone
       })
     : 'to be determined';
+
+  console.log(`[EmailService] Resulting formattedDate: ${formattedDate}`);
 
   const mailOptions = {
     from: `"Agara Recruitment" <${process.env.SMTP_USER || process.env.EMAIL_USER || 'recruiting@agara.test'}>`,
