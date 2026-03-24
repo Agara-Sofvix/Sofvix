@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, MapPin, Phone, Linkedin, Twitter, Github, Instagram } from "lucide-react";
 
 export function Footer() {
@@ -11,9 +12,7 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#F97316] to-[#FB923C] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">A</span>
-              </div>
+              <Image src="/logo.png" alt="Agara-Sofvix Logo" width={40} height={40} className="rounded-lg" />
               <span className="text-white text-xl font-semibold tracking-tight">
                 Agara-Sofvix
               </span>

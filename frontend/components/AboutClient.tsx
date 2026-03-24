@@ -72,9 +72,6 @@ export function AboutClient() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F97316]/5 text-[#F97316] text-[10px] font-bold uppercase tracking-wider mb-8 border border-[#F97316]/10">
-                Engineering Excellence First
-              </div>
               <h1 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter text-gray-900 leading-[1.1]">
                 Scalable Solutions Built on <br /> <span className="text-[#F97316]">Purpose & Belief.</span>
               </h1>
@@ -95,31 +92,6 @@ export function AboutClient() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 border-b border-black/5 bg-white/30 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { label: "Successful Deployments", value: "200+" },
-              { label: "Engineering Experts", value: "50+" },
-              { label: "Client Retention", value: "98%" },
-              { label: "Global Reach", value: "15+" }
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center"
-              >
-                <p className="text-4xl md:text-5xl font-black text-gray-900 mb-2">{stat.value}</p>
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest leading-tight">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Story Section */}
       <section className="py-24 md:py-32">

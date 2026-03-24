@@ -17,6 +17,9 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Agara-Sofvix | Engineering Scalable Digital Products",
   description: "We build enterprise-grade software solutions that drive growth, enhance efficiency, and transform businesses globally.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

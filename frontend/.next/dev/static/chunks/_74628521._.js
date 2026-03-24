@@ -160,21 +160,13 @@ function AboutClient() {
                                     ]
                                 },
                                 children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F97316]/5 text-[#F97316] text-[10px] font-bold uppercase tracking-wider mb-8 border border-[#F97316]/10",
-                                        children: "Engineering Excellence First"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 75,
-                                        columnNumber: 15
-                                    }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                         className: "text-5xl md:text-7xl font-black mb-8 tracking-tighter text-gray-900 leading-[1.1]",
                                         children: [
                                             "Scalable Solutions Built on ",
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 79,
+                                                lineNumber: 76,
                                                 columnNumber: 45
                                             }, this),
                                             " ",
@@ -183,13 +175,13 @@ function AboutClient() {
                                                 children: "Purpose & Belief."
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 79,
+                                                lineNumber: 76,
                                                 columnNumber: 52
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 78,
+                                        lineNumber: 75,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -197,7 +189,7 @@ function AboutClient() {
                                         children: "Agara Sofvix is a global software engineering partner dedicated to building resilient digital products that foster growth, innovation, and human-centered impact."
                                     }, void 0, false, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 81,
+                                        lineNumber: 78,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -212,13 +204,13 @@ function AboutClient() {
                                                         className: "ml-2 w-5 h-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/AboutClient.tsx",
-                                                        lineNumber: 87,
+                                                        lineNumber: 84,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 85,
+                                                lineNumber: 82,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -228,13 +220,13 @@ function AboutClient() {
                                                 children: "Get Started"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 89,
+                                                lineNumber: 86,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 84,
+                                        lineNumber: 81,
                                         columnNumber: 15
                                     }, this)
                                 ]
@@ -260,83 +252,6 @@ function AboutClient() {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-                className: "py-16 border-b border-black/5 bg-white/30 backdrop-blur-sm",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "max-w-7xl mx-auto px-6",
-                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "grid grid-cols-2 md:grid-cols-4 gap-8",
-                        children: [
-                            {
-                                label: "Successful Deployments",
-                                value: "200+"
-                            },
-                            {
-                                label: "Engineering Experts",
-                                value: "50+"
-                            },
-                            {
-                                label: "Client Retention",
-                                value: "98%"
-                            },
-                            {
-                                label: "Global Reach",
-                                value: "15+"
-                            }
-                        ].map((stat, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
-                                initial: {
-                                    opacity: 0,
-                                    y: 10
-                                },
-                                whileInView: {
-                                    opacity: 1,
-                                    y: 0
-                                },
-                                viewport: {
-                                    once: true
-                                },
-                                transition: {
-                                    delay: i * 0.1
-                                },
-                                className: "text-center",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-4xl md:text-5xl font-black text-gray-900 mb-2",
-                                        children: stat.value
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 116,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-xs font-bold text-gray-400 uppercase tracking-widest leading-tight",
-                                        children: stat.label
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 117,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, i, true, {
-                                fileName: "[project]/components/AboutClient.tsx",
-                                lineNumber: 108,
-                                columnNumber: 15
-                            }, this))
-                    }, void 0, false, {
-                        fileName: "[project]/components/AboutClient.tsx",
-                        lineNumber: 101,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "[project]/components/AboutClient.tsx",
-                    lineNumber: 100,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/components/AboutClient.tsx",
-                lineNumber: 99,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                 className: "py-24 md:py-32",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "max-w-7xl mx-auto px-6",
@@ -351,7 +266,7 @@ function AboutClient() {
                                         children: "Our Story"
                                     }, void 0, false, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 129,
+                                        lineNumber: 101,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -359,7 +274,7 @@ function AboutClient() {
                                         children: "Crafting Software that Defines Markets."
                                     }, void 0, false, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 130,
+                                        lineNumber: 102,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -369,20 +284,20 @@ function AboutClient() {
                                                 children: "Agara Sofvix was founded to bridge the gap between complex technological demands and the human purpose behind them. We believe that software should not just solve problems—it should create opportunities."
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 132,
+                                                lineNumber: 104,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 children: "From our headquarters, we oversee a global operation of architects and developers who prioritize clean code, architectural purity, and long-term scalability. We are not just a vendor; we are your strategic engineering partner."
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 135,
+                                                lineNumber: 107,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 131,
+                                        lineNumber: 103,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -394,12 +309,12 @@ function AboutClient() {
                                                     className: "w-6 h-6"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/AboutClient.tsx",
-                                                    lineNumber: 141,
+                                                    lineNumber: 113,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 140,
+                                                lineNumber: 112,
                                                 columnNumber: 18
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -407,19 +322,19 @@ function AboutClient() {
                                                 children: "Enterprise-Grade Security & Compliance"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 143,
+                                                lineNumber: 115,
                                                 columnNumber: 18
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 139,
+                                        lineNumber: 111,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/AboutClient.tsx",
-                                lineNumber: 128,
+                                lineNumber: 100,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -443,7 +358,7 @@ function AboutClient() {
                                                 className: "absolute inset-0 bg-gradient-to-br from-gray-900/5 to-transparent"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 154,
+                                                lineNumber: 126,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -452,12 +367,12 @@ function AboutClient() {
                                                     className: "w-20 h-20 text-gray-100 group-hover:text-gray-200 transition-colors"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/AboutClient.tsx",
-                                                    lineNumber: 156,
+                                                    lineNumber: 128,
                                                     columnNumber: 22
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 155,
+                                                lineNumber: 127,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -467,33 +382,33 @@ function AboutClient() {
                                                         className: "w-3 h-3 rounded-full bg-red-400"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/AboutClient.tsx",
-                                                        lineNumber: 159,
+                                                        lineNumber: 131,
                                                         columnNumber: 22
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "w-3 h-3 rounded-full bg-yellow-400"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/AboutClient.tsx",
-                                                        lineNumber: 160,
+                                                        lineNumber: 132,
                                                         columnNumber: 22
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "w-3 h-3 rounded-full bg-green-400"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/AboutClient.tsx",
-                                                        lineNumber: 161,
+                                                        lineNumber: 133,
                                                         columnNumber: 22
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 158,
+                                                lineNumber: 130,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 153,
+                                        lineNumber: 125,
                                         columnNumber: 16
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -504,7 +419,7 @@ function AboutClient() {
                                                 children: "24/7"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 165,
+                                                lineNumber: 137,
                                                 columnNumber: 18
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -512,35 +427,35 @@ function AboutClient() {
                                                 children: "Global Operations"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 166,
+                                                lineNumber: 138,
                                                 columnNumber: 18
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 164,
+                                        lineNumber: 136,
                                         columnNumber: 16
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/AboutClient.tsx",
-                                lineNumber: 147,
+                                lineNumber: 119,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/AboutClient.tsx",
-                        lineNumber: 127,
+                        lineNumber: 99,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/AboutClient.tsx",
-                    lineNumber: 126,
+                    lineNumber: 98,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/AboutClient.tsx",
-                lineNumber: 125,
+                lineNumber: 97,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -556,7 +471,7 @@ function AboutClient() {
                                     children: "Our Technical Prowess"
                                 }, void 0, false, {
                                     fileName: "[project]/components/AboutClient.tsx",
-                                    lineNumber: 177,
+                                    lineNumber: 149,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -564,13 +479,13 @@ function AboutClient() {
                                     children: "Delivering complex solutions with surgical precision and modern patterns."
                                 }, void 0, false, {
                                     fileName: "[project]/components/AboutClient.tsx",
-                                    lineNumber: 178,
+                                    lineNumber: 150,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/AboutClient.tsx",
-                            lineNumber: 176,
+                            lineNumber: 148,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -597,7 +512,7 @@ function AboutClient() {
                                             children: item.icon
                                         }, void 0, false, {
                                             fileName: "[project]/components/AboutClient.tsx",
-                                            lineNumber: 191,
+                                            lineNumber: 163,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -605,7 +520,7 @@ function AboutClient() {
                                             children: item.tag
                                         }, void 0, false, {
                                             fileName: "[project]/components/AboutClient.tsx",
-                                            lineNumber: 194,
+                                            lineNumber: 166,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -613,7 +528,7 @@ function AboutClient() {
                                             children: item.title
                                         }, void 0, false, {
                                             fileName: "[project]/components/AboutClient.tsx",
-                                            lineNumber: 195,
+                                            lineNumber: 167,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -621,29 +536,29 @@ function AboutClient() {
                                             children: item.desc
                                         }, void 0, false, {
                                             fileName: "[project]/components/AboutClient.tsx",
-                                            lineNumber: 196,
+                                            lineNumber: 168,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, i, true, {
                                     fileName: "[project]/components/AboutClient.tsx",
-                                    lineNumber: 183,
+                                    lineNumber: 155,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/AboutClient.tsx",
-                            lineNumber: 181,
+                            lineNumber: 153,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/AboutClient.tsx",
-                    lineNumber: 175,
+                    lineNumber: 147,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/AboutClient.tsx",
-                lineNumber: 174,
+                lineNumber: 146,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -664,14 +579,14 @@ function AboutClient() {
                                             children: "Culture"
                                         }, void 0, false, {
                                             fileName: "[project]/components/AboutClient.tsx",
-                                            lineNumber: 208,
+                                            lineNumber: 180,
                                             columnNumber: 27
                                         }, this),
                                         " Over Code."
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/AboutClient.tsx",
-                                    lineNumber: 207,
+                                    lineNumber: 179,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -679,13 +594,13 @@ function AboutClient() {
                                     children: "We believe that the quality of our systems is a direct reflection of our cultural principles. We hire for character and train for elite performance."
                                 }, void 0, false, {
                                     fileName: "[project]/components/AboutClient.tsx",
-                                    lineNumber: 210,
+                                    lineNumber: 182,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/AboutClient.tsx",
-                            lineNumber: 206,
+                            lineNumber: 178,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -696,7 +611,7 @@ function AboutClient() {
                                     desc: "Honest communication and clear roadmaps ensure zero surprises in the development lifecycle.",
                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$users$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Users$3e$__["Users"], {}, void 0, false, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 217,
+                                        lineNumber: 189,
                                         columnNumber: 155
                                     }, this)
                                 },
@@ -705,7 +620,7 @@ function AboutClient() {
                                     desc: "We prioritize tangible outcomes over theoretical discussions. We ship clean, working code.",
                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$zap$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Zap$3e$__["Zap"], {}, void 0, false, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 218,
+                                        lineNumber: 190,
                                         columnNumber: 149
                                     }, this)
                                 },
@@ -714,7 +629,7 @@ function AboutClient() {
                                     desc: "Every feature is designed to empower a human being. UX is not a layer; it's the core.",
                                     icon: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$heart$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Heart$3e$__["Heart"], {}, void 0, false, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 219,
+                                        lineNumber: 191,
                                         columnNumber: 145
                                     }, this)
                                 }
@@ -742,7 +657,7 @@ function AboutClient() {
                                             })
                                         }, void 0, false, {
                                             fileName: "[project]/components/AboutClient.tsx",
-                                            lineNumber: 229,
+                                            lineNumber: 201,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
@@ -750,7 +665,7 @@ function AboutClient() {
                                             children: v.title
                                         }, void 0, false, {
                                             fileName: "[project]/components/AboutClient.tsx",
-                                            lineNumber: 232,
+                                            lineNumber: 204,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -758,29 +673,29 @@ function AboutClient() {
                                             children: v.desc
                                         }, void 0, false, {
                                             fileName: "[project]/components/AboutClient.tsx",
-                                            lineNumber: 233,
+                                            lineNumber: 205,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, i, true, {
                                     fileName: "[project]/components/AboutClient.tsx",
-                                    lineNumber: 221,
+                                    lineNumber: 193,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/AboutClient.tsx",
-                            lineNumber: 215,
+                            lineNumber: 187,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/AboutClient.tsx",
-                    lineNumber: 205,
+                    lineNumber: 177,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/AboutClient.tsx",
-                lineNumber: 204,
+                lineNumber: 176,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -806,14 +721,14 @@ function AboutClient() {
                                     "Let’s Engineer Your ",
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 249,
+                                        lineNumber: 221,
                                         columnNumber: 35
                                     }, this),
                                     " Future Together."
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/AboutClient.tsx",
-                                lineNumber: 248,
+                                lineNumber: 220,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -821,7 +736,7 @@ function AboutClient() {
                                 children: "Ready to deploy your next high-impact digital product? Join a community of forward-thinking enterprise leaders."
                             }, void 0, false, {
                                 fileName: "[project]/components/AboutClient.tsx",
-                                lineNumber: 251,
+                                lineNumber: 223,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -837,13 +752,13 @@ function AboutClient() {
                                                 className: "ml-3 group-hover:translate-x-1 transition-transform"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/AboutClient.tsx",
-                                                lineNumber: 257,
+                                                lineNumber: 229,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 255,
+                                        lineNumber: 227,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -854,29 +769,29 @@ function AboutClient() {
                                         children: "Get Started"
                                     }, void 0, false, {
                                         fileName: "[project]/components/AboutClient.tsx",
-                                        lineNumber: 259,
+                                        lineNumber: 231,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/AboutClient.tsx",
-                                lineNumber: 254,
+                                lineNumber: 226,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/AboutClient.tsx",
-                        lineNumber: 243,
+                        lineNumber: 215,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/AboutClient.tsx",
-                    lineNumber: 242,
+                    lineNumber: 214,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/AboutClient.tsx",
-                lineNumber: 241,
+                lineNumber: 213,
                 columnNumber: 7
             }, this)
         ]

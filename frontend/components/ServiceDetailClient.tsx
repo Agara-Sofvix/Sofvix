@@ -99,9 +99,6 @@ export function ServiceDetailClient({ category, service, categorySlug, serviceSl
           
           <div className="grid lg:grid-cols-2 gap-10 md:gap-20 items-center">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 text-orange-600 font-black text-[10px] uppercase tracking-tighter mb-8 border border-orange-100">
-                Enterprise Solution Layer
-              </div>
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-[1.1] text-slate-900 tracking-tight">{service.name}</h1>
               <p className="text-xl lg:text-2xl text-slate-600 leading-relaxed mb-10 font-medium max-w-xl">{service.description}</p>
               <div className="flex flex-col sm:flex-row gap-4">

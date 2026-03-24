@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { Button } from "./Button";
 
@@ -24,9 +25,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#F97316] to-[#FB923C] rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">A</span>
-            </div>
+            <Image src="/logo.png" alt="Agara-Sofvix Logo" width={40} height={40} className="rounded-lg" />
             <span className="text-white text-xl font-semibold tracking-tight">
               Agara-Sofvix
             </span>
