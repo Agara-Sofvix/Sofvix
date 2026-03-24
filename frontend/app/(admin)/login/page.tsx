@@ -85,7 +85,7 @@ export default function AdminLoginPage() {
                   required
                   name="email"
                   type="email" 
-                  placeholder="admin@agara.com"
+                  placeholder="Authorized Access Only"
                   className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-4 text-white focus:outline-none focus:border-[#F97316] focus:bg-white/10 transition-all font-medium"
                 />
               </div>
@@ -99,7 +99,7 @@ export default function AdminLoginPage() {
                   required
                   name="password"
                   type={showPassword ? "text" : "password"} 
-                  placeholder="••••••••"
+                  placeholder="*********"
                   className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-12 py-4 text-white focus:outline-none focus:border-[#F97316] focus:bg-white/10 transition-all font-medium"
                 />
                 <button 

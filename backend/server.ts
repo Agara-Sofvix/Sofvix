@@ -32,13 +32,21 @@ const startServer = async () => {
     console.log('Connected to Database');
     
     // Seed Admin User
-    const adminExists = await Admin.findOne({ email: 'admin@agara.com' });
-    if (!adminExists) {
+    const adminEmail = 'admin@agara.com';
+    const adminPassword = 'Azhaga1992in!';
+    
+    const adminUser = await Admin.findOne({ email: adminEmail });
+    if (!adminUser) {
       await Admin.create({
-        email: 'admin@agara.com',
-        password: 'admin123'
+        email: adminEmail,
+        password: adminPassword
       });
       console.log('Default admin user created');
+    } else {
+      // Force update password to the new one requested by the user
+      adminUser.password = adminPassword;
+      await adminUser.save();
+      console.log('Admin password updated');
     }
 
     app.listen(PORT, () => {
