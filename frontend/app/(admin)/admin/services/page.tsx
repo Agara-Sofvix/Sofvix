@@ -102,9 +102,30 @@ function AdminServicesContent() {
           description: "",
           features: ["", "", ""]
         });
+      } else {
+        const errorData = await res.json();
+        alert(`Failed to add service: ${errorData.details || errorData.error}`);
       }
     } catch (error) {
       console.error("Failed to add service:", error);
+      alert("Failed to connect to the server.");
+    }
+  };
+
+  const handleDeleteService = async (categoryId: string, slug: string) => {
+    if (!confirm('Are you sure you want to delete this service?')) return;
+    const apiUrl = getApiUrl();
+    try {
+      const res = await fetch(`${apiUrl}/api/categories/${categoryId}/capabilities/${slug}`, {
+        method: 'DELETE'
+      });
+      if (res.ok) {
+        await fetchData();
+      } else {
+        alert("Failed to delete service.");
+      }
+    } catch (error) {
+      console.error("Failed to delete service:", error);
     }
   };
 
@@ -218,7 +239,10 @@ function AdminServicesContent() {
                         <button className="p-2.5 text-gray-400 hover:text-[#F97316] hover:bg-[#F97316]/5 rounded-xl transition-all">
                           <Edit2 className="w-4 h-4" />
                         </button>
-                        <button className="p-2.5 text-gray-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all">
+                        <button 
+                          onClick={() => handleDeleteService(service.categoryId, service.slug)}
+                          className="p-2.5 text-gray-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all"
+                        >
                           <Trash2 className="w-4 h-4" />
                         </button>
                         <button className="p-2.5 text-gray-400 hover:text-gray-900 hover:bg-gray-100 rounded-xl transition-all">

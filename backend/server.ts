@@ -11,6 +11,7 @@ import Category from './models/Category';
 import { sendInterviewScheduledEmail } from './lib/emailService';
 import Admin from './models/Admin';
 import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -136,8 +137,30 @@ app.post('/api/categories/:id/capabilities', async (req, res) => {
     await category.save();
     
     res.status(201).json(newCapability);
-  } catch (error) {
-    res.status(400).json({ error: 'Failed to add capability' });
+  } catch (error: any) {
+    console.error('Error adding capability:', error);
+    res.status(400).json({ error: 'Failed to add capability', details: error.message });
+  }
+});
+
+app.delete('/api/categories/:id/capabilities/:slug', async (req, res) => {
+  try {
+    const category = await Category.findOne({ 
+      $or: [
+        { _id: mongoose.isValidObjectId(req.params.id) ? req.params.id : null },
+        { id: req.params.id },
+        { slug: req.params.id }
+      ]
+    });
+    
+    if (!category) return res.status(404).json({ error: 'Category not found' });
+
+    category.capabilities = category.capabilities.filter((cap: any) => cap.slug !== req.params.slug);
+    await category.save();
+    
+    res.json({ message: 'Capability deleted successfully' });
+  } catch (error: any) {
+    res.status(400).json({ error: 'Failed to delete capability' });
   }
 });
 
