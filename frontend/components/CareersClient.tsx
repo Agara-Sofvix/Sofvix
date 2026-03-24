@@ -1,5 +1,7 @@
 'use client';
 
+import { getApiUrl } from "@/lib/api";
+
 import { useState, useRef } from "react";
 import { motion } from "motion/react";
 import { 
@@ -101,7 +103,8 @@ export function CareersClient({ initialJobs }: CareersClientProps) {
     const job = jobs.find(j => j._id === formData.roleId);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/applications`, {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/applications`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

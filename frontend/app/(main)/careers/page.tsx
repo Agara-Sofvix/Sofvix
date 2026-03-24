@@ -3,10 +3,12 @@ import { Suspense } from "react";
 import Loading from "../loading";
 import { PAGE_SEO } from "@/lib/seo/pageMapping";
 
+import { getApiUrl } from "@/lib/api";
+
 export const metadata = PAGE_SEO.careers;
 
 async function getJobs() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+  const apiUrl = getApiUrl();
   try {
     const res = await fetch(`${apiUrl}/api/jobs`, {
       next: { revalidate: 60 }

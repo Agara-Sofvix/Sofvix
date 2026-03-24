@@ -1,5 +1,7 @@
 'use client';
 
+import { getApiUrl } from '@/lib/api';
+
 import { 
   Search, 
   Filter, 
@@ -32,7 +34,8 @@ export default function AdminCareersPage() {
 
   const fetchApplications = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/applications`);
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/applications`);
       if (!response.ok) throw new Error('Failed to fetch applications');
       const data = await response.json();
       setApplications(data);
@@ -63,7 +66,8 @@ export default function AdminCareersPage() {
         setScheduleSuccess(false);
       }
       console.log(`Updating application ${id} to ${newStatus}`);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/applications/${id}`, {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/applications/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -102,7 +106,8 @@ export default function AdminCareersPage() {
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this application?')) return;
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/applications/${id}`, {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/applications/${id}`, {
         method: 'DELETE',
       });
       if (response.ok) {

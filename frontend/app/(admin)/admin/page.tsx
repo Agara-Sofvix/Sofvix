@@ -1,5 +1,7 @@
 'use client';
 
+import { getApiUrl } from '@/lib/api';
+
 import { motion } from "motion/react";
 import { 
   Users, 
@@ -30,9 +32,10 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const apiUrl = getApiUrl();
         const [inquiriesRes, applicationsRes] = await Promise.all([
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/inquiries`),
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/applications`)
+          fetch(`${apiUrl}/api/inquiries`),
+          fetch(`${apiUrl}/api/applications`)
         ]);
 
         if (!inquiriesRes.ok || !applicationsRes.ok) throw new Error('Failed to fetch data');

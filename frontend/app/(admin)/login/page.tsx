@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
 import { Lock, Mail, ArrowRight, ShieldCheck, Eye, EyeOff } from 'lucide-react';
 
+import { getApiUrl } from '@/lib/api';
+
 export default function AdminLoginPage() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +22,7 @@ export default function AdminLoginPage() {
     const password = (e.target as any).password.value;
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const apiUrl = getApiUrl();
       const res = await fetch(`${apiUrl}/api/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

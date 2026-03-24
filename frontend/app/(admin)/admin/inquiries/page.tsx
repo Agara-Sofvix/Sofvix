@@ -1,5 +1,7 @@
 'use client';
 
+import { getApiUrl } from '@/lib/api';
+
 import { 
   Search, 
   Filter, 
@@ -26,7 +28,8 @@ export default function AdminInquiriesPage() {
   useEffect(() => {
     const fetchInquiries = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/inquiries`);
+        const apiUrl = getApiUrl();
+        const response = await fetch(`${apiUrl}/api/inquiries`);
         if (!response.ok) throw new Error('Failed to fetch inquiries');
         const data = await response.json();
         setInquiries(data);
@@ -43,7 +46,8 @@ export default function AdminInquiriesPage() {
   const updateStatus = async (id: string, newStatus: string) => {
     setUpdatingId(id);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/inquiries/${id}`, {
+      const apiUrl = getApiUrl();
+      const res = await fetch(`${apiUrl}/api/inquiries/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -66,7 +70,8 @@ export default function AdminInquiriesPage() {
     if (!confirm('Are you sure you want to delete this inquiry?')) return;
     setUpdatingId(id);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/inquiries/${id}`, {
+      const apiUrl = getApiUrl();
+      const res = await fetch(`${apiUrl}/api/inquiries/${id}`, {
         method: 'DELETE',
       });
       if (res.ok) {

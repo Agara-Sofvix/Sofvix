@@ -1,5 +1,7 @@
 'use client';
 
+import { getApiUrl } from '@/lib/api';
+
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Plus, Trash2, Briefcase, MapPin, Search } from 'lucide-react';
@@ -26,7 +28,8 @@ export default function AdminJobsPage() {
 
   const fetchJobs = async () => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs`);
+      const apiUrl = getApiUrl();
+      const res = await fetch(`${apiUrl}/api/jobs`);
       if (res.ok) {
         const data = await res.json();
         setJobs(data);
@@ -45,7 +48,8 @@ export default function AdminJobsPage() {
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this job posting?')) return;
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs/${id}`, {
+      const apiUrl = getApiUrl();
+      const res = await fetch(`${apiUrl}/api/jobs/${id}`, {
         method: 'DELETE'
       });
       if (res.ok) {
@@ -67,7 +71,8 @@ export default function AdminJobsPage() {
     };
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs`, {
+      const apiUrl = getApiUrl();
+      const res = await fetch(`${apiUrl}/api/jobs`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newJob)

@@ -1,5 +1,7 @@
 'use client';
 
+import { getApiUrl } from "@/lib/api";
+
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from "motion/react";
@@ -53,7 +55,8 @@ export function ScheduleCallClient() {
     const day = days[selectedDay];
     
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/inquiries`, {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/inquiries`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
