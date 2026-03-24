@@ -121,7 +121,7 @@ function AdminServicesContent() {
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
           <h1 className="text-3xl font-black text-gray-900 tracking-tight">Services Management</h1>
-          <p className="text-gray-500 font-medium">Manage your {SERVICES.length} system offerings across {CATEGORIES.length} categories.</p>
+          <p className="text-gray-500 font-medium">Manage your {servicesList.length} system offerings across {categories.length} categories.</p>
         </div>
         <div className="flex items-center gap-3">
           <button className="flex items-center gap-2 px-6 py-3 bg-white border border-black/5 rounded-xl text-sm font-bold text-gray-700 hover:bg-gray-50 transition-all shadow-sm">

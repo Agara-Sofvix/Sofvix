@@ -23,11 +23,10 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { IInquiry } from "@/models/Inquiry";
 import { IApplication } from "@/models/Application";
-import { CATEGORIES, SERVICES } from "@/app/(main)/products/data";
-
 export default function AdminDashboardPage() {
   const [inquiries, setInquiries] = useState<IInquiry[]>([]);
   const [applications, setApplications] = useState<IApplication[]>([]);
+  const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -46,18 +45,21 @@ export default function AdminDashboardPage() {
     const fetchData = async () => {
       try {
         const apiUrl = getApiUrl();
-        const [inquiriesRes, applicationsRes] = await Promise.all([
+        const [inquiriesRes, applicationsRes, categoriesRes] = await Promise.all([
           fetch(`${apiUrl}/api/inquiries`),
-          fetch(`${apiUrl}/api/applications`)
+          fetch(`${apiUrl}/api/applications`),
+          fetch(`${apiUrl}/api/categories`)
         ]);
 
-        if (!inquiriesRes.ok || !applicationsRes.ok) throw new Error('Failed to fetch data');
+        if (!inquiriesRes.ok || !applicationsRes.ok || !categoriesRes.ok) throw new Error('Failed to fetch data');
 
         const inquiriesData = await inquiriesRes.json();
         const applicationsData = await applicationsRes.json();
+        const categoriesData = await categoriesRes.json();
 
         setInquiries(inquiriesData);
         setApplications(applicationsData);
+        setCategories(categoriesData);
       } catch (error) {
         console.error(error);
       } finally {
@@ -67,6 +69,9 @@ export default function AdminDashboardPage() {
 
     fetchData();
   }, []);
+
+  const totalServices = categories.reduce((acc, cat) => acc + (cat.capabilities?.length || 0), 0);
+
   const filteredInquiries = inquiries.filter(inq => 
     inq.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
     inq.email.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -92,7 +97,7 @@ export default function AdminDashboardPage() {
     },
     { 
       label: "Active Services", 
-      value: SERVICES.length.toString(), 
+      value: totalServices.toString(), 
       change: "+2 new", 
       trend: "up", 
       icon: Layers,

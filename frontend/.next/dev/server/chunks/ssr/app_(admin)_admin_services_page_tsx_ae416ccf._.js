@@ -152,9 +152,9 @@ function AdminServicesContent() {
                                 className: "text-gray-500 font-medium",
                                 children: [
                                     "Manage your ",
-                                    SERVICES.length,
+                                    servicesList.length,
                                     " system offerings across ",
-                                    CATEGORIES.length,
+                                    categories.length,
                                     " categories."
                                 ]
                             }, void 0, true, {
