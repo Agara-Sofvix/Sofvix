@@ -7,7 +7,8 @@ import {
   Settings,
   HelpCircle,
   Menu,
-  LogOut
+  LogOut,
+  ChevronRight
 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
@@ -127,15 +128,33 @@ export function AdminTopbar() {
                 <p className="text-[10px] text-gray-600 leading-relaxed font-medium">Use the "Interviewing" status in Careers to automatically send scheduling emails to candidates.</p>
               </div>
               <div className="space-y-1">
-                <button className="w-full text-left p-2.5 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 flex items-center justify-between group">
+                <button 
+                  onClick={() => {
+                    router.push('/admin/jobs');
+                    setShowHelp(false);
+                  }}
+                  className="w-full text-left p-2.5 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 flex items-center justify-between group"
+                >
                   How to Manage Jobs
                   <ChevronRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-900 transition-colors" />
                 </button>
-                <button className="w-full text-left p-2.5 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 flex items-center justify-between group">
+                <button 
+                  onClick={() => {
+                    router.push('/admin/seo');
+                    setShowHelp(false);
+                  }}
+                  className="w-full text-left p-2.5 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 flex items-center justify-between group"
+                >
                   SEO Optimization Guide
                   <ChevronRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-900 transition-colors" />
                 </button>
-                <button className="w-full text-left p-2.5 hover:bg-orange-50 rounded-xl text-xs font-bold text-[#F97316] flex items-center justify-between group">
+                <button 
+                  onClick={() => {
+                    window.location.href = 'mailto:support@agara.com';
+                    setShowHelp(false);
+                  }}
+                  className="w-full text-left p-2.5 hover:bg-orange-50 rounded-xl text-xs font-bold text-[#F97316] flex items-center justify-between group"
+                >
                   Contact Developer Support
                   <ChevronRight className="w-3.5 h-3.5 text-[#F97316]/30 group-hover:text-[#F97316] transition-colors" />
                 </button>

@@ -6,5 +6,6 @@
   "/(admin)/admin/seo/page": "app/(admin)/admin/seo/page.js",
   "/(admin)/admin/services/page": "app/(admin)/admin/services/page.js",
   "/(admin)/login/page": "app/(admin)/login/page.js",
+  "/(main)/get-started/page": "app/(main)/get-started/page.js",
   "/(main)/page": "app/(main)/page.js"
 }
