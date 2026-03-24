@@ -37,3 +37,12 @@
 [01:51:10.560] Server  LOG     ✓ Compiled in 650ms
 [01:51:22.706] Server  LOG     ✓ Compiled in 881ms
 [01:51:33.316] Server  LOG     ✓ Compiled in 132ms
+[01:54:08.955] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:54:09.267] Browser WARN    Image with src "/hero_card_banner.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:54:16.922] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:54:30.164] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:54:33.235] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:58:28.265] Server  LOG     ✓ Compiled in 477ms
+[01:58:30.765] Server  LOG     ✓ Compiled in 925ms
+[01:58:43.336] Server  LOG     ✓ Finished filesystem cache database compaction in 10.1s
+[01:58:55.451] Server  LOG     ✓ Compiled in 288ms

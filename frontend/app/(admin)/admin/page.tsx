@@ -19,6 +19,7 @@ import {
   Search
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { IInquiry } from "@/models/Inquiry";
 import { IApplication } from "@/models/Application";
@@ -28,6 +29,18 @@ export default function AdminDashboardPage() {
   const [inquiries, setInquiries] = useState<IInquiry[]>([]);
   const [applications, setApplications] = useState<IApplication[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const searchParams = useSearchParams();
+  const urlSearch = searchParams.get('search') || '';
+
+  useEffect(() => {
+    if (urlSearch) {
+      setSearchQuery(urlSearch);
+    } else {
+      setSearchQuery('');
+    }
+  }, [urlSearch]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,10 +67,23 @@ export default function AdminDashboardPage() {
 
     fetchData();
   }, []);
+  const filteredInquiries = inquiries.filter(inq => 
+    inq.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    inq.email.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    inq.service.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    inq.message.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const filteredApplications = applications.filter(app => 
+    app.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    app.email.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    app.roleTitle.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   const stats = [
     { 
       label: "Total Inquiries", 
-      value: inquiries.length.toString(), 
+      value: filteredInquiries.length.toString(), 
       change: "+12.5%", 
       trend: "up", 
       icon: MessageSquare,
@@ -75,7 +101,7 @@ export default function AdminDashboardPage() {
     },
     { 
       label: "Talent Pipeline", 
-      value: applications.length.toString(), 
+      value: filteredApplications.length.toString(), 
       change: "+3 new", 
       trend: "up", 
       icon: Users,
@@ -158,7 +184,9 @@ export default function AdminDashboardPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-black/5">
-                {inquiries.slice(0, 5).map((inquiry) => (
+                {filteredInquiries
+                  .slice(0, 5)
+                  .map((inquiry) => (
                   <tr key={inquiry._id.toString()} className="hover:bg-gray-50/50 transition-colors cursor-pointer group">
                     <td className="px-8 py-6">
                       <div className="flex items-center gap-4">
