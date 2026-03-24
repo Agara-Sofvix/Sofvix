@@ -20,7 +20,8 @@ import {
   Trash2,
   Edit3,
   Zap,
-  Briefcase
+  Briefcase,
+  Settings
 } from "lucide-react";
 
 interface Capability {
@@ -52,6 +53,7 @@ function AdminProductsContent() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showUsageModal, setShowUsageModal] = useState(false);
   const [showServicesModal, setShowServicesModal] = useState(false);
+  const [showGlobalAddServiceModal, setShowGlobalAddServiceModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   
   const [newCategory, setNewCategory] = useState({
@@ -63,7 +65,8 @@ function AdminProductsContent() {
   const [newService, setNewService] = useState({
     name: "",
     description: "",
-    icon: "Zap"
+    icon: "Zap",
+    categoryId: "" // Used for global add
   });
 
   const fetchCategories = async () => {
@@ -149,9 +152,15 @@ function AdminProductsContent() {
     }
   };
 
-  const handleAddService = async (e: React.FormEvent) => {
+  const handleAddService = async (e: React.FormEvent, targetCategoryId?: string) => {
     e.preventDefault();
-    if (!selectedCategory || !selectedCategory._id) return;
+    const catId = targetCategoryId || newService.categoryId;
+    const category = categoriesList.find(c => c._id === catId);
+    
+    if (!category || !category._id) {
+      alert("Please select a valid product (category).");
+      return;
+    }
 
     const capability: Capability = {
       name: newService.name,
@@ -161,13 +170,26 @@ function AdminProductsContent() {
     };
 
     const updatedCategory = {
-      ...selectedCategory,
-      capabilities: [...(selectedCategory.capabilities || []), capability]
+      ...category,
+      capabilities: [...(category.capabilities || []), capability]
     };
 
-    setSelectedCategory(updatedCategory);
-    setNewService({ name: "", description: "", icon: "Zap" });
-    await handleUpdateCategory(undefined, updatedCategory);
+    try {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/categories/${category._id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedCategory),
+      });
+      if (response.ok) {
+        fetchCategories();
+        setShowGlobalAddServiceModal(false);
+        setShowServicesModal(false);
+        setNewService({ name: "", description: "", icon: "Zap", categoryId: "" });
+      }
+    } catch (error) {
+      console.error('Failed to update category:', error);
+    }
   };
 
   const handleDeleteService = async (serviceName: string) => {
@@ -192,13 +214,25 @@ function AdminProductsContent() {
           <h1 className="text-3xl font-black text-gray-900 tracking-tight">Platform Systems</h1>
           <p className="text-gray-500 font-medium tracking-tight">Configure and manage your core system categories and their content.</p>
         </div>
-        <button 
-          onClick={() => setShowAddModal(true)}
-          className="flex items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-2xl text-sm font-black hover:bg-black transition-all shadow-xl"
-        >
-          <Plus className="w-5 h-5" />
-          Create New Category
-        </button>
+        <div className="flex items-center gap-3">
+          <button 
+            onClick={() => {
+              setNewService({ ...newService, categoryId: categoriesList[0]?._id || "" });
+              setShowGlobalAddServiceModal(true);
+            }}
+            className="flex items-center gap-2 px-6 py-4 bg-white border border-black/5 rounded-2xl text-sm font-black text-gray-700 hover:bg-gray-50 transition-all shadow-sm"
+          >
+            <Plus className="w-5 h-5 text-[#F97316]" />
+            Add New Service
+          </button>
+          <button 
+            onClick={() => setShowAddModal(true)}
+            className="flex items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-2xl text-sm font-black hover:bg-black transition-all shadow-xl"
+          >
+            <LayoutGrid className="w-5 h-5 text-[#F97316]" />
+            New Category
+          </button>
+        </div>
       </div>
 
       {/* Stats Cards */}
@@ -265,7 +299,7 @@ function AdminProductsContent() {
                    <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Services</p>
                    <div className="flex items-center justify-between">
                      <p className="text-sm font-bold text-gray-900">{category.capabilities?.length || 0}</p>
-                     <Plus className="w-3 h-3 text-[#F97316]" />
+                     <Settings className="w-3 h-3 text-[#F97316]" />
                    </div>
                 </button>
                 <div className="bg-white/50 rounded-xl p-3 border border-black/5">
@@ -301,6 +335,51 @@ function AdminProductsContent() {
         ))}
       </div>
 
+      {/* Global Add Service Modal (with Category selection) */}
+      <AnimatePresence>
+        {showGlobalAddServiceModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowGlobalAddServiceModal(false)} className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-lg bg-white rounded-[40px] shadow-2xl overflow-hidden">
+              <div className="p-10">
+                <div className="flex items-center justify-between mb-8">
+                  <h2 className="text-2xl font-black text-gray-900">Add New Service</h2>
+                  <button onClick={() => setShowGlobalAddServiceModal(false)} className="p-2 text-gray-400 hover:text-gray-900 transition-colors"><X className="w-6 h-6" /></button>
+                </div>
+
+                <form onSubmit={(e) => handleAddService(e)} className="space-y-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Target Product (Category)</label>
+                    <select 
+                      required
+                      value={newService.categoryId}
+                      onChange={(e) => setNewService({...newService, categoryId: e.target.value})}
+                      className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:outline-none focus:border-[#F97316] transition-all appearance-none"
+                    >
+                      {categoriesList.map(cat => (
+                        <option key={cat._id} value={cat._id}>{cat.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Service Name</label>
+                    <input required type="text" value={newService.name} onChange={(e) => setNewService({...newService, name: e.target.value})} placeholder="e.g., Inventory Tracking" className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:outline-none focus:border-[#F97316] transition-all" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Description</label>
+                    <input required type="text" value={newService.description} onChange={(e) => setNewService({...newService, description: e.target.value})} placeholder="Brief value proposition..." className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#F97316] transition-all" />
+                  </div>
+                  <button type="submit" className="w-full py-5 bg-[#F97316] text-white rounded-2xl text-sm font-black hover:bg-[#EA580C] transition-all shadow-xl flex items-center justify-center gap-2">
+                    <Plus className="w-5 h-5" />
+                    Publish Service
+                  </button>
+                </form>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* Add New Category Modal */}
       <AnimatePresence>
         {showAddModal && (
@@ -333,7 +412,7 @@ function AdminProductsContent() {
         )}
       </AnimatePresence>
 
-      {/* Manage Services Modal */}
+      {/* Manage Services Modal (per category) */}
       <AnimatePresence>
         {showServicesModal && selectedCategory && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -349,7 +428,7 @@ function AdminProductsContent() {
                 </div>
 
                 {/* Add New Service Form */}
-                <form onSubmit={handleAddService} className="bg-gray-50 p-6 rounded-3xl border border-black/5 mb-8 space-y-4">
+                <form onSubmit={(e) => handleAddService(e, selectedCategory._id)} className="bg-gray-50 p-6 rounded-3xl border border-black/5 mb-8 space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Service Name</label>
@@ -362,7 +441,7 @@ function AdminProductsContent() {
                   </div>
                   <button type="submit" className="w-full py-3 bg-[#F97316] text-white rounded-xl text-sm font-black hover:bg-[#EA580C] transition-all flex items-center justify-center gap-2">
                     <Plus className="w-4 h-4" />
-                    Add Service to Category
+                    Add Service to {selectedCategory.name}
                   </button>
                 </form>
 
