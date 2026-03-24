@@ -230,3 +230,17 @@ Import traces:
     ./app/(admin)/admin/careers/page.tsx [Server Component]
 [03:03:22.807] Server  LOG     ✓ Compiled in 282ms
 [03:04:27.483] Server  LOG     ✓ Compiled in 211ms
+[03:07:16.029] Server  LOG     ○ Compiling /admin/products ...
+[03:07:19.589] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/admin/products. Falling back to browser navigation. {}
+[03:07:19.589] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/admin/products. Falling back to browser navigation. {}
+[03:07:19.589] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/admin/products. Falling back to browser navigation. {}
+[03:07:19.589] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/admin/products. Falling back to browser navigation. {}
+[03:07:19.589] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/admin/products. Falling back to browser navigation. {}
+[03:07:21.625] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:11:45.317] Browser ERROR   Failed to fetch notifications {}
+[03:11:45.325] Browser ERROR   Failed to fetch notifications {}
+[03:11:46.000] Browser ERROR   Failed to fetch notifications {}
+[03:11:46.611] Browser ERROR   Failed to fetch notifications {}
+[03:12:25.174] Server  LOG     ✓ Compiled in 3.5s
+[03:12:49.195] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:38:07.743] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

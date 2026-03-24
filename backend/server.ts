@@ -7,6 +7,7 @@ import connectDB from './lib/db';
 import Inquiry from './models/Inquiry';
 import Application from './models/Application';
 import Job from './models/Job';
+import Category from './models/Category';
 import { sendInterviewScheduledEmail } from './lib/emailService';
 import Admin from './models/Admin';
 import jwt from 'jsonwebtoken';
@@ -43,10 +44,41 @@ const startServer = async () => {
       });
       console.log('Default admin user created');
     } else {
-      // Force update password to the new one requested by the user
       adminUser.password = adminPassword;
       await adminUser.save();
       console.log('Admin password updated');
+    }
+
+    // Seed Categories if empty
+    const categoryCount = await Category.countDocuments();
+    if (categoryCount === 0) {
+      console.log('Seeding initial categories...');
+      const initialCategories = [
+        { 
+          id: "cx-sales", 
+          name: "Customer Experience & Sales Systems", 
+          slug: "customer-experience-sales",
+          icon: "Users",
+          overview: "We unify your entire customer lifecycle — from lead generation to post-sales support — into a single intelligent system.",
+          capabilities: [
+            { name: "Centralized CRM & pipeline management", slug: "crm-pipeline", icon: "Users", description: "A unified platform to manage every stage of your sales funnel." }
+          ],
+          outcomes: ["Faster lead conversion cycles"]
+        },
+        { 
+          id: "marketing", 
+          name: "Marketing & Growth Automation", 
+          slug: "marketing-growth",
+          icon: "Megaphone",
+          overview: "We build performance-driven marketing systems that automate engagement and maximize conversion.",
+          capabilities: [
+            { name: "Email & campaign automation", slug: "email-automation", icon: "Mail", description: "Scale your reach with personalized, behavior-driven email sequences." }
+          ],
+          outcomes: ["Increased lead generation"]
+        }
+      ];
+      await Category.create(initialCategories);
+      console.log('Categories seeded');
     }
 
     app.listen(PORT, () => {
@@ -62,7 +94,54 @@ startServer();
 
 const JWT_SECRET = process.env.JWT_SECRET || 'agara-sofvix-secure-secret-2026';
 
-// Routes
+// Category API
+app.get('/api/categories', async (req, res) => {
+  try {
+    const categories = await Category.find({}).sort({ createdAt: -1 });
+    res.json(categories);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch categories' });
+  }
+});
+
+app.post('/api/categories', async (req, res) => {
+  try {
+    const data = {
+      ...req.body,
+      id: req.body.name.toLowerCase().replace(/\s+/g, '-'),
+      slug: req.body.name.toLowerCase().replace(/\s+/g, '-')
+    };
+    const category = await Category.create(data);
+    res.status(201).json(category);
+  } catch (error) {
+    res.status(400).json({ error: 'Failed to create category' });
+  }
+});
+
+app.put('/api/categories/:id', async (req, res) => {
+  try {
+    const category = await Category.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true, runValidators: true }
+    );
+    if (!category) return res.status(404).json({ error: 'Category not found' });
+    res.json(category);
+  } catch (error) {
+    res.status(400).json({ error: 'Failed to update category' });
+  }
+});
+
+app.delete('/api/categories/:id', async (req, res) => {
+  try {
+    const category = await Category.findByIdAndDelete(req.params.id);
+    if (!category) return res.status(404).json({ error: 'Category not found' });
+    res.json({ message: 'Category deleted successfully' });
+  } catch (error) {
+    res.status(400).json({ error: 'Failed to delete category' });
+  }
+});
+
 // Inquiries API
 app.get('/api/inquiries', async (req, res) => {
   try {

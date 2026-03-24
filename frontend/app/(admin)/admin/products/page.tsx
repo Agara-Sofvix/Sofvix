@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from "motion/react";
+import { getApiUrl } from '@/lib/api';
 import { 
   Plus, 
   Search, 
@@ -13,21 +14,58 @@ import {
   Box,
   LayoutGrid,
   X,
-  CheckCircle2
+  CheckCircle2,
+  BarChart3,
+  Activity,
+  Trash2,
+  Edit3
 } from "lucide-react";
-import { CATEGORIES } from "@/app/(main)/products/data";
+
+interface Category {
+  _id?: string;
+  id: string;
+  name: string;
+  slug: string;
+  icon: string;
+  overview: string;
+  capabilities?: any[];
+  outcomes?: string[];
+}
 
 function AdminProductsContent() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [categoriesList, setCategoriesList] = useState(CATEGORIES);
+  const [categoriesList, setCategoriesList] = useState<Category[]>([]);
+  const [loading, setLoading] = useState(true);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showUsageModal, setShowUsageModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   const [newCategory, setNewCategory] = useState({
     name: "",
     overview: "",
     icon: "LayoutGrid"
   });
+
+  const fetchCategories = async () => {
+    try {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/categories`);
+      if (response.ok) {
+        const data = await response.json();
+        setCategoriesList(data);
+      }
+    } catch (error) {
+      console.error('Failed to fetch categories:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   useEffect(() => {
     if (searchParams.get('add') === 'true') {
@@ -38,23 +76,61 @@ function AdminProductsContent() {
     }
   }, [searchParams, router, pathname]);
 
-  const handleAddCategory = (e: React.FormEvent) => {
+  const handleAddCategory = async (e: React.FormEvent) => {
     e.preventDefault();
-    setCategoriesList([
-      { 
-        id: newCategory.name.toLowerCase().replace(/\s+/g, '-'),
-        name: newCategory.name,
-        slug: newCategory.name.toLowerCase().replace(/\s+/g, '-'),
-        icon: newCategory.icon,
-        overview: newCategory.overview,
-        capabilities: [],
-        outcomes: []
-      },
-      ...categoriesList
-    ]);
-    setShowAddModal(false);
-    setNewCategory({ name: "", overview: "", icon: "LayoutGrid" });
+    try {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/categories`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newCategory),
+      });
+      if (response.ok) {
+        fetchCategories();
+        setShowAddModal(false);
+        setNewCategory({ name: "", overview: "", icon: "LayoutGrid" });
+      }
+    } catch (error) {
+      console.error('Failed to add category:', error);
+    }
   };
+
+  const handleUpdateCategory = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedCategory || !selectedCategory._id) return;
+    try {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/categories/${selectedCategory._id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(selectedCategory),
+      });
+      if (response.ok) {
+        fetchCategories();
+        setShowEditModal(false);
+      }
+    } catch (error) {
+      console.error('Failed to update category:', error);
+    }
+  };
+
+  const handleDeleteCategory = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this category?')) return;
+    try {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/categories/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        fetchCategories();
+      }
+    } catch (error) {
+      console.error('Failed to delete category:', error);
+    }
+  };
+
+  if (loading) return <div className="p-8">Loading Platform Systems...</div>;
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -77,7 +153,7 @@ function AdminProductsContent() {
         {[
           { label: "Total Systems", value: categoriesList.length, icon: Layers, color: "text-[#F97316]", bg: "bg-[#F97316]/5" },
           { label: "Total Capabilities", value: categoriesList.reduce((acc, cat) => acc + (cat.capabilities?.length || 0), 0), icon: Box, color: "text-blue-600", bg: "bg-blue-50" },
-          { label: "Average Views", value: "8.4k", icon: Eye, color: "text-emerald-600", bg: "bg-emerald-50" },
+          { label: "Platform Health", value: "99.9%", icon: Activity, color: "text-emerald-600", bg: "bg-emerald-50" },
         ].map((stat, i) => (
           <div key={i} className="bg-white p-8 rounded-[32px] border border-black/5 shadow-sm flex items-center gap-6">
              <div className={`w-14 h-14 ${stat.bg} ${stat.color} rounded-2xl flex items-center justify-center`}>
@@ -95,7 +171,7 @@ function AdminProductsContent() {
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
         {categoriesList.map((category, i) => (
           <motion.div
-            key={category.id}
+            key={category._id}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: i * 0.05 }}
@@ -106,13 +182,21 @@ function AdminProductsContent() {
                 <div className="w-12 h-12 bg-white rounded-2xl border border-black/5 flex items-center justify-center text-[#F97316] group-hover:bg-[#F97316] group-hover:text-white transition-all shadow-sm">
                    <LayoutGrid className="w-6 h-6" />
                 </div>
-                <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full">
-                  <TrendingUp className="w-3.5 h-3.5" />
-                  Active
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full">
+                    <TrendingUp className="w-3.5 h-3.5" />
+                    Active
+                  </div>
+                  <button 
+                    onClick={() => handleDeleteCategory(category._id!)}
+                    className="p-2 text-gray-400 hover:text-rose-600 transition-colors"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
 
-              <div className="space-y-3 mb-8">
+              <div className="space-y-3 mb-8 text-left">
                 <h3 className="text-xl font-black text-gray-900 group-hover:text-[#F97316] transition-colors line-clamp-1">{category.name}</h3>
                 <p className="text-sm text-gray-500 font-medium leading-relaxed line-clamp-2">{category.overview}</p>
               </div>
@@ -123,14 +207,29 @@ function AdminProductsContent() {
                    <p className="text-sm font-bold text-gray-900">{category.capabilities?.length || 0}</p>
                 </div>
                 <div className="bg-white/50 rounded-xl p-3 border border-black/5">
-                   <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Outcomes</p>
-                   <p className="text-sm font-bold text-gray-900">{category.outcomes?.length || 0}</p>
+                   <p className="text-[10px] font-black uppercase text-gray-400 mb-1 text-left">Outcomes</p>
+                   <p className="text-sm font-bold text-gray-900 text-left">{category.outcomes?.length || 0}</p>
                 </div>
               </div>
 
               <div className="mt-auto flex items-center justify-between pt-6 border-t border-black/5">
-                 <button className="text-sm font-bold text-gray-400 hover:text-gray-900 transition-colors">Edit Details</button>
-                 <button className="flex items-center gap-2 text-sm font-black text-[#F97316] group/btn">
+                 <button 
+                   onClick={() => {
+                     setSelectedCategory(category);
+                     setShowEditModal(true);
+                   }}
+                   className="text-sm font-bold text-gray-400 hover:text-gray-900 transition-colors flex items-center gap-2"
+                 >
+                   <Edit3 className="w-4 h-4" />
+                   Edit Details
+                 </button>
+                 <button 
+                   onClick={() => {
+                     setSelectedCategory(category);
+                     setShowUsageModal(true);
+                   }}
+                   className="flex items-center gap-2 text-sm font-black text-[#F97316] group/btn"
+                 >
                     View Usage
                     <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                  </button>
@@ -166,6 +265,101 @@ function AdminProductsContent() {
                     Create Category
                   </button>
                 </form>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Edit Category Modal */}
+      <AnimatePresence>
+        {showEditModal && selectedCategory && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowEditModal(false)} className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-lg bg-white rounded-[40px] shadow-2xl overflow-hidden">
+              <div className="p-10">
+                <div className="flex items-center justify-between mb-8">
+                  <h2 className="text-2xl font-black text-gray-900">Edit Category</h2>
+                  <button onClick={() => setShowEditModal(false)} className="p-2 text-gray-400 hover:text-gray-900 transition-colors"><X className="w-6 h-6" /></button>
+                </div>
+
+                <form onSubmit={handleUpdateCategory} className="space-y-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Category Name</label>
+                    <input required type="text" value={selectedCategory.name} onChange={(e) => setSelectedCategory({...selectedCategory, name: e.target.value})} className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:outline-none focus:border-[#F97316] transition-all" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1">Overview</label>
+                    <textarea required rows={4} value={selectedCategory.overview} onChange={(e) => setSelectedCategory({...selectedCategory, overview: e.target.value})} className="w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#F97316] transition-all resize-none" />
+                  </div>
+                  <button type="submit" className="w-full py-5 bg-[#F97316] text-white rounded-2xl text-sm font-black hover:bg-[#EA580C] transition-all shadow-xl flex items-center justify-center gap-2">
+                    <CheckCircle2 className="w-5 h-5" />
+                    Save Changes
+                  </button>
+                </form>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Usage Modal */}
+      <AnimatePresence>
+        {showUsageModal && selectedCategory && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setShowUsageModal(false)} className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-2xl bg-white rounded-[40px] shadow-2xl overflow-hidden">
+              <div className="p-10">
+                <div className="flex items-center justify-between mb-8">
+                  <div>
+                    <h2 className="text-2xl font-black text-gray-900">Usage Analytics</h2>
+                    <p className="text-sm font-bold text-gray-400">{selectedCategory.name}</p>
+                  </div>
+                  <button onClick={() => setShowUsageModal(false)} className="p-2 text-gray-400 hover:text-gray-900 transition-colors"><X className="w-6 h-6" /></button>
+                </div>
+
+                <div className="grid grid-cols-3 gap-4 mb-8">
+                   <div className="bg-slate-50 p-6 rounded-3xl border border-black/5">
+                      <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Weekly Views</p>
+                      <p className="text-2xl font-black text-gray-900">1,284</p>
+                      <p className="text-[10px] font-bold text-emerald-600">+12.4% vs last week</p>
+                   </div>
+                   <div className="bg-slate-50 p-6 rounded-3xl border border-black/5">
+                      <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Inquiry Rate</p>
+                      <p className="text-2xl font-black text-gray-900">4.2%</p>
+                      <p className="text-[10px] font-bold text-emerald-600">+0.8% focus</p>
+                   </div>
+                   <div className="bg-slate-50 p-6 rounded-3xl border border-black/5">
+                      <p className="text-[10px] font-black uppercase text-gray-400 mb-1">Avg. Retention</p>
+                      <p className="text-2xl font-black text-gray-900">84s</p>
+                      <p className="text-[10px] font-bold text-rose-600">-2s drop</p>
+                   </div>
+                </div>
+
+                <div className="bg-gray-50 p-8 rounded-[32px] border border-black/5 mb-8">
+                   <div className="flex items-center justify-between mb-6">
+                      <h3 className="text-sm font-black uppercase text-gray-900 tracking-widest">Traffic Trend</h3>
+                      <BarChart3 className="w-5 h-5 text-gray-400" />
+                   </div>
+                   <div className="h-40 flex items-end gap-2 px-2">
+                      {[40, 60, 45, 80, 55, 90, 75].map((h, i) => (
+                        <div key={i} className="flex-1 bg-slate-200 rounded-lg group/bar relative">
+                           <motion.div 
+                             initial={{ height: 0 }} 
+                             animate={{ height: `${h}%` }} 
+                             className="absolute bottom-0 inset-x-0 bg-[#F97316] rounded-lg group-hover/bar:bg-orange-600 transition-all" 
+                           />
+                        </div>
+                      ))}
+                   </div>
+                   <div className="flex justify-between mt-4 text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">
+                      <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                   </div>
+                </div>
+
+                <button onClick={() => setShowUsageModal(false)} className="w-full py-5 bg-gray-900 text-white rounded-2xl text-sm font-black hover:bg-black transition-all">
+                  Close Dashboard
+                </button>
               </div>
             </motion.div>
           </div>
