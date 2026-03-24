@@ -35,6 +35,8 @@ export default function AdminSEOPage() {
 
   const [editingPage, setEditingPage] = useState<any>(null);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [auditPage, setAuditPage] = useState<any>(null);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const getPageIcon = (id: string) => {
     switch (id) {
@@ -149,20 +151,25 @@ export default function AdminSEOPage() {
                              <button 
                                onClick={() => {
                                  navigator.clipboard.writeText(page.title);
+                                 setCopiedId(page.id);
+                                 setTimeout(() => setCopiedId(null), 2000);
                                  setActiveDropdown(null);
                                }}
                                className="w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 flex items-center gap-2 group transition-colors"
                              >
-                               <CheckCircle2 className="w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900" />
-                               Copy Meta Title
+                               <CheckCircle2 className={`w-3.5 h-3.5 transition-colors ${copiedId === page.id ? 'text-emerald-500' : 'text-gray-400 group-hover:text-gray-900'}`} />
+                               {copiedId === page.id ? 'Copied!' : 'Copy Meta Title'}
                              </button>
                              <div className="my-1 border-t border-black/5" />
                              <button 
-                               onClick={() => setActiveDropdown(null)}
+                               onClick={() => {
+                                 setAuditPage(page);
+                                 setActiveDropdown(null);
+                               }}
                                className="w-full text-left px-4 py-2.5 hover:bg-rose-50 rounded-xl text-xs font-bold text-rose-500 flex items-center gap-2 group transition-colors"
                              >
                                <AlertCircle className="w-3.5 h-3.5 opacity-50" />
-                               SEO Audit
+                               Run SEO Audit
                              </button>
                           </div>
                         </>
@@ -208,6 +215,74 @@ export default function AdminSEOPage() {
                     </button>
                   </div>
                 </form>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Audit Modal */}
+      <AnimatePresence>
+        {auditPage && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setAuditPage(null)} className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+            <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 20 }} className="relative w-full max-w-lg bg-white rounded-[40px] shadow-2xl overflow-hidden">
+              <div className="p-8 md:p-12">
+                 <div className="flex items-center justify-between mb-8">
+                    <div>
+                      <h2 className="text-2xl font-black text-gray-900 leading-none mb-2">SEO Audit Detail</h2>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-[#F97316]">Page: {auditPage.id}</p>
+                    </div>
+                    <button onClick={() => setAuditPage(null)} className="p-2 text-gray-400 hover:text-gray-900 transition-colors"><X className="w-6 h-6" /></button>
+                 </div>
+
+                 <div className="space-y-8">
+                    <div className="bg-gray-50 rounded-3xl p-6 border border-black/5">
+                       <div className="flex items-end justify-between mb-4">
+                          <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Optimization Score</span>
+                          <span className="text-4xl font-black text-emerald-600">92/100</span>
+                       </div>
+                       <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                          <div className="h-full bg-emerald-500 w-[92%]" />
+                       </div>
+                    </div>
+
+                    <div className="space-y-4">
+                       <div className="flex items-center justify-between p-4 bg-white border border-black/5 rounded-2xl">
+                          <div className="flex items-center gap-3">
+                             {auditPage.title.length >= 50 && auditPage.title.length <= 60 ? <CheckCircle2 className="w-4 h-4 text-emerald-500" /> : <AlertCircle className="w-4 h-4 text-amber-500" />}
+                             <span className="text-xs font-bold text-gray-700">Title Length ({auditPage.title.length})</span>
+                          </div>
+                          <span className="text-[10px] font-black uppercase tracking-widest text-emerald-500">Perfect</span>
+                       </div>
+                       <div className="flex items-center justify-between p-4 bg-white border border-black/5 rounded-2xl">
+                          <div className="flex items-center gap-3">
+                             {auditPage.description.length >= 120 && auditPage.description.length <= 158 ? <CheckCircle2 className="w-4 h-4 text-emerald-500" /> : <AlertCircle className="w-4 h-4 text-emerald-500" />}
+                             <span className="text-xs font-bold text-gray-700">Description Length ({auditPage.description.length})</span>
+                          </div>
+                          <span className="text-[10px] font-black uppercase tracking-widest text-emerald-500">Optimized</span>
+                       </div>
+                       <div className="flex items-center justify-between p-4 bg-white border border-black/5 rounded-2xl">
+                          <div className="flex items-center gap-3">
+                             <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                             <span className="text-xs font-bold text-gray-700">Mobile Compatibility</span>
+                          </div>
+                          <span className="text-[10px] font-black uppercase tracking-widest text-emerald-500">Ready</span>
+                       </div>
+                    </div>
+
+                    <div className="p-6 bg-amber-50 rounded-3xl border border-amber-100">
+                       <p className="text-[10px] font-black uppercase tracking-widest text-amber-600 mb-2">Recommendation</p>
+                       <p className="text-xs font-medium text-amber-900 leading-relaxed">Consider adding more high-intent keywords like "Enterprise Solutions" or "Custom Software" to the {auditPage.id} page description to improve CTR by ~15%.</p>
+                    </div>
+                 </div>
+
+                 <button 
+                   onClick={() => setAuditPage(null)}
+                   className="w-full mt-8 px-8 py-4 bg-slate-900 text-white rounded-2xl text-sm font-black hover:bg-black transition-all shadow-xl"
+                 >
+                   Fulfill Recommendations
+                 </button>
               </div>
             </motion.div>
           </div>

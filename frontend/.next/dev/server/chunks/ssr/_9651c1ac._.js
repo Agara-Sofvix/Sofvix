@@ -366,6 +366,8 @@ function AdminSEOPage() {
         })));
     const [editingPage, setEditingPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [activeDropdown, setActiveDropdown] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [auditPage, setAuditPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [copiedId, setCopiedId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const getPageIcon = (id)=>{
         switch(id){
             case 'home':
@@ -373,7 +375,7 @@ function AdminSEOPage() {
                     className: "w-5 h-5"
                 }, void 0, false, {
                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                    lineNumber: 41,
+                    lineNumber: 43,
                     columnNumber: 27
                 }, this);
             case 'about':
@@ -381,7 +383,7 @@ function AdminSEOPage() {
                     className: "w-5 h-5"
                 }, void 0, false, {
                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                    lineNumber: 42,
+                    lineNumber: 44,
                     columnNumber: 28
                 }, this);
             case 'services':
@@ -389,7 +391,7 @@ function AdminSEOPage() {
                     className: "w-5 h-5"
                 }, void 0, false, {
                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                    lineNumber: 43,
+                    lineNumber: 45,
                     columnNumber: 31
                 }, this);
             case 'products':
@@ -397,7 +399,7 @@ function AdminSEOPage() {
                     className: "w-5 h-5"
                 }, void 0, false, {
                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                    lineNumber: 44,
+                    lineNumber: 46,
                     columnNumber: 31
                 }, this);
             case 'careers':
@@ -405,7 +407,7 @@ function AdminSEOPage() {
                     className: "w-5 h-5"
                 }, void 0, false, {
                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                    lineNumber: 45,
+                    lineNumber: 47,
                     columnNumber: 30
                 }, this);
             case 'get-started':
@@ -413,7 +415,7 @@ function AdminSEOPage() {
                     className: "w-5 h-5"
                 }, void 0, false, {
                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                    lineNumber: 46,
+                    lineNumber: 48,
                     columnNumber: 34
                 }, this);
             default:
@@ -421,7 +423,7 @@ function AdminSEOPage() {
                     className: "w-5 h-5"
                 }, void 0, false, {
                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                    lineNumber: 47,
+                    lineNumber: 49,
                     columnNumber: 23
                 }, this);
         }
@@ -444,7 +446,7 @@ function AdminSEOPage() {
                                 children: "Global SEO Control"
                             }, void 0, false, {
                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                lineNumber: 62,
+                                lineNumber: 64,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -452,13 +454,13 @@ function AdminSEOPage() {
                                 children: "Centralized metadata management for search engine visibility and social media appearance across all core platform pages."
                             }, void 0, false, {
                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                lineNumber: 63,
+                                lineNumber: 65,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                        lineNumber: 61,
+                        lineNumber: 63,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -470,7 +472,7 @@ function AdminSEOPage() {
                                     className: "w-2 h-2 bg-emerald-500 rounded-full animate-pulse"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                    lineNumber: 67,
+                                    lineNumber: 69,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -478,24 +480,24 @@ function AdminSEOPage() {
                                     children: "Health Index: 94%"
                                 }, void 0, false, {
                                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                    lineNumber: 68,
+                                    lineNumber: 70,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                            lineNumber: 66,
+                            lineNumber: 68,
                             columnNumber: 12
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                        lineNumber: 65,
+                        lineNumber: 67,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                lineNumber: 60,
+                lineNumber: 62,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -518,7 +520,7 @@ function AdminSEOPage() {
                                 className: "absolute top-0 right-0 w-32 h-32 bg-gray-50 -mr-16 -mt-16 rounded-full group-hover:bg-[#F97316]/5 transition-colors"
                             }, void 0, false, {
                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                lineNumber: 84,
+                                lineNumber: 86,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -532,7 +534,7 @@ function AdminSEOPage() {
                                                 children: getPageIcon(page.id)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                lineNumber: 89,
+                                                lineNumber: 91,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -542,7 +544,7 @@ function AdminSEOPage() {
                                                         children: "Page ID"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 93,
+                                                        lineNumber: 95,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -550,19 +552,19 @@ function AdminSEOPage() {
                                                         children: page.id
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 94,
+                                                        lineNumber: 96,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                lineNumber: 92,
+                                                lineNumber: 94,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                        lineNumber: 88,
+                                        lineNumber: 90,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -577,12 +579,12 @@ function AdminSEOPage() {
                                                             className: "w-2 h-2 text-gray-400"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                            lineNumber: 102,
+                                                            lineNumber: 104,
                                                             columnNumber: 24
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 101,
+                                                        lineNumber: 103,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -590,13 +592,13 @@ function AdminSEOPage() {
                                                         children: page.path
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 104,
+                                                        lineNumber: 106,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                lineNumber: 100,
+                                                lineNumber: 102,
                                                 columnNumber: 18
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -604,7 +606,7 @@ function AdminSEOPage() {
                                                 children: page.title
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                lineNumber: 106,
+                                                lineNumber: 108,
                                                 columnNumber: 18
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -612,13 +614,13 @@ function AdminSEOPage() {
                                                 children: page.description
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                lineNumber: 107,
+                                                lineNumber: 109,
                                                 columnNumber: 18
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                        lineNumber: 99,
+                                        lineNumber: 101,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -631,12 +633,12 @@ function AdminSEOPage() {
                                                     children: page.status
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                    lineNumber: 113,
+                                                    lineNumber: 115,
                                                     columnNumber: 20
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                lineNumber: 112,
+                                                lineNumber: 114,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -650,14 +652,14 @@ function AdminSEOPage() {
                                                                 className: "w-4 h-4"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                lineNumber: 124,
+                                                                lineNumber: 126,
                                                                 columnNumber: 22
                                                             }, this),
                                                             "Manage Meta"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 120,
+                                                        lineNumber: 122,
                                                         columnNumber: 20
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -670,12 +672,12 @@ function AdminSEOPage() {
                                                                     className: "w-5 h-5"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                    lineNumber: 132,
+                                                                    lineNumber: 134,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                lineNumber: 128,
+                                                                lineNumber: 130,
                                                                 columnNumber: 23
                                                             }, this),
                                                             activeDropdown === page.id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
@@ -685,7 +687,7 @@ function AdminSEOPage() {
                                                                         onClick: ()=>setActiveDropdown(null)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                        lineNumber: 137,
+                                                                        lineNumber: 139,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -702,66 +704,71 @@ function AdminSEOPage() {
                                                                                         className: "w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                                        lineNumber: 146,
+                                                                                        lineNumber: 148,
                                                                                         columnNumber: 32
                                                                                     }, this),
                                                                                     "View Live Page"
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                                lineNumber: 139,
+                                                                                lineNumber: 141,
                                                                                 columnNumber: 30
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                 onClick: ()=>{
                                                                                     navigator.clipboard.writeText(page.title);
+                                                                                    setCopiedId(page.id);
+                                                                                    setTimeout(()=>setCopiedId(null), 2000);
                                                                                     setActiveDropdown(null);
                                                                                 },
                                                                                 className: "w-full text-left px-4 py-2.5 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 flex items-center gap-2 group transition-colors",
                                                                                 children: [
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
-                                                                                        className: "w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900"
+                                                                                        className: `w-3.5 h-3.5 transition-colors ${copiedId === page.id ? 'text-emerald-500' : 'text-gray-400 group-hover:text-gray-900'}`
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                                        lineNumber: 156,
+                                                                                        lineNumber: 160,
                                                                                         columnNumber: 32
                                                                                     }, this),
-                                                                                    "Copy Meta Title"
+                                                                                    copiedId === page.id ? 'Copied!' : 'Copy Meta Title'
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                                lineNumber: 149,
+                                                                                lineNumber: 151,
                                                                                 columnNumber: 30
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                 className: "my-1 border-t border-black/5"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                                lineNumber: 159,
+                                                                                lineNumber: 163,
                                                                                 columnNumber: 30
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                                                onClick: ()=>setActiveDropdown(null),
+                                                                                onClick: ()=>{
+                                                                                    setAuditPage(page);
+                                                                                    setActiveDropdown(null);
+                                                                                },
                                                                                 className: "w-full text-left px-4 py-2.5 hover:bg-rose-50 rounded-xl text-xs font-bold text-rose-500 flex items-center gap-2 group transition-colors",
                                                                                 children: [
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
                                                                                         className: "w-3.5 h-3.5 opacity-50"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                                        lineNumber: 164,
+                                                                                        lineNumber: 171,
                                                                                         columnNumber: 32
                                                                                     }, this),
-                                                                                    "SEO Audit"
+                                                                                    "Run SEO Audit"
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                                lineNumber: 160,
+                                                                                lineNumber: 164,
                                                                                 columnNumber: 30
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                        lineNumber: 138,
+                                                                        lineNumber: 140,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
@@ -769,36 +776,36 @@ function AdminSEOPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 127,
+                                                        lineNumber: 129,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                lineNumber: 119,
+                                                lineNumber: 121,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                        lineNumber: 111,
+                                        lineNumber: 113,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                lineNumber: 86,
+                                lineNumber: 88,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, page.id, true, {
                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                        lineNumber: 76,
+                        lineNumber: 78,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                lineNumber: 74,
+                lineNumber: 76,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -819,7 +826,7 @@ function AdminSEOPage() {
                             className: "absolute inset-0 bg-black/60 backdrop-blur-sm"
                         }, void 0, false, {
                             fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                            lineNumber: 182,
+                            lineNumber: 189,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -850,7 +857,7 @@ function AdminSEOPage() {
                                                 children: "Edit Page SEO"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                lineNumber: 186,
+                                                lineNumber: 193,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -860,18 +867,18 @@ function AdminSEOPage() {
                                                     className: "w-6 h-6"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                    lineNumber: 187,
+                                                    lineNumber: 194,
                                                     columnNumber: 132
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                lineNumber: 187,
+                                                lineNumber: 194,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                        lineNumber: 185,
+                                        lineNumber: 192,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -886,7 +893,7 @@ function AdminSEOPage() {
                                                         children: "Meta Title"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 192,
+                                                        lineNumber: 199,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -900,7 +907,7 @@ function AdminSEOPage() {
                                                         className: "w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-bold text-gray-900 focus:outline-none focus:border-[#F97316]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 193,
+                                                        lineNumber: 200,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -912,13 +919,13 @@ function AdminSEOPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 194,
+                                                        lineNumber: 201,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                lineNumber: 191,
+                                                lineNumber: 198,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -929,7 +936,7 @@ function AdminSEOPage() {
                                                         children: "Meta Description"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 198,
+                                                        lineNumber: 205,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -943,7 +950,7 @@ function AdminSEOPage() {
                                                         className: "w-full bg-gray-50 border border-black/5 rounded-2xl px-6 py-4 text-sm font-medium text-gray-600 focus:outline-none focus:border-[#F97316] resize-none"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 199,
+                                                        lineNumber: 206,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -955,13 +962,13 @@ function AdminSEOPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 200,
+                                                        lineNumber: 207,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                lineNumber: 197,
+                                                lineNumber: 204,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -974,7 +981,7 @@ function AdminSEOPage() {
                                                         children: "Cancel"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 204,
+                                                        lineNumber: 211,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -985,54 +992,415 @@ function AdminSEOPage() {
                                                                 className: "w-5 h-5"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                                lineNumber: 206,
+                                                                lineNumber: 213,
                                                                 columnNumber: 23
                                                             }, this),
                                                             "Save Changes"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                        lineNumber: 205,
+                                                        lineNumber: 212,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                                lineNumber: 203,
+                                                lineNumber: 210,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                        lineNumber: 190,
+                                        lineNumber: 197,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                                lineNumber: 184,
+                                lineNumber: 191,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                            lineNumber: 183,
+                            lineNumber: 190,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                    lineNumber: 181,
+                    lineNumber: 188,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-                lineNumber: 179,
+                lineNumber: 186,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["AnimatePresence"], {
+                children: auditPage && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "fixed inset-0 z-[100] flex items-center justify-center p-4",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                            initial: {
+                                opacity: 0
+                            },
+                            animate: {
+                                opacity: 1
+                            },
+                            exit: {
+                                opacity: 0
+                            },
+                            onClick: ()=>setAuditPage(null),
+                            className: "absolute inset-0 bg-black/60 backdrop-blur-sm"
+                        }, void 0, false, {
+                            fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                            lineNumber: 228,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["motion"].div, {
+                            initial: {
+                                opacity: 0,
+                                scale: 0.9,
+                                y: 20
+                            },
+                            animate: {
+                                opacity: 1,
+                                scale: 1,
+                                y: 0
+                            },
+                            exit: {
+                                opacity: 0,
+                                scale: 0.9,
+                                y: 20
+                            },
+                            className: "relative w-full max-w-lg bg-white rounded-[40px] shadow-2xl overflow-hidden",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "p-8 md:p-12",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center justify-between mb-8",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                                        className: "text-2xl font-black text-gray-900 leading-none mb-2",
+                                                        children: "SEO Audit Detail"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                        lineNumber: 233,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-[10px] font-black uppercase tracking-widest text-[#F97316]",
+                                                        children: [
+                                                            "Page: ",
+                                                            auditPage.id
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                        lineNumber: 234,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                lineNumber: 232,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                onClick: ()=>setAuditPage(null),
+                                                className: "p-2 text-gray-400 hover:text-gray-900 transition-colors",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__["X"], {
+                                                    className: "w-6 h-6"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                    lineNumber: 236,
+                                                    columnNumber: 132
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                lineNumber: 236,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                        lineNumber: 231,
+                                        columnNumber: 18
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "space-y-8",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "bg-gray-50 rounded-3xl p-6 border border-black/5",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "flex items-end justify-between mb-4",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "text-[10px] font-black uppercase tracking-widest text-gray-400",
+                                                                children: "Optimization Score"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                lineNumber: 242,
+                                                                columnNumber: 27
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "text-4xl font-black text-emerald-600",
+                                                                children: "92/100"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                lineNumber: 243,
+                                                                columnNumber: 27
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                        lineNumber: 241,
+                                                        columnNumber: 24
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "h-2 w-full bg-gray-200 rounded-full overflow-hidden",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "h-full bg-emerald-500 w-[92%]"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                            lineNumber: 246,
+                                                            columnNumber: 27
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                        lineNumber: 245,
+                                                        columnNumber: 24
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                lineNumber: 240,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "space-y-4",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "flex items-center justify-between p-4 bg-white border border-black/5 rounded-2xl",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "flex items-center gap-3",
+                                                                children: [
+                                                                    auditPage.title.length >= 50 && auditPage.title.length <= 60 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
+                                                                        className: "w-4 h-4 text-emerald-500"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                        lineNumber: 253,
+                                                                        columnNumber: 94
+                                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
+                                                                        className: "w-4 h-4 text-amber-500"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                        lineNumber: 253,
+                                                                        columnNumber: 150
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: "text-xs font-bold text-gray-700",
+                                                                        children: [
+                                                                            "Title Length (",
+                                                                            auditPage.title.length,
+                                                                            ")"
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                        lineNumber: 254,
+                                                                        columnNumber: 30
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                lineNumber: 252,
+                                                                columnNumber: 27
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "text-[10px] font-black uppercase tracking-widest text-emerald-500",
+                                                                children: "Perfect"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                lineNumber: 256,
+                                                                columnNumber: 27
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                        lineNumber: 251,
+                                                        columnNumber: 24
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "flex items-center justify-between p-4 bg-white border border-black/5 rounded-2xl",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "flex items-center gap-3",
+                                                                children: [
+                                                                    auditPage.description.length >= 120 && auditPage.description.length <= 158 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
+                                                                        className: "w-4 h-4 text-emerald-500"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                        lineNumber: 260,
+                                                                        columnNumber: 108
+                                                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
+                                                                        className: "w-4 h-4 text-emerald-500"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                        lineNumber: 260,
+                                                                        columnNumber: 164
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: "text-xs font-bold text-gray-700",
+                                                                        children: [
+                                                                            "Description Length (",
+                                                                            auditPage.description.length,
+                                                                            ")"
+                                                                        ]
+                                                                    }, void 0, true, {
+                                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                        lineNumber: 261,
+                                                                        columnNumber: 30
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                lineNumber: 259,
+                                                                columnNumber: 27
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "text-[10px] font-black uppercase tracking-widest text-emerald-500",
+                                                                children: "Optimized"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                lineNumber: 263,
+                                                                columnNumber: 27
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                        lineNumber: 258,
+                                                        columnNumber: 24
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "flex items-center justify-between p-4 bg-white border border-black/5 rounded-2xl",
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                className: "flex items-center gap-3",
+                                                                children: [
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
+                                                                        className: "w-4 h-4 text-emerald-500"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                        lineNumber: 267,
+                                                                        columnNumber: 30
+                                                                    }, this),
+                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                        className: "text-xs font-bold text-gray-700",
+                                                                        children: "Mobile Compatibility"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                        lineNumber: 268,
+                                                                        columnNumber: 30
+                                                                    }, this)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                lineNumber: 266,
+                                                                columnNumber: 27
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "text-[10px] font-black uppercase tracking-widest text-emerald-500",
+                                                                children: "Ready"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                                lineNumber: 270,
+                                                                columnNumber: 27
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                        lineNumber: 265,
+                                                        columnNumber: 24
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                lineNumber: 250,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "p-6 bg-amber-50 rounded-3xl border border-amber-100",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-[10px] font-black uppercase tracking-widest text-amber-600 mb-2",
+                                                        children: "Recommendation"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                        lineNumber: 275,
+                                                        columnNumber: 24
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-xs font-medium text-amber-900 leading-relaxed",
+                                                        children: [
+                                                            'Consider adding more high-intent keywords like "Enterprise Solutions" or "Custom Software" to the ',
+                                                            auditPage.id,
+                                                            " page description to improve CTR by ~15%."
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                        lineNumber: 276,
+                                                        columnNumber: 24
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                                lineNumber: 274,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                        lineNumber: 239,
+                                        columnNumber: 18
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                        onClick: ()=>setAuditPage(null),
+                                        className: "w-full mt-8 px-8 py-4 bg-slate-900 text-white rounded-2xl text-sm font-black hover:bg-black transition-all shadow-xl",
+                                        children: "Fulfill Recommendations"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                        lineNumber: 280,
+                                        columnNumber: 18
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                                lineNumber: 230,
+                                columnNumber: 15
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                            lineNumber: 229,
+                            columnNumber: 13
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                    lineNumber: 227,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/app/(admin)/admin/seo/page.tsx",
+                lineNumber: 225,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/(admin)/admin/seo/page.tsx",
-        lineNumber: 58,
+        lineNumber: 60,
         columnNumber: 5
     }, this);
 }
