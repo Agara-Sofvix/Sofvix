@@ -249,6 +249,37 @@ app.post('/api/admin/login', async (req, res) => {
   }
 });
 
+// Notifications API
+app.get('/api/admin/notifications', async (req, res) => {
+  try {
+    const [inquiries, applications] = await Promise.all([
+      Inquiry.find({}).sort({ createdAt: -1 }).limit(10),
+      Application.find({}).sort({ createdAt: -1 }).limit(10)
+    ]);
+    
+    const notifications = [
+      ...inquiries.map((inq: any) => ({
+        _id: inq._id,
+        type: 'inquiry',
+        title: 'New Inquiry',
+        description: `${inq.name} interested in ${inq.service}`,
+        createdAt: inq.createdAt
+      })),
+      ...applications.map((app: any) => ({
+        _id: app._id,
+        type: 'application',
+        title: 'New Application',
+        description: `${app.name} applied for ${app.roleTitle}`,
+        createdAt: app.createdAt
+      }))
+    ].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    
+    res.json(notifications.slice(0, 15));
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch notifications' });
+  }
+});
+
 app.get('/api/admin/verify', async (req, res) => {
   try {
     const token = req.headers.authorization?.split(' ')[1];

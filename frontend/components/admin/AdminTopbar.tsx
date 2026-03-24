@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
+import { getApiUrl } from "@/lib/api";
 
 export function AdminTopbar() {
   const router = useRouter();
@@ -18,6 +19,8 @@ export function AdminTopbar() {
   const [search, setSearch] = useState("");
   const [showNotifications, setShowNotifications] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [notifications, setNotifications] = useState<any[]>([]);
+  const [hasNew, setHasNew] = useState(false);
   
   const searchParams = useSearchParams();
   const urlSearch = searchParams.get('search') || '';
@@ -31,6 +34,46 @@ export function AdminTopbar() {
       setSearch("");
     }
   }, [urlSearch]);
+
+  const fetchNotifications = async () => {
+    try {
+      const apiUrl = getApiUrl();
+      const res = await fetch(`${apiUrl}/api/admin/notifications`);
+      if (res.ok) {
+        const data = await res.json();
+        setNotifications(data);
+        
+        // Check for new notifications
+        const lastSeen = localStorage.getItem('admin_last_seen_notification');
+        if (data.length > 0) {
+          const latestDate = new Date(data[0].createdAt).getTime();
+          if (!lastSeen || latestDate > parseInt(lastSeen)) {
+            setHasNew(true);
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Failed to fetch notifications', error);
+    }
+  };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchNotifications();
+      const interval = setInterval(fetchNotifications, 30000); // Poll every 30 seconds
+      return () => clearInterval(interval);
+    }
+  }, [isLoggedIn]);
+
+  const handleOpenNotifications = () => {
+    const newState = !showNotifications;
+    setShowNotifications(newState);
+    if (newState && notifications.length > 0) {
+      setHasNew(false);
+      localStorage.setItem('admin_last_seen_notification', new Date(notifications[0].createdAt).getTime().toString());
+    }
+    if (newState) setShowHelp(false);
+  };
 
   const handleSearch = (query: string) => {
     setSearch(query);
@@ -66,56 +109,77 @@ export function AdminTopbar() {
 
       <div className="flex items-center gap-2 lg:gap-4 shrink-0">
         <button 
-          onClick={() => setShowHelp(!showHelp)}
+          onClick={() => {
+            setShowHelp(!showHelp);
+            if (!showHelp) setShowNotifications(false);
+          }}
           className={`hidden sm:block p-2.5 text-gray-400 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all ${showHelp ? 'bg-gray-100 text-gray-900' : ''}`}
         >
           <HelpCircle className="w-5 h-5" />
         </button>
         {showHelp && (
-          <div className="absolute top-16 right-48 w-64 bg-white rounded-2xl shadow-xl border border-black/5 p-4 z-50">
-            <h4 className="text-sm font-bold text-gray-900 mb-2">Admin Help Center</h4>
-            <p className="text-xs text-gray-500 mb-4">Need assistance with the management suite?</p>
-            <div className="space-y-2">
-              <button className="w-full text-left p-2 hover:bg-gray-50 rounded-lg text-xs font-medium text-gray-700">Quick Start Guide</button>
-              <button className="w-full text-left p-2 hover:bg-gray-50 rounded-lg text-xs font-medium text-gray-700">Product Management FAQ</button>
-              <button className="w-full text-left p-2 hover:bg-gray-50 rounded-lg text-xs font-medium text-[#F97316]">Contact Support</button>
+          <div className="absolute top-16 right-48 w-80 bg-white rounded-2xl shadow-2xl border border-black/5 p-6 z-50">
+            <h4 className="text-sm font-black text-gray-900 mb-2 uppercase tracking-widest">Admin Help Center</h4>
+            <p className="text-xs text-gray-500 mb-6 font-medium">Detailed documentation for managing your platform.</p>
+            <div className="space-y-4">
+              <div className="p-3 bg-gray-50 rounded-xl border border-black/5">
+                <p className="text-[10px] font-black uppercase text-[#F97316] mb-1">Quick Tip</p>
+                <p className="text-[10px] text-gray-600 leading-relaxed font-medium">Use the "Interviewing" status in Careers to automatically send scheduling emails to candidates.</p>
+              </div>
+              <div className="space-y-1">
+                <button className="w-full text-left p-2.5 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 flex items-center justify-between group">
+                  How to Manage Jobs
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-900 transition-colors" />
+                </button>
+                <button className="w-full text-left p-2.5 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 flex items-center justify-between group">
+                  SEO Optimization Guide
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-900 transition-colors" />
+                </button>
+                <button className="w-full text-left p-2.5 hover:bg-orange-50 rounded-xl text-xs font-bold text-[#F97316] flex items-center justify-between group">
+                  Contact Developer Support
+                  <ChevronRight className="w-3.5 h-3.5 text-[#F97316]/30 group-hover:text-[#F97316] transition-colors" />
+                </button>
+              </div>
             </div>
           </div>
         )}
         <div className="relative">
           <button 
-            onClick={() => setShowNotifications(!showNotifications)}
+            onClick={handleOpenNotifications}
             className={`p-2.5 text-gray-400 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all relative ${showNotifications ? 'bg-gray-100 text-gray-900' : ''}`}
           >
             <Bell className="w-5 h-5" />
-            <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#F97316] border-2 border-white rounded-full" />
+            {hasNew && <div className="absolute top-2.5 right-2.5 w-2.5 h-2.5 bg-[#F97316] border-2 border-white rounded-full animate-pulse" />}
           </button>
           
           {showNotifications && (
             <div className="absolute top-12 right-0 w-80 bg-white rounded-2xl shadow-2xl border border-black/5 z-50 overflow-hidden">
-              <div className="p-4 border-b border-black/5 flex items-center justify-between">
+              <div className="p-4 border-b border-black/5 flex items-center justify-between bg-gray-50/50">
                 <span className="text-xs font-black uppercase tracking-widest text-gray-900">Notifications</span>
                 <span className="text-[10px] font-bold text-[#F97316] cursor-pointer hover:underline">Mark all read</span>
               </div>
               <div className="max-h-80 overflow-y-auto">
-                <div className="p-4 hover:bg-gray-50 transition-colors border-b border-black/5 cursor-pointer">
-                  <p className="text-xs font-bold text-gray-900">New Career Application</p>
-                  <p className="text-[10px] text-gray-500 mt-0.5">Govindhasamy applied for Full Stack Developer</p>
-                  <p className="text-[10px] text-[#F97316] font-bold mt-1">2 minutes ago</p>
-                </div>
-                <div className="p-4 hover:bg-gray-50 transition-colors border-b border-black/5 cursor-pointer">
-                  <p className="text-xs font-bold text-gray-900">Inquiry Received</p>
-                  <p className="text-[10px] text-gray-500 mt-0.5">Architect Call inquiry from Agara Team</p>
-                  <p className="text-[10px] text-[#F97316] font-bold mt-1">1 hour ago</p>
-                </div>
-                <div className="p-4 hover:bg-gray-50 transition-colors border-b border-black/5 cursor-pointer">
-                  <p className="text-xs font-bold text-gray-900">System Update</p>
-                  <p className="text-[10px] text-gray-500 mt-0.5">SEO indexing completed for Chennai region</p>
-                  <p className="text-[10px] text-[#F97316] font-bold mt-1">4 hours ago</p>
-                </div>
+                {notifications.length > 0 ? (
+                  notifications.map((notif) => (
+                    <div key={notif._id} className="p-4 hover:bg-gray-50 transition-colors border-b border-black/5 cursor-pointer group">
+                      <div className="flex items-start justify-between gap-4">
+                        <p className="text-xs font-bold text-gray-900 group-hover:text-[#F97316] transition-colors">{notif.title}</p>
+                        <span className="text-[10px] text-gray-400 font-medium shrink-0">{new Date(notif.createdAt).toLocaleDateString()}</span>
+                      </div>
+                      <p className="text-[10px] text-gray-500 mt-0.5 leading-relaxed">{notif.description}</p>
+                      <p className="text-[10px] text-[#F97316] font-bold mt-1.5 uppercase tracking-tighter">
+                        {Math.floor((new Date().getTime() - new Date(notif.createdAt).getTime()) / 60000)}m ago
+                      </p>
+                    </div>
+                  ))
+                ) : (
+                  <div className="p-8 text-center">
+                    <p className="text-xs font-bold text-gray-400">No new notifications</p>
+                  </div>
+                )}
               </div>
               <div className="p-3 bg-gray-50 text-center">
-                <button className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-gray-900 transition-colors">View All Notifications</button>
+                <button className="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-gray-900 transition-colors">Clear All History</button>
               </div>
             </div>
           )}
