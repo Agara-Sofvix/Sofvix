@@ -227,10 +227,21 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 function AdminTopbar() {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const [isLoggedIn, setIsLoggedIn] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [search, setSearch] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         // Basic check for token on client side
         setIsLoggedIn(document.cookie.includes("admin_token="));
     }, []);
+    const handleSearch = (query)=>{
+        setSearch(query);
+        const params = new URLSearchParams(window.location.search);
+        if (query) {
+            params.set("search", query);
+        } else {
+            params.delete("search");
+        }
+        router.replace(`${window.location.pathname}?${params.toString()}`);
+    };
     const handleLogout = ()=>{
         // Delete cookie by setting expiry to past date
         document.cookie = "admin_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -248,27 +259,29 @@ function AdminTopbar() {
                             className: "absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
                         }, void 0, false, {
                             fileName: "[project]/components/admin/AdminTopbar.tsx",
-                            lineNumber: 33,
+                            lineNumber: 46,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                             type: "text",
                             placeholder: "Search...",
-                            className: "w-full bg-gray-50 border border-black/5 rounded-xl pl-10 lg:pl-12 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#F97316] transition-colors"
+                            value: search,
+                            onChange: (e)=>handleSearch(e.target.value),
+                            className: "w-full bg-gray-50 border border-black/5 rounded-full pl-10 lg:pl-12 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#F97316] transition-colors shadow-inner-sm"
                         }, void 0, false, {
                             fileName: "[project]/components/admin/AdminTopbar.tsx",
-                            lineNumber: 34,
+                            lineNumber: 47,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/admin/AdminTopbar.tsx",
-                    lineNumber: 32,
+                    lineNumber: 45,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/admin/AdminTopbar.tsx",
-                lineNumber: 31,
+                lineNumber: 44,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -280,12 +293,12 @@ function AdminTopbar() {
                             className: "w-5 h-5"
                         }, void 0, false, {
                             fileName: "[project]/components/admin/AdminTopbar.tsx",
-                            lineNumber: 44,
+                            lineNumber: 59,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/admin/AdminTopbar.tsx",
-                        lineNumber: 43,
+                        lineNumber: 58,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -297,32 +310,32 @@ function AdminTopbar() {
                                     className: "w-5 h-5"
                                 }, void 0, false, {
                                     fileName: "[project]/components/admin/AdminTopbar.tsx",
-                                    lineNumber: 48,
+                                    lineNumber: 63,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute top-2.5 right-2.5 w-2 h-2 bg-[#F97316] border-2 border-white rounded-full"
                                 }, void 0, false, {
                                     fileName: "[project]/components/admin/AdminTopbar.tsx",
-                                    lineNumber: 49,
+                                    lineNumber: 64,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/admin/AdminTopbar.tsx",
-                            lineNumber: 47,
+                            lineNumber: 62,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/admin/AdminTopbar.tsx",
-                        lineNumber: 46,
+                        lineNumber: 61,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "h-8 w-[1px] bg-black/5 mx-2"
                     }, void 0, false, {
                         fileName: "[project]/components/admin/AdminTopbar.tsx",
-                        lineNumber: 52,
+                        lineNumber: 67,
                         columnNumber: 9
                     }, this),
                     isLoggedIn ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -333,7 +346,7 @@ function AdminTopbar() {
                                 children: "AU"
                             }, void 0, false, {
                                 fileName: "[project]/components/admin/AdminTopbar.tsx",
-                                lineNumber: 55,
+                                lineNumber: 70,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -344,7 +357,7 @@ function AdminTopbar() {
                                         children: "Admin User"
                                     }, void 0, false, {
                                         fileName: "[project]/components/admin/AdminTopbar.tsx",
-                                        lineNumber: 59,
+                                        lineNumber: 74,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -352,19 +365,19 @@ function AdminTopbar() {
                                         children: "admin@agara.com"
                                     }, void 0, false, {
                                         fileName: "[project]/components/admin/AdminTopbar.tsx",
-                                        lineNumber: 60,
+                                        lineNumber: 75,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/admin/AdminTopbar.tsx",
-                                lineNumber: 58,
+                                lineNumber: 73,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/admin/AdminTopbar.tsx",
-                        lineNumber: 54,
+                        lineNumber: 69,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex items-center gap-2 px-3 py-1.5 bg-gray-50 rounded-xl border border-black/5",
@@ -373,7 +386,7 @@ function AdminTopbar() {
                                 className: "w-4 h-4 text-gray-400"
                             }, void 0, false, {
                                 fileName: "[project]/components/admin/AdminTopbar.tsx",
-                                lineNumber: 65,
+                                lineNumber: 80,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -381,20 +394,20 @@ function AdminTopbar() {
                                 children: "Secure Mode"
                             }, void 0, false, {
                                 fileName: "[project]/components/admin/AdminTopbar.tsx",
-                                lineNumber: 66,
+                                lineNumber: 81,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/admin/AdminTopbar.tsx",
-                        lineNumber: 64,
+                        lineNumber: 79,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "h-8 w-[1px] bg-black/5 mx-2"
                     }, void 0, false, {
                         fileName: "[project]/components/admin/AdminTopbar.tsx",
-                        lineNumber: 69,
+                        lineNumber: 84,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -406,7 +419,7 @@ function AdminTopbar() {
                                 className: "w-5 h-5 group-hover:scale-110 transition-transform"
                             }, void 0, false, {
                                 fileName: "[project]/components/admin/AdminTopbar.tsx",
-                                lineNumber: 75,
+                                lineNumber: 90,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -414,25 +427,25 @@ function AdminTopbar() {
                                 children: "Logout"
                             }, void 0, false, {
                                 fileName: "[project]/components/admin/AdminTopbar.tsx",
-                                lineNumber: 76,
+                                lineNumber: 91,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/admin/AdminTopbar.tsx",
-                        lineNumber: 70,
+                        lineNumber: 85,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/admin/AdminTopbar.tsx",
-                lineNumber: 42,
+                lineNumber: 57,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/components/admin/AdminTopbar.tsx",
-        lineNumber: 30,
+        lineNumber: 43,
         columnNumber: 5
     }, this);
 }

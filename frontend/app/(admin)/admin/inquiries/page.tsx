@@ -18,12 +18,14 @@ import {
 } from "lucide-react";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { IInquiry } from "@/models/Inquiry";
 
 export default function AdminInquiriesPage() {
   const [inquiries, setInquiries] = useState<IInquiry[]>([]);
   const [loading, setLoading] = useState(true);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchInquiries = async () => {
@@ -42,6 +44,15 @@ export default function AdminInquiriesPage() {
 
     fetchInquiries();
   }, []);
+
+  const searchParams = useSearchParams();
+  const urlSearch = searchParams.get('search') || '';
+
+  useEffect(() => {
+    if (urlSearch) {
+      setSearchQuery(urlSearch);
+    }
+  }, [urlSearch]);
 
   const updateStatus = async (id: string, newStatus: string) => {
     setUpdatingId(id);
@@ -101,6 +112,8 @@ export default function AdminInquiriesPage() {
           <input 
             type="text" 
             placeholder="Search by name, email, or message content..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-gray-50 border border-black/5 rounded-2xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-[#F97316] transition-colors"
           />
         </div>
@@ -114,7 +127,14 @@ export default function AdminInquiriesPage() {
 
       {/* Inquiries List */}
       <div className="grid gap-6">
-        {inquiries.map((inquiry, i) => (
+        {inquiries
+          .filter(inq => 
+            inq.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+            inq.email.toLowerCase().includes(searchQuery.toLowerCase()) || 
+            inq.message.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            inq.service.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+          .map((inquiry, i) => (
           <div key={inquiry._id.toString()} className="bg-white rounded-[32px] border border-black/5 shadow-sm hover:shadow-md transition-all overflow-hidden group">
             <div className="p-8 flex flex-col lg:flex-row lg:items-start justify-between gap-8">
               <div className="flex items-start gap-6 flex-grow">

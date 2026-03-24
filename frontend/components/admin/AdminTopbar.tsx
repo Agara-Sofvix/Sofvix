@@ -15,17 +15,30 @@ import { useEffect, useState } from "react";
 export function AdminTopbar() {
   const router = useRouter();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     // Basic check for token on client side
     setIsLoggedIn(document.cookie.includes("admin_token="));
   }, []);
 
+  const handleSearch = (query: string) => {
+    setSearch(query);
+    const params = new URLSearchParams(window.location.search);
+    if (query) {
+      params.set("search", query);
+    } else {
+      params.delete("search");
+    }
+    router.replace(`${window.location.pathname}?${params.toString()}`);
+  };
+
   const handleLogout = () => {
     // Delete cookie by setting expiry to past date
     document.cookie = "admin_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     router.push("/admin/login");
   };
+
   return (
     <header className="h-20 bg-white border-b border-black/5 flex items-center justify-between px-4 lg:px-8 sticky top-0 z-30">
       <div className="flex items-center gap-6 flex-grow max-w-2xl">
@@ -34,7 +47,9 @@ export function AdminTopbar() {
           <input 
             type="text" 
             placeholder="Search..." 
-            className="w-full bg-gray-50 border border-black/5 rounded-xl pl-10 lg:pl-12 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#F97316] transition-colors"
+            value={search}
+            onChange={(e) => handleSearch(e.target.value)}
+            className="w-full bg-gray-50 border border-black/5 rounded-full pl-10 lg:pl-12 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#F97316] transition-colors shadow-inner-sm"
           />
         </div>
       </div>

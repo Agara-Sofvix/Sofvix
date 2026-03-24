@@ -6,3 +6,34 @@
 [00:00:20.189] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
 [00:00:47.964] Browser LOG     Updating application 69be3a5688716c35f2c7fac2 to Interviewing
 [00:00:52.812] Browser LOG     Update response status: 200
+[00:36:11.441] Server  LOG     ○ Compiling /login ...
+[00:36:19.089] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:37:09.839] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:39:30.485] Browser WARN    Unable to access iframe: {}
+[00:40:00.996] Browser WARN    Unable to access iframe: {}
+[00:40:30.032] Browser WARN    Unable to access iframe: {}
+[00:41:19.391] Browser WARN    Unable to access iframe: {}
+[00:42:17.983] Browser LOG     Updating application 69be2ecc32859984571e8e95 to Interviewing
+[00:42:18.990] Browser WARN    Unable to access iframe: {}
+[00:42:24.440] Browser LOG     Update response status: 200
+[00:43:04.341] Browser WARN    Unable to access iframe: {}
+[00:43:49.184] Browser WARN    Unable to access iframe: {}
+[00:44:35.663] Browser WARN    Unable to access iframe: {}
+[01:42:47.569] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:42:48.837] Browser ERROR   {}
+[01:43:12.638] Server  LOG     ✓ Finished filesystem cache database compaction in 16.2s
+[01:43:34.842] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:43:35.167] Browser ERROR   {}
+[01:43:35.167] Browser ERROR   {}
+[01:44:04.274] Browser ERROR   {}
+[01:44:04.274] Browser ERROR   {}
+[01:45:08.829] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:45:33.680] Server  LOG     ○ Compiling /admin/jobs ...
+[01:45:35.738] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:45:35.738] Browser ERROR   Failed to fetch jobs: {}
+[01:45:35.738] Browser ERROR   Failed to fetch jobs: {}
+[01:50:40.156] Server  LOG     ✓ Compiled in 730ms
+[01:51:08.298] Server  LOG     ✓ Compiled in 475ms
+[01:51:10.560] Server  LOG     ✓ Compiled in 650ms
+[01:51:22.706] Server  LOG     ✓ Compiled in 881ms
+[01:51:33.316] Server  LOG     ✓ Compiled in 132ms

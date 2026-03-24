@@ -3,6 +3,7 @@
 import { getApiUrl } from '@/lib/api';
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { motion } from 'motion/react';
 import { Plus, Trash2, Briefcase, MapPin, Search } from 'lucide-react';
 import { IJob } from '@/models/Job';
@@ -41,9 +42,18 @@ export default function AdminJobsPage() {
     }
   };
 
+  const searchParams = useSearchParams();
+  const urlSearch = searchParams.get('search') || '';
+
   useEffect(() => {
     fetchJobs();
   }, []);
+
+  useEffect(() => {
+    if (urlSearch) {
+      setSearch(urlSearch);
+    }
+  }, [urlSearch]);
 
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this job posting?')) return;

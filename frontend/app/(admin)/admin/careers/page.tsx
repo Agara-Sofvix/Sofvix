@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { IApplication } from "@/models/Application";
 
 export default function AdminCareersPage() {
@@ -30,7 +31,7 @@ export default function AdminCareersPage() {
   const [scheduleSuccess, setScheduleSuccess] = useState(false);
   const [showScheduleModal, setShowScheduleModal] = useState(false);
   const [scheduleDate, setScheduleDate] = useState('');
-  const [scheduleTime, setScheduleTime] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const fetchApplications = async () => {
     try {
@@ -46,9 +47,18 @@ export default function AdminCareersPage() {
     }
   };
 
+  const searchParams = useSearchParams();
+  const urlSearch = searchParams.get('search') || '';
+
   useEffect(() => {
     fetchApplications();
   }, []);
+
+  useEffect(() => {
+    if (urlSearch) {
+      setSearchQuery(urlSearch);
+    }
+  }, [urlSearch]);
 
   const calculateMatchScore = (experience: string) => {
     // Simple heuristic: convert "5+ years" to a score
@@ -177,6 +187,8 @@ export default function AdminCareersPage() {
           <input
             type="text"
             placeholder="Search by candidate name, role, or skill..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-gray-50 border border-black/5 rounded-2xl pl-12 pr-4 py-3 text-sm focus:outline-none focus:border-[#F97316] transition-colors"
           />
         </div>
@@ -203,7 +215,13 @@ export default function AdminCareersPage() {
                 </tr>
              </thead>
              <tbody className="divide-y divide-black/5">
-                {applications.map((app) => (
+                 {applications
+                    .filter(app => 
+                      app.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                      app.roleTitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                      app.email.toLowerCase().includes(searchQuery.toLowerCase())
+                    )
+                    .map((app) => (
                    <tr 
                      key={app._id.toString()} 
                      onClick={() => setSelectedApp(app)}
