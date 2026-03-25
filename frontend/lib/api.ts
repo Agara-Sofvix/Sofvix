@@ -1,8 +1,9 @@
 export function getApiUrl() {
   // 1. Server-side (SSR/Prerendering)
-  // Always use the internal Docker network name for better performance and reliability
   if (typeof window === 'undefined') {
-    return 'http://backend:5000';
+    // Inside Docker (EC2), we should use the service name.
+    // We check for a specific environment variable or fallback to localhost for development.
+    return process.env.INTERNAL_API_URL || 'http://localhost:5000';
   }
 
   // 2. Explicit environment variable override (for browser)
