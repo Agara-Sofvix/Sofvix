@@ -51,12 +51,13 @@ const startServer = async () => {
       console.log('Admin password updated');
     }
 
-    // Seed Categories if empty
+    // Seed Categories if not all 8 are present
     const categoryCount = await Category.countDocuments();
-    if (categoryCount === 0) {
-      console.log('Seeding initial categories...');
+    if (categoryCount < INITIAL_CATEGORIES.length) {
+      console.log(`Current category count is ${categoryCount}. Syncing to full production dataset (${INITIAL_CATEGORIES.length} items)...`);
+      await Category.deleteMany({}); // Clear to ensure clean state with correct sort orders
       await Category.create(INITIAL_CATEGORIES);
-      console.log(`Successfully seeded ${INITIAL_CATEGORIES.length} categories.`);
+      console.log(`Successfully forced sync of ${INITIAL_CATEGORIES.length} categories.`);
     }
 
     app.listen(PORT, () => {
