@@ -30,12 +30,33 @@ app.use((req, res, next) => {
 });
 
 // Database Connection and Seeding
+// MongoDB Connection with Retry
+const connectWithRetry = async () => {
+  const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://mongo:27017/agara-sofvix';
+  console.log('Attempting to connect to MongoDB...');
+  
+  let attempts = 5;
+  while (attempts > 0) {
+    try {
+      await mongoose.connect(MONGODB_URI);
+      console.log('Successfully connected to MongoDB');
+      return;
+    } catch (err) {
+      console.log(`MongoDB connection failed. Retries left: ${attempts - 1}`);
+      attempts -= 1;
+      // Wait 5 seconds before retrying
+      await new Promise(res => setTimeout(res, 5000));
+    }
+  }
+  console.error('Could not connect to MongoDB after multiple attempts. Exiting...');
+  process.exit(1);
+};
+
 const startServer = async () => {
   try {
-    await connectDB();
-    console.log('Connected to Database');
+    await connectWithRetry();
     
-    // Seed Admin User
+    // Ensure default admin exists
     const adminEmail = 'admin@agara.com';
     const adminPassword = 'Azhaga1992in!';
     
@@ -255,10 +276,25 @@ app.get('/api/inquiries', async (req, res) => {
 
 app.post('/api/inquiries', async (req, res) => {
   try {
-    const inquiry = await Inquiry.create(req.body);
+    console.log('Received inquiry request:', req.body.email);
+    const inquiry = new Inquiry(req.body);
+    await inquiry.save();
+    console.log('Inquiry saved successfully');
+    
+    // Attempt email notification
+    try {
+      if (process.env.EMAIL_USER) {
+        await sendInquiryNotification(req.body);
+        console.log('Email notification sent');
+      }
+    } catch (emailErr) {
+      console.error('Email notification failed but inquiry was saved:', emailErr);
+    }
+
     res.status(201).json(inquiry);
   } catch (error) {
-    res.status(400).json({ error: 'Failed to create inquiry' });
+    console.error('Failed to save inquiry:', error);
+    res.status(400).json({ error: 'Failed to create inquiry', details: error });
   }
 });
 
