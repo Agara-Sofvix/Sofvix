@@ -16,6 +16,7 @@ import { INITIAL_CATEGORIES } from './lib/initialData';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const JWT_SECRET = process.env.JWT_SECRET || 'agara-sofvix-secure-secret-2026';
 
 // Middleware
 app.use(cors());
@@ -51,13 +52,19 @@ const startServer = async () => {
       console.log('Admin password updated');
     }
 
-    // Seed Categories if not all 8 are present
-    const categoryCount = await Category.countDocuments();
-    if (categoryCount < INITIAL_CATEGORIES.length) {
-      console.log(`Current category count is ${categoryCount}. Syncing to full production dataset (${INITIAL_CATEGORIES.length} items)...`);
-      await Category.deleteMany({}); // Clear to ensure clean state with correct sort orders
-      await Category.create(INITIAL_CATEGORIES);
-      console.log(`Successfully forced sync of ${INITIAL_CATEGORIES.length} categories.`);
+    // ALWAYS Sync Production Categories on startup to ensure "by default" availability
+    try {
+      console.log('Synchronizing production dataset...');
+      const categoryCount = await Category.countDocuments();
+      if (categoryCount !== INITIAL_CATEGORIES.length) {
+        await Category.deleteMany({});
+        await Category.create(INITIAL_CATEGORIES);
+        console.log(`Successfully forced sync of ${INITIAL_CATEGORIES.length} categories.`);
+      } else {
+        console.log('Production data already in sync.');
+      }
+    } catch (seedError) {
+      console.error('Seeding failure:', seedError);
     }
 
     app.listen(PORT, () => {
@@ -72,12 +79,29 @@ const startServer = async () => {
 startServer();
 
 // Health Check
-app.get('/health', (req, res) => {
+app.get('/health', async (req, res) => {
+  const categoryCount = await Category.countDocuments();
   res.json({ 
     status: 'healthy', 
     timestamp: new Date().toISOString(),
-    mongodb: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
+    mongodb: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
+    dataSync: {
+      categories: categoryCount,
+      expected: INITIAL_CATEGORIES.length,
+      inSync: categoryCount === INITIAL_CATEGORIES.length
+    }
   });
+});
+
+// Emergency Reset Data
+app.get('/api/system/reset-data', async (req, res) => {
+  try {
+    await Category.deleteMany({});
+    await Category.create(INITIAL_CATEGORIES);
+    res.json({ message: 'Production data successfully reset and synchronized.', count: INITIAL_CATEGORIES.length });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to reset data', details: error });
+  }
 });
 
 // Category API
