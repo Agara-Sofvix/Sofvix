@@ -1565,7 +1565,7 @@ const STEPS = [
     }
 ];
 function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
-    const MockupImage = SERVICE_MOCKUPS[service.slug] || CATEGORY_MOCKUPS[category.id] || CATEGORY_MOCKUPS['finance-ops'];
+    const MockupImage = service.heroImage || SERVICE_MOCKUPS[service.slug] || CATEGORY_MOCKUPS[category.id] || CATEGORY_MOCKUPS['finance-ops'];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "relative w-full text-slate-900 selection:bg-orange-500/10 bg-white min-h-screen overflow-x-hidden",
         children: [
@@ -2149,7 +2149,7 @@ function ServiceDetailClient({ category, service, categorySlug, serviceSlug }) {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "lg:col-span-8",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "grid sm:grid-cols-2 gap-4",
+                                    className: "grid sm:grid-cols-2 lg:grid-cols-3 gap-4",
                                     children: (service.features || []).map((feature, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                                             whileHover: {
                                                 x: 10

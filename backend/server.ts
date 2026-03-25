@@ -12,6 +12,7 @@ import { sendInterviewScheduledEmail } from './lib/emailService';
 import Admin from './models/Admin';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
+import { INITIAL_CATEGORIES } from './lib/initialData';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -54,32 +55,8 @@ const startServer = async () => {
     const categoryCount = await Category.countDocuments();
     if (categoryCount === 0) {
       console.log('Seeding initial categories...');
-      const initialCategories = [
-        { 
-          id: "cx-sales", 
-          name: "Customer Experience & Sales Systems", 
-          slug: "customer-experience-sales",
-          icon: "Users",
-          overview: "We unify your entire customer lifecycle — from lead generation to post-sales support — into a single intelligent system.",
-          capabilities: [
-            { name: "Centralized CRM & pipeline management", slug: "crm-pipeline", icon: "Users", description: "A unified platform to manage every stage of your sales funnel." }
-          ],
-          outcomes: ["Faster lead conversion cycles"]
-        },
-        { 
-          id: "marketing", 
-          name: "Marketing & Growth Automation", 
-          slug: "marketing-growth",
-          icon: "Megaphone",
-          overview: "We build performance-driven marketing systems that automate engagement and maximize conversion.",
-          capabilities: [
-            { name: "Email & campaign automation", slug: "email-automation", icon: "Mail", description: "Scale your reach with personalized, behavior-driven email sequences." }
-          ],
-          outcomes: ["Increased lead generation"]
-        }
-      ];
-      await Category.create(initialCategories);
-      console.log('Categories seeded');
+      await Category.create(INITIAL_CATEGORIES);
+      console.log(`Successfully seeded ${INITIAL_CATEGORIES.length} categories.`);
     }
 
     app.listen(PORT, () => {
@@ -93,7 +70,14 @@ const startServer = async () => {
 
 startServer();
 
-const JWT_SECRET = process.env.JWT_SECRET || 'agara-sofvix-secure-secret-2026';
+// Health Check
+app.get('/health', (req, res) => {
+  res.json({ 
+    status: 'healthy', 
+    timestamp: new Date().toISOString(),
+    mongodb: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
+  });
+});
 
 // Category API
 app.get('/api/categories', async (req, res) => {
@@ -140,6 +124,38 @@ app.post('/api/categories/:id/capabilities', async (req, res) => {
   } catch (error: any) {
     console.error('Error adding capability:', error);
     res.status(400).json({ error: 'Failed to add capability', details: error.message });
+  }
+});
+app.put('/api/categories/:id/capabilities/:slug', async (req, res) => {
+  try {
+    const category = await Category.findOne({ 
+      $or: [
+        { _id: mongoose.isValidObjectId(req.params.id) ? req.params.id : null },
+        { id: req.params.id },
+        { slug: req.params.id }
+      ]
+    });
+    
+    if (!category) return res.status(404).json({ error: 'Category not found' });
+
+    const capabilityIndex = category.capabilities.findIndex((cap: any) => cap.slug === req.params.slug);
+    if (capabilityIndex === -1) return res.status(404).json({ error: 'Capability not found' });
+
+    // Update capability fields
+    const updatedCap = {
+      ...category.capabilities[capabilityIndex].toObject(),
+      ...req.body,
+      // Ensure slug stays consistent unless explicitly changed
+      slug: req.body.slug || category.capabilities[capabilityIndex].slug
+    };
+
+    category.capabilities[capabilityIndex] = updatedCap;
+    await category.save();
+    
+    res.json(updatedCap);
+  } catch (error: any) {
+    console.error('Error updating capability:', error);
+    res.status(400).json({ error: 'Failed to update capability', details: error.message });
   }
 });
 

@@ -11,7 +11,8 @@ const CapabilitySchema = new mongoose.Schema({
   problemsSolved: [String],
   useCases: [String],
   outcomes: String,
-  faqs: [{ q: String, a: String }]
+  faqs: [{ q: String, a: String }],
+  heroImage: String
 });
 
 const CategorySchema = new mongoose.Schema({

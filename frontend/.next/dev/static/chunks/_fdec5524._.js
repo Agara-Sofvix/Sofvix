@@ -108,7 +108,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function AdminJobsPage() {
+function AdminJobsContent() {
     _s();
     const [jobs, setJobs] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
@@ -142,17 +142,17 @@ function AdminJobsPage() {
     const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"])();
     const urlSearch = searchParams.get('search') || '';
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "AdminJobsPage.useEffect": ()=>{
+        "AdminJobsContent.useEffect": ()=>{
             fetchJobs();
         }
-    }["AdminJobsPage.useEffect"], []);
+    }["AdminJobsContent.useEffect"], []);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "AdminJobsPage.useEffect": ()=>{
+        "AdminJobsContent.useEffect": ()=>{
             if (urlSearch) {
                 setSearch(urlSearch);
             }
         }
-    }["AdminJobsPage.useEffect"], [
+    }["AdminJobsContent.useEffect"], [
         urlSearch
     ]);
     const handleDelete = async (id)=>{
@@ -800,14 +800,37 @@ function AdminJobsPage() {
         columnNumber: 5
     }, this);
 }
-_s(AdminJobsPage, "VzCO53+ji1rleJ5BMmG8/Lh4RKo=", false, function() {
+_s(AdminJobsContent, "VzCO53+ji1rleJ5BMmG8/Lh4RKo=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"]
     ];
 });
-_c = AdminJobsPage;
-var _c;
-__turbopack_context__.k.register(_c, "AdminJobsPage");
+_c = AdminJobsContent;
+function AdminJobsPage() {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
+        fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "p-8",
+            children: "Loading Jobs..."
+        }, void 0, false, {
+            fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
+            lineNumber: 255,
+            columnNumber: 25
+        }, void 0),
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AdminJobsContent, {}, void 0, false, {
+            fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
+            lineNumber: 256,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/app/(admin)/admin/jobs/page.tsx",
+        lineNumber: 255,
+        columnNumber: 5
+    }, this);
+}
+_c1 = AdminJobsPage;
+var _c, _c1;
+__turbopack_context__.k.register(_c, "AdminJobsContent");
+__turbopack_context__.k.register(_c1, "AdminJobsPage");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

@@ -31,7 +31,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function AdminDashboardPage() {
+function AdminDashboardContent() {
     _s();
     const [inquiries, setInquiries] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [applications, setApplications] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
@@ -41,20 +41,20 @@ function AdminDashboardPage() {
     const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"])();
     const urlSearch = searchParams.get('search') || '';
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "AdminDashboardPage.useEffect": ()=>{
+        "AdminDashboardContent.useEffect": ()=>{
             if (urlSearch) {
                 setSearchQuery(urlSearch);
             } else {
                 setSearchQuery('');
             }
         }
-    }["AdminDashboardPage.useEffect"], [
+    }["AdminDashboardContent.useEffect"], [
         urlSearch
     ]);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "AdminDashboardPage.useEffect": ()=>{
+        "AdminDashboardContent.useEffect": ()=>{
             const fetchData = {
-                "AdminDashboardPage.useEffect.fetchData": async ()=>{
+                "AdminDashboardContent.useEffect.fetchData": async ()=>{
                     try {
                         const apiUrl = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$api$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getApiUrl"])();
                         const [inquiriesRes, applicationsRes, categoriesRes] = await Promise.all([
@@ -75,10 +75,10 @@ function AdminDashboardPage() {
                         setLoading(false);
                     }
                 }
-            }["AdminDashboardPage.useEffect.fetchData"];
+            }["AdminDashboardContent.useEffect.fetchData"];
             fetchData();
         }
-    }["AdminDashboardPage.useEffect"], []);
+    }["AdminDashboardContent.useEffect"], []);
     const totalServices = categories.reduce((acc, cat)=>acc + (cat.capabilities?.length || 0), 0);
     const filteredInquiries = inquiries.filter((inq)=>inq.name.toLowerCase().includes(searchQuery.toLowerCase()) || inq.email.toLowerCase().includes(searchQuery.toLowerCase()) || inq.service.toLowerCase().includes(searchQuery.toLowerCase()) || inq.message.toLowerCase().includes(searchQuery.toLowerCase()));
     const filteredApplications = applications.filter((app)=>app.name.toLowerCase().includes(searchQuery.toLowerCase()) || app.email.toLowerCase().includes(searchQuery.toLowerCase()) || app.roleTitle.toLowerCase().includes(searchQuery.toLowerCase()));
@@ -743,14 +743,37 @@ function AdminDashboardPage() {
         columnNumber: 5
     }, this);
 }
-_s(AdminDashboardPage, "jW0zhuep7x+SegxxzX7peD0HBsQ=", false, function() {
+_s(AdminDashboardContent, "jW0zhuep7x+SegxxzX7peD0HBsQ=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSearchParams"]
     ];
 });
-_c = AdminDashboardPage;
-var _c;
-__turbopack_context__.k.register(_c, "AdminDashboardPage");
+_c = AdminDashboardContent;
+function AdminDashboardPage() {
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Suspense"], {
+        fallback: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "p-8",
+            children: "Loading Dashboard..."
+        }, void 0, false, {
+            fileName: "[project]/app/(admin)/admin/page.tsx",
+            lineNumber: 296,
+            columnNumber: 25
+        }, void 0),
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(AdminDashboardContent, {}, void 0, false, {
+            fileName: "[project]/app/(admin)/admin/page.tsx",
+            lineNumber: 297,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/app/(admin)/admin/page.tsx",
+        lineNumber: 296,
+        columnNumber: 5
+    }, this);
+}
+_c1 = AdminDashboardPage;
+var _c, _c1;
+__turbopack_context__.k.register(_c, "AdminDashboardContent");
+__turbopack_context__.k.register(_c1, "AdminDashboardPage");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }

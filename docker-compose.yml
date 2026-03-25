@@ -3,7 +3,7 @@ services:
     image: mongo:latest
     container_name: agara-mongodb
     ports:
-      - "27017:27017"
+      - "27018:27017"
     volumes:
       - mongodb_data:/data/db
     networks:
@@ -14,7 +14,7 @@ services:
       context: ./backend
     container_name: agara-backend
     ports:
-      - "5000:5000"
+      - "5001:5000"
     environment:
       - MONGODB_URI=mongodb://mongodb:27017/${MONGO_DB:-agara-sofvix}
       - JWT_SECRET=${JWT_SECRET}
@@ -32,7 +32,7 @@ services:
       context: ./frontend
     container_name: agara-frontend
     ports:
-      - "3000:3000"
+      - "3001:3000"
     environment:
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
     depends_on:

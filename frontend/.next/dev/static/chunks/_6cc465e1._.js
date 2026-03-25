@@ -1557,6 +1557,7 @@ function HomeClient() {
                                     viewport: {
                                         once: true
                                     },
+                                    onClick: ()=>router.push('/get-started'),
                                     className: "group bg-white rounded-xl p-6 border border-black/5 hover:border-[#F97316]/50 transition-all duration-300 hover:transform hover:-translate-y-2 cursor-pointer shadow-sm hover:shadow-md",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1564,7 +1565,7 @@ function HomeClient() {
                                             children: service.icon
                                         }, void 0, false, {
                                             fileName: "[project]/components/HomeClient.tsx",
-                                            lineNumber: 161,
+                                            lineNumber: 162,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1572,7 +1573,7 @@ function HomeClient() {
                                             children: service.title
                                         }, void 0, false, {
                                             fileName: "[project]/components/HomeClient.tsx",
-                                            lineNumber: 164,
+                                            lineNumber: 165,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1580,7 +1581,7 @@ function HomeClient() {
                                             children: service.description
                                         }, void 0, false, {
                                             fileName: "[project]/components/HomeClient.tsx",
-                                            lineNumber: 165,
+                                            lineNumber: 166,
                                             columnNumber: 17
                                         }, this)
                                     ]
@@ -1592,31 +1593,6 @@ function HomeClient() {
                         }, void 0, false, {
                             fileName: "[project]/components/HomeClient.tsx",
                             lineNumber: 151,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "text-center mt-12",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
-                                href: "/services",
-                                variant: "outline",
-                                children: [
-                                    "View All Services",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__["ArrowRight"], {
-                                        className: "ml-2 w-4 h-4"
-                                    }, void 0, false, {
-                                        fileName: "[project]/components/HomeClient.tsx",
-                                        lineNumber: 173,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/components/HomeClient.tsx",
-                                lineNumber: 171,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/components/HomeClient.tsx",
-                            lineNumber: 170,
                             columnNumber: 11
                         }, this)
                     ]
@@ -1640,10 +1616,10 @@ function HomeClient() {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                     className: "text-3xl md:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4",
-                                    children: "Featured Products"
+                                    children: "Our Products"
                                 }, void 0, false, {
                                     fileName: "[project]/components/HomeClient.tsx",
-                                    lineNumber: 183,
+                                    lineNumber: 177,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1651,13 +1627,13 @@ function HomeClient() {
                                     children: "Innovative SaaS products designed for modern enterprises"
                                 }, void 0, false, {
                                     fileName: "[project]/components/HomeClient.tsx",
-                                    lineNumber: 184,
+                                    lineNumber: 178,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/HomeClient.tsx",
-                            lineNumber: 182,
+                            lineNumber: 176,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1689,20 +1665,20 @@ function HomeClient() {
                                                     className: "absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 from-[#F97316]/10"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/HomeClient.tsx",
-                                                    lineNumber: 203,
+                                                    lineNumber: 197,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(IconComponent, {
                                                     className: "w-16 h-16 text-[#F97316] opacity-20 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/HomeClient.tsx",
-                                                    lineNumber: 204,
+                                                    lineNumber: 198,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/HomeClient.tsx",
-                                            lineNumber: 202,
+                                            lineNumber: 196,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1713,7 +1689,7 @@ function HomeClient() {
                                                     children: category.id.replace('-', ' ')
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/HomeClient.tsx",
-                                                    lineNumber: 207,
+                                                    lineNumber: 201,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1721,7 +1697,7 @@ function HomeClient() {
                                                     children: category.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/HomeClient.tsx",
-                                                    lineNumber: 210,
+                                                    lineNumber: 204,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1729,7 +1705,7 @@ function HomeClient() {
                                                     children: category.overview
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/HomeClient.tsx",
-                                                    lineNumber: 211,
+                                                    lineNumber: 205,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1742,36 +1718,36 @@ function HomeClient() {
                                                                 className: "w-4 h-4 group-hover/link:translate-x-1 transition-transform"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/HomeClient.tsx",
-                                                                lineNumber: 215,
+                                                                lineNumber: 209,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/HomeClient.tsx",
-                                                        lineNumber: 213,
+                                                        lineNumber: 207,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/HomeClient.tsx",
-                                                    lineNumber: 212,
+                                                    lineNumber: 206,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/HomeClient.tsx",
-                                            lineNumber: 206,
+                                            lineNumber: 200,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, index, true, {
                                     fileName: "[project]/components/HomeClient.tsx",
-                                    lineNumber: 193,
+                                    lineNumber: 187,
                                     columnNumber: 17
                                 }, this);
                             })
                         }, void 0, false, {
                             fileName: "[project]/components/HomeClient.tsx",
-                            lineNumber: 189,
+                            lineNumber: 183,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1785,29 +1761,29 @@ function HomeClient() {
                                         className: "ml-2 w-4 h-4"
                                     }, void 0, false, {
                                         fileName: "[project]/components/HomeClient.tsx",
-                                        lineNumber: 227,
+                                        lineNumber: 221,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/HomeClient.tsx",
-                                lineNumber: 225,
+                                lineNumber: 219,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/HomeClient.tsx",
-                            lineNumber: 224,
+                            lineNumber: 218,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/HomeClient.tsx",
-                    lineNumber: 181,
+                    lineNumber: 175,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/HomeClient.tsx",
-                lineNumber: 180,
+                lineNumber: 174,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1823,7 +1799,7 @@ function HomeClient() {
                                     children: "Why Choose Agara-Sofvix"
                                 }, void 0, false, {
                                     fileName: "[project]/components/HomeClient.tsx",
-                                    lineNumber: 237,
+                                    lineNumber: 231,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1831,13 +1807,13 @@ function HomeClient() {
                                     children: "We deliver excellence through innovation, expertise, and commitment"
                                 }, void 0, false, {
                                     fileName: "[project]/components/HomeClient.tsx",
-                                    lineNumber: 238,
+                                    lineNumber: 232,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/HomeClient.tsx",
-                            lineNumber: 236,
+                            lineNumber: 230,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1864,7 +1840,7 @@ function HomeClient() {
                                             children: feature.icon
                                         }, void 0, false, {
                                             fileName: "[project]/components/HomeClient.tsx",
-                                            lineNumber: 253,
+                                            lineNumber: 247,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1872,7 +1848,7 @@ function HomeClient() {
                                             children: feature.title
                                         }, void 0, false, {
                                             fileName: "[project]/components/HomeClient.tsx",
-                                            lineNumber: 256,
+                                            lineNumber: 250,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1880,29 +1856,29 @@ function HomeClient() {
                                             children: feature.description
                                         }, void 0, false, {
                                             fileName: "[project]/components/HomeClient.tsx",
-                                            lineNumber: 257,
+                                            lineNumber: 251,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, index, true, {
                                     fileName: "[project]/components/HomeClient.tsx",
-                                    lineNumber: 245,
+                                    lineNumber: 239,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/components/HomeClient.tsx",
-                            lineNumber: 243,
+                            lineNumber: 237,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/HomeClient.tsx",
-                    lineNumber: 235,
+                    lineNumber: 229,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/HomeClient.tsx",
-                lineNumber: 234,
+                lineNumber: 228,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -1912,7 +1888,7 @@ function HomeClient() {
                         className: "absolute inset-0 bg-gradient-to-r from-[#F97316]/10 via-transparent to-[#22C55E]/10"
                     }, void 0, false, {
                         fileName: "[project]/components/HomeClient.tsx",
-                        lineNumber: 267,
+                        lineNumber: 261,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1936,7 +1912,7 @@ function HomeClient() {
                                     children: "Ready to Transform Your Business?"
                                 }, void 0, false, {
                                     fileName: "[project]/components/HomeClient.tsx",
-                                    lineNumber: 275,
+                                    lineNumber: 269,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1944,7 +1920,7 @@ function HomeClient() {
                                     children: "Let's discuss how we can help you build the perfect solution for your needs."
                                 }, void 0, false, {
                                     fileName: "[project]/components/HomeClient.tsx",
-                                    lineNumber: 278,
+                                    lineNumber: 272,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1960,13 +1936,13 @@ function HomeClient() {
                                                     className: "ml-2 w-5 h-5"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/HomeClient.tsx",
-                                                    lineNumber: 284,
+                                                    lineNumber: 278,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/HomeClient.tsx",
-                                            lineNumber: 282,
+                                            lineNumber: 276,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1977,30 +1953,30 @@ function HomeClient() {
                                             children: "Learn More"
                                         }, void 0, false, {
                                             fileName: "[project]/components/HomeClient.tsx",
-                                            lineNumber: 286,
+                                            lineNumber: 280,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/HomeClient.tsx",
-                                    lineNumber: 281,
+                                    lineNumber: 275,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/HomeClient.tsx",
-                            lineNumber: 269,
+                            lineNumber: 263,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/HomeClient.tsx",
-                        lineNumber: 268,
+                        lineNumber: 262,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/HomeClient.tsx",
-                lineNumber: 266,
+                lineNumber: 260,
                 columnNumber: 7
             }, this)
         ]
