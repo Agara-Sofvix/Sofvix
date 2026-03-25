@@ -29,6 +29,18 @@ export default function AdminLoginPage() {
         body: JSON.stringify({ email, password }),
       });
 
+      // Robust Response Check (as suggested by user)
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        const text = await res.text();
+        console.error("Non-JSON response received:", text);
+        // If it's HTML, it's likely a 502/404 from Nginx
+        if (text.includes("<html")) {
+          throw new Error("Server error (Nginx/HTML). Please check backend logs.");
+        }
+        throw new Error("Server returned non-JSON response.");
+      }
+
       const data = await res.json();
 
       if (!res.ok) {
@@ -42,6 +54,7 @@ export default function AdminLoginPage() {
 
       router.push('/admin');
     } catch (err: any) {
+      console.error("Login process failure:", err);
       setError(err.message || "Invalid credentials. Please try again.");
     } finally {
       setIsLoading(false);

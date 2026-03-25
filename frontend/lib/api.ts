@@ -6,14 +6,8 @@ export function getApiUrl() {
 
   // 2. Client-side dynamic resolution
   if (typeof window !== 'undefined') {
-    // If accessing via port 3000 (direct frontend access), 
-    // we assume the backend is on the same host at port 5000.
-    if (window.location.port === '3000') {
-      return `${window.location.protocol}//${window.location.hostname}:5000`;
-    }
-    
-    // Otherwise, assume it's behind Nginx proxy on port 80/443
-    return '/api';
+    // We always use relative paths in the browser to go through Nginx
+    return '';
   }
 
   // 3. Server-side (SSR/Prerendering)
